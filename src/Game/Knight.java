@@ -1,14 +1,14 @@
 package Game;
 
 public class Knight extends Player {
-    private Ability slam = new Slam(this);
-    private Ability execute = new Execute(this);
-    public Knight(final int id, final int hp, final int xp, final int level){
-        super(id, hp, xp, level);
+    private Ability slam = new Slam();
+    private Ability execute = new Execute();
+    public Knight(final int id){
+        super(id);
     }
     @Override
-    public void isHitBy(Player p, Ground ground) {
-        p.fight(this, ground);
+    public void isHitBy(Player attacker, Ground ground) {
+        attacker.fight(this, ground, attacker);
     }
 
     @Override
@@ -16,23 +16,23 @@ public class Knight extends Player {
 
     }
     @Override
-    public void fight(Rogue rogue, Ground ground){
-        slam.attack(rogue, ground);
-        execute.attack(rogue, ground);
+    public void fight(Rogue rogue, Ground ground, Player attacker){
+        slam.attack(rogue, ground, attacker);
+        execute.attack(rogue, ground, attacker);
     }
     @Override
-    public void fight(Wizard wizard, Ground ground){
-        slam.attack(wizard, ground);
-        execute.attack(wizard, ground);
+    public void fight(Wizard wizard, Ground ground, Player attacker){
+        slam.attack(wizard, ground, attacker);
+        execute.attack(wizard, ground, attacker);
     }
     @Override
-    public void fight(Knight knight, Ground ground){
-        slam.attack(knight, ground);
-        execute.attack(knight, ground);
+    public void fight(Knight knight, Ground ground, Player attacker){
+        slam.attack(knight, ground, attacker);
+        execute.attack(knight, ground, attacker);
     }
     @Override
-    public void fight(Pyromancer pyromancer, Ground ground){
-        slam.attack(pyromancer, ground);
-        execute.attack(pyromancer, ground);
+    public void fight(Pyromancer pyromancer, Ground ground, Player attacker){
+        slam.attack(pyromancer, ground, attacker);
+        execute.attack(pyromancer, ground, attacker);
     }
 }

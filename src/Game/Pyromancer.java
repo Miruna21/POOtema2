@@ -1,39 +1,39 @@
 package Game;
 
 public class Pyromancer extends Player{
-    private Ability fireblast = new Fireblast(this);
-    private Ability ignite = new Ignite(this);
+    private Ability fireblast = new Fireblast();
+    private Ability ignite = new Ignite();
 
-    public Pyromancer(final int id, final int hp, final int xp, final int level){
-        super(id, hp, xp, level);
+    public Pyromancer(final int id){
+        super(id);
     }
     @Override
-    public void isHitBy(Player p, Ground ground) {
-        p.fight(this, ground);
-    }
-    @Override
-    public void fight(Rogue rogue, Ground ground){
-        fireblast.attack(rogue, ground);
-        ignite.attack(rogue, ground);
-    }
-    @Override
-    public void fight(Wizard wizard, Ground ground){
-        fireblast.attack(wizard, ground);
-        ignite.attack(wizard, ground);
-    }
-    @Override
-    public void fight(Knight knight, Ground ground){
-        fireblast.attack(knight, ground);
-        ignite.attack(knight, ground);
-    }
-    @Override
-    public void fight(Pyromancer pyromancer, Ground ground){
-        fireblast.attack(pyromancer, ground);
-        ignite.attack(pyromancer, ground);
+    public void isHitBy(Player attacker, Ground ground) {
+        attacker.fight(this, ground, attacker);
     }
     @Override
     public void acceptLandModifier(Ground g) {
 
+    }
+    @Override
+    public void fight(Rogue rogue, Ground ground, Player attacker){
+        fireblast.attack(rogue, ground, attacker);
+        ignite.attack(rogue, ground, attacker);
+    }
+    @Override
+    public void fight(Wizard wizard, Ground ground, Player attacker){
+        fireblast.attack(wizard, ground, attacker);
+        ignite.attack(wizard, ground, attacker);
+    }
+    @Override
+    public void fight(Knight knight, Ground ground, Player attacker){
+        fireblast.attack(knight, ground, attacker);
+        ignite.attack(knight, ground, attacker);
+    }
+    @Override
+    public void fight(Pyromancer pyromancer, Ground ground, Player attacker){
+        fireblast.attack(pyromancer, ground, attacker);
+        ignite.attack(pyromancer, ground, attacker);
     }
 
 }

@@ -1,27 +1,23 @@
 package Game;
 
 public class Drain implements Ability{
-    private Player player = new Wizard();
-    Drain(Player p){
-        this.player = p;
-    }
     @Override
-    public void attack(Rogue rogue, Ground ground) {
+    public void attack(Rogue rogue, Ground ground, Player attacker) {
 
     }
 
     @Override
-    public void attack(Wizard wizard, Ground ground) {
+    public void attack(Wizard wizard, Ground ground, Player attacker) {
 
     }
 
     @Override
-    public void attack(Knight knight, Ground ground) {
+    public void attack(Knight knight, Ground ground, Player attacker) {
 
     }
 
     @Override
-    public void attack(Pyromancer pyromancer, Ground ground) {
+    public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
 
     }
 }

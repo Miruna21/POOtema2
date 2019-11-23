@@ -5,16 +5,21 @@ public abstract class Player {
     private int hp;
     private int xp;
     private int level;
+    private boolean life;
 
-    public Player(final int id, final int hp, final int xp, final int level) {
+    public Player(final int id) {
         this.id = id;
-        this.hp = hp;
-        this.xp = xp;
-        this.level = level;
+        this.hp = 0;
+        this.xp = 0;
+        this.level = 0;
+        this.life = true;
     }
 
     public int getId() {
         return id;
+    }
+    public boolean getLife(){
+        return life;
     }
 
     public void setId(int id) {
@@ -30,6 +35,10 @@ public abstract class Player {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void setLife(boolean dead){
+        this.life = dead;
     }
 
     public int getHp() {
@@ -60,8 +69,8 @@ public abstract class Player {
 
     public abstract void acceptLandModifier(Ground g);
 
-    public abstract void fight(Rogue rogue, Ground ground);
-    public abstract void fight(Wizard wizard, Ground ground);
-    public abstract void fight(Knight knight, Ground ground);
-    public abstract void fight(Pyromancer pyromancer, Ground ground);
+    public abstract void fight(Rogue rogue, Ground ground, Player attacker);
+    public abstract void fight(Wizard wizard, Ground ground, Player attacker);
+    public abstract void fight(Knight knight, Ground ground, Player attacker);
+    public abstract void fight(Pyromancer pyromancer, Ground ground, Player attacker);
 }

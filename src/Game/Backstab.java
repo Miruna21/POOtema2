@@ -1,27 +1,23 @@
 package Game;
 
 public class Backstab implements Ability{
-    private Player player = new Rogue();
-    Backstab(Player p){
-        this.player = p;
-    }
     @Override
-    public void attack(Rogue rogue, Ground ground) {
+    public void attack(Rogue rogue, Ground ground, Player attacher) {
 
     }
 
     @Override
-    public void attack(Wizard wizard, Ground ground) {
+    public void attack(Wizard wizard, Ground ground, Player attacker) {
 
     }
 
     @Override
-    public void attack(Knight knight, Ground ground) {
+    public void attack(Knight knight, Ground ground, Player attacker) {
 
     }
 
     @Override
-    public void attack(Pyromancer pyromancer, Ground ground) {
+    public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
 
     }
 }

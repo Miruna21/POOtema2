@@ -1,6 +1,5 @@
 package Game;
 
-import java.util.Vector;
 
 public class GroundFactory {
     private static GroundFactory instance = null;
@@ -12,12 +11,12 @@ public class GroundFactory {
         }
         return instance;
     }
-    public Ground createGround(String groundType) {
+    public Ground createGround(Character groundType) {
         switch (groundType){
-            case "Land": return new Land();
-            case "Vulcanic": return new Vulcanic();
-            case "Woods": return new Woods();
-            case "Desert": return new Desert();
+            case 'L': return new Land();
+            case 'V': return new Vulcanic();
+            case 'W': return new Woods();
+            case 'D': return new Desert();
             default: return null;
         }
     }
