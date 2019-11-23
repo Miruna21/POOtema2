@@ -6,6 +6,13 @@ public abstract class Player {
     private int xp;
     private int level;
 
+    public Player(final int id, final int hp, final int xp, final int level) {
+        this.id = id;
+        this.hp = hp;
+        this.xp = xp;
+        this.level = level;
+    }
+
     public int getId() {
         return id;
     }
@@ -37,7 +44,7 @@ public abstract class Player {
         return level;
     }
 
-    public void AddToHp(int hp){
+    public void addHp(int hp){
         this.hp += hp;
     }
 
@@ -45,7 +52,7 @@ public abstract class Player {
         this.hp -= hp;
     }
 
-    public void AddToXp(int xp){
+    public void GainXp(int xp){
         this.xp = xp;
     }
 

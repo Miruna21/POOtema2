@@ -3,6 +3,10 @@ package Game;
 public class Rogue extends Player {
     private Ability backstab = new Backstab(this);
     private Ability paralysis = new Paralysis(this);
+
+    public Rogue(final int id, final int hp, final int xp, final int level){
+        super(id, hp, xp, level);
+    }
     @Override
     public void isHitBy(Player p, Ground ground) {
         p.fight(this, ground);

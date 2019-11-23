@@ -3,6 +3,10 @@ package Game;
 public class Wizard extends Player{
     private Ability drain = new Drain(this);
     private Ability deflect = new Deflect(this);
+
+    public Wizard(final int id, final int hp, final int xp, final int level){
+        super(id, hp, xp, level);
+    }
     @Override
     public void isHitBy(Player p, Ground ground) {
         p.fight(this, ground);

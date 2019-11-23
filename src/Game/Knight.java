@@ -3,6 +3,9 @@ package Game;
 public class Knight extends Player {
     private Ability slam = new Slam(this);
     private Ability execute = new Execute(this);
+    public Knight(final int id, final int hp, final int xp, final int level){
+        super(id, hp, xp, level);
+    }
     @Override
     public void isHitBy(Player p, Ground ground) {
         p.fight(this, ground);
