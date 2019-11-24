@@ -3,12 +3,17 @@ package Game;
 public class Pyromancer extends Player{
     private final static int initialHp = 500;
     private final static int plusHpPerLevel = 50;
+    private Character race = 'P';
     private Ability fireblast = new Fireblast();
     private Ability ignite = new Ignite();
 
     public Pyromancer(final int id, final int xPos, final int yPos){
         super(id, xPos, yPos);
         this.setHp(initialHp);
+    }
+
+    public Character getRace() {
+        return race;
     }
 
     public int getInitialHp() {

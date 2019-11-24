@@ -151,7 +151,7 @@ public abstract class Player {
         }
     }
     public abstract int getInitialHp();
-
+    public abstract Character getRace();
     public abstract int getPlusHpPerLevel();
     public abstract void isHitBy(Player p, Ground g);
 
@@ -164,13 +164,13 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "hp=" + hp +
-                ", xp=" + xp +
-                ", level=" + level +
-                ", xPos=" + xPos +
-                ", yPos=" + yPos +
-                ", life=" + life +
-                '}';
+        // daca jucatorul e in viata
+        if (this.life){
+            return this.getRace() + " " + this.getLevel() + " "
+                    + this.getXp() + " " + this.getHp() + " "
+                    + this.getxPos() + " " + this.getyPos();
+        }
+        // daca jucatorul e mort
+        return this.getRace() + " " + "dead";
     }
 }

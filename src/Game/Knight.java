@@ -3,11 +3,16 @@ package Game;
 public class Knight extends Player {
     private final static int initialHp = 900;
     private final static int plusHpPerLevel = 80;
+    private Character race = 'K';
     private Ability slam = new Slam();
     private Ability execute = new Execute();
     public Knight(final int id, final int xPos, final int yPos){
         super(id, xPos, yPos);
         this.setHp(initialHp);
+    }
+
+    public Character getRace() {
+        return race;
     }
 
     public int getInitialHp() {

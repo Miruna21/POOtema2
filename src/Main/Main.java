@@ -4,11 +4,13 @@ import Game.*;
 import Reader.GameInput;
 import Reader.GameInputLoader;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Vector;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         GameInputLoader gameInputLoader = new GameInputLoader(args[0], args[1]);
         GameInput gameInput = gameInputLoader.load();
 
@@ -50,5 +52,8 @@ public class Main {
         game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, map,
                 mapLength, mapWidth, players);
 
+        // scrie in fisier
+        FileWriter fileWriter = new FileWriter(args[0], args[1]);
+        fileWriter.writePlayersInFile(players);
     }
 }

@@ -3,12 +3,17 @@ package Game;
 public class Rogue extends Player {
     private final static int initialHp = 600;
     private final static int plusHpPerLevel = 40;
+    private Character race = 'R';
     private Ability backstab = new Backstab();
     private Ability paralysis = new Paralysis();
 
     public Rogue(final int id, final int xPos, final int yPos){
         super(id, xPos, yPos);
         this.setHp(initialHp);
+    }
+
+    public Character getRace() {
+        return race;
     }
 
     public int getInitialHp() {

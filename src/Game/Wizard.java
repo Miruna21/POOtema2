@@ -3,12 +3,17 @@ package Game;
 public class Wizard extends Player{
     private final static int initialHp = 400;
     private final static int plusHpPerLevel = 30;
+    private Character race = 'W';
     private Ability drain = new Drain();
     private Ability deflect = new Deflect();
 
     public Wizard(final int id, final int xPos, final int yPos){
         super(id, xPos, yPos);
         this.setHp(initialHp);
+    }
+
+    public Character getRace() {
+        return race;
     }
 
     public int getInitialHp() {
