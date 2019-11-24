@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Desert implements Ground{
+    private final static float specialLandModifier = 0.1f;
     private List<Integer> playersOnThisPlaceId;
     public Desert(){
         this.playersOnThisPlaceId = new ArrayList<>();
     }
+
+    public List<Integer> getPlayersOnThisPlaceId() {
+        return playersOnThisPlaceId;
+    }
+
     @Override
     public void addPlayerOnThisPlaceId(final Integer playerOnThisPlaceId){
         this.playersOnThisPlaceId.add(playerOnThisPlaceId);
@@ -19,7 +25,30 @@ public class Desert implements Ground{
     }
 
     @Override
-    public int transferGroundModifier(Player p) {
-        return 0;
+    public boolean hasTwoPlayersOnThisPlace() {
+        if (playersOnThisPlaceId.size() == 2){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public float transferGroundModifier(Pyromancer pyromancer) {
+        return 1f;
+    }
+
+    @Override
+    public float transferGroundModifier(Rogue rogue) {
+        return 1f;
+    }
+
+    @Override
+    public float transferGroundModifier(Wizard wizard) {
+        return specialLandModifier;
+    }
+
+    @Override
+    public float transferGroundModifier(Knight knight) {
+        return 1f;
     }
 }

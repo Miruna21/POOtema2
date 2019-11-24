@@ -47,7 +47,8 @@ public class Main {
         }
 
         // mutarea jucatorilor pe harta
-        game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, map, mapLength, mapWidth, players);
+        game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, map,
+                mapLength, mapWidth, players);
 
     }
 }

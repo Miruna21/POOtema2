@@ -8,6 +8,9 @@ public abstract class Player {
     private int xPos;
     private int yPos;
     private boolean life;
+    private int round;
+    private boolean movPermission;
+    private int damageWithoutRaceModifier;
 
     public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
@@ -17,7 +20,29 @@ public abstract class Player {
         this.xPos = xPos;
         this.yPos = yPos;
         this.life = true;
+        this.movPermission = true;
     }
+
+    public void setxPos(int xPos) {
+        this.xPos = xPos;
+    }
+
+    public void setyPos(int yPos) {
+        this.yPos = yPos;
+    }
+
+    public boolean getMovPermission() {
+        return movPermission;
+    }
+
+    public int getDamageWithoutRaceModifier() {
+        return damageWithoutRaceModifier;
+    }
+
+    public void setDamageWithoutRaceModifier(int damageWithoutRaceModifier) {
+        this.damageWithoutRaceModifier = damageWithoutRaceModifier;
+    }
+
     public int getId() {
         return id;
     }
@@ -30,18 +55,24 @@ public abstract class Player {
     public boolean getLife(){
         return life;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public int getRound(){
+        return round;
     }
-    public void setHp(int hp) {
+
+    public void setHp(final int hp){
         this.hp = hp;
+        // daca este cazul, cresc nivelul jucatorului
+        levelUp();
     }
-
-    public void setXp(int xp) {
-        this.xp = xp;
+    public void setRound(final int round){
+        this.round = round;
     }
+    public void setMovPermission(boolean movPermission){
+        this.movPermission = movPermission;
+    }
+    public void levelUp(){
 
+    }
     public void setLevel(int level) {
         this.level = level;
     }
@@ -68,6 +99,9 @@ public abstract class Player {
 
     public void subHp(int hp){
         this.hp -= hp;
+        if (this.getHp() < 0){
+            this.setLife(false);
+        }
     }
 
     public void GainXp(int xp){
@@ -76,7 +110,7 @@ public abstract class Player {
 
     public abstract void isHitBy(Player p, Ground g);
 
-    public abstract void acceptLandModifier(Ground g);
+    public abstract float acceptLandModifier(Ground g);
 
     public abstract void fight(Rogue rogue, Ground ground, Player attacker);
     public abstract void fight(Wizard wizard, Ground ground, Player attacker);
