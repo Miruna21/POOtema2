@@ -11,6 +11,9 @@ public abstract class Player {
     private int round;
     private boolean movPermission;
     private int damageWithoutRaceModifier;
+    private int nrBackstabHit;
+    private int nrRoundParalyzed;
+    private int overtimeDamage;
 
     public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
@@ -21,6 +24,35 @@ public abstract class Player {
         this.yPos = yPos;
         this.life = true;
         this.movPermission = true;
+        this.nrBackstabHit = 0;
+        this.nrRoundParalyzed = 0;
+        this.overtimeDamage = 0;
+    }
+
+    public int getNrRoundParalyzed() {
+        return nrRoundParalyzed;
+    }
+    public void subNrRoundParalysed(int passedRound){
+        this.nrRoundParalyzed -= passedRound;
+    }
+    public int getOvertimeDamage() {
+        return overtimeDamage;
+    }
+
+    public void setOvertimeDamage(int overtimeDamage) {
+        this.overtimeDamage = overtimeDamage;
+    }
+
+    public void setNrRoundParalyzed(int nrRoundParalyzed) {
+        this.nrRoundParalyzed = nrRoundParalyzed;
+    }
+
+    public int getNrBackstabHit() {
+        return nrBackstabHit;
+    }
+
+    public void addNrBackstabHit(int nrBackstabHit) {
+        this.nrBackstabHit += nrBackstabHit;
     }
 
     public void setxPos(int xPos) {

@@ -57,18 +57,38 @@ public class Game {
                     List<Integer> playersOnThisPlace = map.get(i).get(j).getPlayersOnThisPlaceId();
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
+                    if (players.get(firstIdPlayer).getNrRoundParalyzed() != 0){
+                        int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
+                        players.get(firstIdPlayer).subHp(overtimeDamage);
+                        if (players.get(firstIdPlayer).getHp() < 0){
+                            players.get(firstIdPlayer).setLife(false);
+                        }
+                    }
+                    if (players.get(secondIdPlayer).getNrRoundParalyzed() != 0){
+                        int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
+                        players.get(secondIdPlayer).subHp(overtimeDamage);
+                        if (players.get(firstIdPlayer).getHp() < 0){
+                            players.get(firstIdPlayer).setLife(false);
+                        }
+                    }
                     // daca cei 2 jucatori sunt in viata, acestia se vor lupta unul cu altul
                     if (players.get(firstIdPlayer).getLife()
                             && players.get(secondIdPlayer).getLife()){
                         players.get(firstIdPlayer).setRound(currentRound);
                         players.get(secondIdPlayer).setRound(currentRound);
                         // wizard ataca al doilea
-                        players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer), fightGround);
-                        players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer), fightGround);
+                        if (!(players.get(firstIdPlayer) instanceof Wizard)){
+                            players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer), fightGround);
+                            players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer), fightGround);
+                        } else {
+                            players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer), fightGround);
+                            players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer), fightGround);
+                        }
                     }
                 }
             }
         }
+
         // resetare damage fara race modifier
         for (int i = 0; i < players.size(); i++){
             players.get(i).setDamageWithoutRaceModifier(0);
