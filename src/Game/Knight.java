@@ -3,8 +3,8 @@ package Game;
 public class Knight extends Player {
     private Ability slam = new Slam();
     private Ability execute = new Execute();
-    public Knight(final int id){
-        super(id);
+    public Knight(final int id, final int xPos, final int yPos){
+        super(id, xPos, yPos);
     }
     @Override
     public void isHitBy(Player attacker, Ground ground) {

@@ -5,18 +5,27 @@ public abstract class Player {
     private int hp;
     private int xp;
     private int level;
+    private int xPos;
+    private int yPos;
     private boolean life;
 
-    public Player(final int id) {
+    public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
         this.hp = 0;
         this.xp = 0;
         this.level = 0;
+        this.xPos = xPos;
+        this.yPos = yPos;
         this.life = true;
     }
-
     public int getId() {
         return id;
+    }
+    public int getxPos(){
+        return xPos;
+    }
+    public int getyPos(){
+        return yPos;
     }
     public boolean getLife(){
         return life;

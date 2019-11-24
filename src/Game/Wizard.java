@@ -4,8 +4,8 @@ public class Wizard extends Player{
     private Ability drain = new Drain();
     private Ability deflect = new Deflect();
 
-    public Wizard(final int id){
-        super(id);
+    public Wizard(final int id, final int xPos, final int yPos){
+        super(id, xPos, yPos);
     }
     @Override
     public void isHitBy(Player attacker, Ground ground) {

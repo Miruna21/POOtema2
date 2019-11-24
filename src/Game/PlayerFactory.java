@@ -11,12 +11,12 @@ public final class PlayerFactory {
         }
         return instance;
     }
-    public Player createPlayer(final Character type, final int id) {
+    public Player createPlayer(final Character type, final int id, final int xPos, final int yPos) {
         switch (type) {
-            case 'R': return new Rogue(id);
-            case 'W': return new Wizard(id);
-            case 'K': return new Knight(id);
-            case 'P': return new Pyromancer(id);
+            case 'R': return new Rogue(id, xPos, yPos);
+            case 'W': return new Wizard(id, xPos, yPos);
+            case 'K': return new Knight(id, xPos, yPos);
+            case 'P': return new Pyromancer(id, xPos, yPos);
             default : return null;
         }
     }

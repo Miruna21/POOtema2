@@ -4,8 +4,8 @@ public class Pyromancer extends Player{
     private Ability fireblast = new Fireblast();
     private Ability ignite = new Ignite();
 
-    public Pyromancer(final int id){
-        super(id);
+    public Pyromancer(final int id, final int xPos, final int yPos){
+        super(id, xPos, yPos);
     }
     @Override
     public void isHitBy(Player attacker, Ground ground) {

@@ -4,8 +4,8 @@ public class Rogue extends Player {
     private Ability backstab = new Backstab();
     private Ability paralysis = new Paralysis();
 
-    public Rogue(final int id){
-        super(id);
+    public Rogue(final int id, final int xPos, final int yPos){
+        super(id, xPos, yPos);
     }
     @Override
     public void isHitBy(Player attacker, Ground ground) {

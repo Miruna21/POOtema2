@@ -1,9 +1,6 @@
 package Main;
 
-import Game.Ground;
-import Game.GroundFactory;
-import Game.Player;
-import Game.PlayerFactory;
+import Game.*;
 import Reader.GameInput;
 import Reader.GameInputLoader;
 
@@ -24,16 +21,12 @@ public class Main {
         Vector<Vector<Integer>> playersPosMatrix = gameInput.getPlayersPosMatrix();
         Vector<Vector<Character>> movesMatrix = gameInput.getMovesMatrix();
 
+        Game game = new Game();
         Vector<Vector<Ground>> map = new Vector<>();
         PlayerFactory playerFactory = PlayerFactory.getInstance();
         GroundFactory groundFactory = GroundFactory.getInstance();
-        Player[] players = new Player[nrPlayers];
+        Vector<Player> players = new Vector<>(nrPlayers);
 
-        // crearea jucatorilor
-        for (int i = 0; i < nrPlayers; i++){
-            Character character = playersTypeVector.get(i);
-            players[i] = playerFactory.createPlayer(character, i);
-        }
         // crearea hartii
         for (int i = 0; i < mapLength; i++){
             Vector<Ground> vector = new Vector<>();
@@ -43,5 +36,18 @@ public class Main {
             }
             map.add(vector);
         }
+
+        // crearea jucatorilor
+        for (int i = 0; i < nrPlayers; i++){
+            Character character = playersTypeVector.get(i);
+            int xPos = playersPosMatrix.get(i).get(0);
+            int yPos = playersPosMatrix.get(i).get(1);
+            map.get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
+            players.add(playerFactory.createPlayer(character, i, xPos, yPos));
+        }
+
+        // mutarea jucatorilor pe harta
+        game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, map, mapLength, mapWidth, players);
+
     }
 }
