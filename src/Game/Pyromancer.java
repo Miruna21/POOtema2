@@ -11,11 +11,11 @@ public class Pyromancer extends Player{
         this.setHp(initialHp);
     }
 
-    public static int getInitialHp() {
+    public int getInitialHp() {
         return initialHp;
     }
 
-    public static int getPlusHpPerLevel() {
+    public int getPlusHpPerLevel() {
         return plusHpPerLevel;
     }
 

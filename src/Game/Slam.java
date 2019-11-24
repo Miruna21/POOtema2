@@ -23,6 +23,9 @@ public class Slam implements Ability{
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         rogue.setMovPermission(false);
+        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
+        rogue.setNrRoundParalyzed(0);
+        rogue.setOvertimeDamage(0);
         // daca victima a murit, castigatorul va primi xp
         verifyVictimDead(attacker, rogue);
     }
@@ -36,6 +39,9 @@ public class Slam implements Ability{
         wizard.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         wizard.setMovPermission(false);
+        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
+        wizard.setNrRoundParalyzed(0);
+        wizard.setOvertimeDamage(0);
         // daca victima a murit, castigatorul va primi xp
         verifyVictimDead(attacker, wizard);
     }
@@ -49,6 +55,9 @@ public class Slam implements Ability{
         knight.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         knight.setMovPermission(false);
+        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
+        knight.setNrRoundParalyzed(0);
+        knight.setOvertimeDamage(0);
         // daca victima a murit, castigatorul va primi xp
         verifyVictimDead(attacker, knight);
     }
@@ -62,6 +71,9 @@ public class Slam implements Ability{
         pyromancer.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         pyromancer.setMovPermission(false);
+        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
+        pyromancer.setNrRoundParalyzed(0);
+        pyromancer.setOvertimeDamage(0);
         // daca victima a murit, castigatorul va primi xp
         verifyVictimDead(attacker, pyromancer);
     }
@@ -78,7 +90,7 @@ public class Slam implements Ability{
                 max = b;
             }
             newXpWinner = xpWinner + max;
-            attacker.setHp(newXpWinner);
+            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }

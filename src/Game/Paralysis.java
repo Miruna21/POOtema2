@@ -27,6 +27,8 @@ public class Paralysis implements Ability{
         }
         rogue.setNrRoundParalyzed(nrRoundsParalyzed);
         rogue.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        rogue.setMovPermission(true);
         // modificare hp
         rogue.subHp(finalDamage);
         // daca victima a murit, castigatorul va primi xp
@@ -46,6 +48,8 @@ public class Paralysis implements Ability{
         }
         wizard.setNrRoundParalyzed(nrRoundsParalyzed);
         wizard.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        wizard.setMovPermission(true);
         // modificare hp
         wizard.subHp(finalDamage);
         // daca victima a murit, castigatorul va primi xp
@@ -65,6 +69,8 @@ public class Paralysis implements Ability{
         }
         knight.setNrRoundParalyzed(nrRoundsParalyzed);
         knight.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        knight.setMovPermission(true);
         // modificare hp
         knight.subHp(finalDamage);
         // daca victima a murit, castigatorul va primi xp
@@ -84,6 +90,8 @@ public class Paralysis implements Ability{
         }
         pyromancer.setNrRoundParalyzed(nrRoundsParalyzed);
         pyromancer.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        pyromancer.setMovPermission(true);
         // modificare hp
         pyromancer.subHp(finalDamage);
         // daca victima a murit, castigatorul va primi xp
@@ -102,7 +110,7 @@ public class Paralysis implements Ability{
                 max = b;
             }
             newXpWinner = xpWinner + max;
-            attacker.setHp(newXpWinner);
+            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }

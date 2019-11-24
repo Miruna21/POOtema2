@@ -91,20 +91,17 @@ public abstract class Player {
         return round;
     }
 
-    public void setHp(final int hp){
-        this.hp = hp;
-        // daca este cazul, cresc nivelul jucatorului
-        levelUp();
-    }
     public void setRound(final int round){
         this.round = round;
     }
     public void setMovPermission(boolean movPermission){
         this.movPermission = movPermission;
     }
-    public void levelUp(){
 
+    public void setHp(int hp) {
+        this.hp = hp;
     }
+
     public void setLevel(int level) {
         this.level = level;
     }
@@ -136,10 +133,26 @@ public abstract class Player {
         }
     }
 
-    public void GainXp(int xp){
+    public void gainXp(final int xp, final int initialHp, final int plusHpPerLevel){
         this.xp = xp;
+        // daca este cazul, cresc nivelul jucatorului
+        int newlevel;
+        if (this.xp > (250 + this.level * 50) && (this.level < 3)){
+            newlevel = this.level + 1;
+            if (this.xp > (250 + newlevel * 50) && (newlevel < 3)){
+                newlevel++;
+                if (this.xp > (250 + newlevel * 50) && (newlevel < 3)){
+                    newlevel++;
+                }
+            }
+            this.setLevel(newlevel);
+            int newHp = initialHp + plusHpPerLevel * newlevel;
+            this.setHp(newHp);
+        }
     }
+    public abstract int getInitialHp();
 
+    public abstract int getPlusHpPerLevel();
     public abstract void isHitBy(Player p, Ground g);
 
     public abstract float acceptLandModifier(Ground g);
@@ -148,4 +161,16 @@ public abstract class Player {
     public abstract void fight(Wizard wizard, Ground ground, Player attacker);
     public abstract void fight(Knight knight, Ground ground, Player attacker);
     public abstract void fight(Pyromancer pyromancer, Ground ground, Player attacker);
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "hp=" + hp +
+                ", xp=" + xp +
+                ", level=" + level +
+                ", xPos=" + xPos +
+                ", yPos=" + yPos +
+                ", life=" + life +
+                '}';
+    }
 }

@@ -19,6 +19,7 @@ public class Backstab implements Ability{
         }
         return levelDamage * criticalHit * landModifier;
     }
+
     @Override
     public void attack(Rogue rogue, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
@@ -79,7 +80,7 @@ public class Backstab implements Ability{
                 max = b;
             }
             newXpWinner = xpWinner + max;
-            attacker.setHp(newXpWinner);
+            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }

@@ -60,6 +60,7 @@ public class Game {
                     if (players.get(firstIdPlayer).getNrRoundParalyzed() != 0){
                         int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
                         players.get(firstIdPlayer).subHp(overtimeDamage);
+                        players.get(firstIdPlayer).subNrRoundParalysed(1);
                         if (players.get(firstIdPlayer).getHp() < 0){
                             players.get(firstIdPlayer).setLife(false);
                         }
@@ -67,6 +68,7 @@ public class Game {
                     if (players.get(secondIdPlayer).getNrRoundParalyzed() != 0){
                         int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
                         players.get(secondIdPlayer).subHp(overtimeDamage);
+                        players.get(secondIdPlayer).subNrRoundParalysed(1);
                         if (players.get(firstIdPlayer).getHp() < 0){
                             players.get(firstIdPlayer).setLife(false);
                         }

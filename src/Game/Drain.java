@@ -13,7 +13,7 @@ public class Drain implements Ability{
         float percent = basePercent + rogue.getLevel() * plusPercentPerLevel;
         float newPercent = percent + RogueVictimModifier * percent;
         float baseHp;
-        int victimMaxHpOnHerLevel = Rogue.getInitialHp() + rogue.getLevel() * Rogue.getPlusHpPerLevel();
+        int victimMaxHpOnHerLevel = rogue.getInitialHp() + rogue.getLevel() * rogue.getPlusHpPerLevel();
         float a = 0.3f * victimMaxHpOnHerLevel;
         float b = rogue.getHp();
         if (a < b){
@@ -33,7 +33,7 @@ public class Drain implements Ability{
         float percent = basePercent + wizard.getLevel() * plusPercentPerLevel;
         float newPercent = percent + WizardVictimModifier * percent;
         float baseHp;
-        int victimMaxHpOnHerLevel = Wizard.getInitialHp() + wizard.getLevel() * Wizard.getPlusHpPerLevel();
+        int victimMaxHpOnHerLevel = wizard.getInitialHp() + wizard.getLevel() * wizard.getPlusHpPerLevel();
         float a = 0.3f * victimMaxHpOnHerLevel;
         float b = wizard.getHp();
         if (a < b){
@@ -53,7 +53,7 @@ public class Drain implements Ability{
         float percent = basePercent + knight.getLevel() * plusPercentPerLevel;
         float newPercent = percent + KnightVictimModifier * percent;
         float baseHp;
-        int victimMaxHpOnHerLevel = Knight.getInitialHp() + knight.getLevel() * Knight.getPlusHpPerLevel();
+        int victimMaxHpOnHerLevel = knight.getInitialHp() + knight.getLevel() * knight.getPlusHpPerLevel();
         float a = 0.3f * victimMaxHpOnHerLevel;
         float b = knight.getHp();
         if (a < b){
@@ -73,7 +73,7 @@ public class Drain implements Ability{
         float percent = basePercent + pyromancer.getLevel() * plusPercentPerLevel;
         float newPercent = percent + PyromancerVictimModifier * percent;
         float baseHp;
-        int victimMaxHpOnHerLevel = Pyromancer.getInitialHp() + pyromancer.getLevel() * Pyromancer.getPlusHpPerLevel();
+        int victimMaxHpOnHerLevel = pyromancer.getInitialHp() + pyromancer.getLevel() * pyromancer.getPlusHpPerLevel();
         float a = 0.3f * victimMaxHpOnHerLevel;
         float b = pyromancer.getHp();
         if (a < b){
@@ -100,7 +100,7 @@ public class Drain implements Ability{
                 max = b;
             }
             newXpWinner = xpWinner + max;
-            attacker.setHp(newXpWinner);
+            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }

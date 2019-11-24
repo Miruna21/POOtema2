@@ -78,7 +78,7 @@ public class Ignite implements Ability{
                 max = b;
             }
             newXpWinner = xpWinner + max;
-            attacker.setHp(newXpWinner);
+            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }

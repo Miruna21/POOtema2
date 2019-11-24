@@ -18,7 +18,7 @@ public class Execute implements Ability{
 
     @Override
     public void attack(Rogue rogue, Ground ground, Player attacker) {
-        int maxVictimHpOnHerLevel = Rogue.getInitialHp() + rogue.getLevel() * Rogue.getPlusHpPerLevel();
+        int maxVictimHpOnHerLevel = rogue.getInitialHp() + rogue.getLevel() * rogue.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + rogue.getLevel();
         if (rogue.getHp() < hpLimit){
             rogue.setDamageWithoutRaceModifier(Math.round(rogue.getHp()));
@@ -36,7 +36,7 @@ public class Execute implements Ability{
 
     @Override
     public void attack(Wizard wizard, Ground ground, Player attacker) {
-        int maxVictimHpOnHerLevel = Wizard.getInitialHp() + wizard.getLevel() * Wizard.getPlusHpPerLevel();
+        int maxVictimHpOnHerLevel = wizard.getInitialHp() + wizard.getLevel() * wizard.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + wizard.getLevel();
         if (wizard.getHp() < hpLimit){
             wizard.setDamageWithoutRaceModifier(Math.round(wizard.getHp()));
@@ -54,7 +54,7 @@ public class Execute implements Ability{
 
     @Override
     public void attack(Knight knight, Ground ground, Player attacker) {
-        int maxVictimHpOnHerLevel = Knight.getInitialHp() + knight.getLevel() * Knight.getPlusHpPerLevel();
+        int maxVictimHpOnHerLevel = knight.getInitialHp() + knight.getLevel() * knight.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + knight.getLevel();
         if (knight.getHp() < hpLimit){
             knight.setDamageWithoutRaceModifier(Math.round(knight.getHp()));
@@ -72,7 +72,7 @@ public class Execute implements Ability{
 
     @Override
     public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
-        int maxVictimHpOnHerLevel = Pyromancer.getInitialHp() + pyromancer.getLevel() * Pyromancer.getPlusHpPerLevel();
+        int maxVictimHpOnHerLevel = pyromancer.getInitialHp() + pyromancer.getLevel() * pyromancer.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + pyromancer.getLevel();
         if (pyromancer.getHp() < hpLimit){
             pyromancer.setDamageWithoutRaceModifier(Math.round(pyromancer.getHp()));
@@ -100,7 +100,7 @@ public class Execute implements Ability{
                 max = b;
             }
             newXpWinner = xpWinner + max;
-            attacker.setHp(newXpWinner);
+            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }
