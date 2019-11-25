@@ -3,8 +3,8 @@ package Main;
 import Game.*;
 import Reader.GameInput;
 import Reader.GameInputLoader;
+import Writer.GameOutput;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -13,7 +13,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         GameInputLoader gameInputLoader = new GameInputLoader(args[0], args[1]);
         GameInput gameInput = gameInputLoader.load();
-
         int mapLength = gameInput.getMapLength();
         int mapWidth = gameInput.getMapWidth();
         int nrPlayers = gameInput.getNrPlayers();
@@ -53,7 +52,7 @@ public class Main {
                 mapLength, mapWidth, players);
 
         // scrie in fisier
-        FileWriter fileWriter = new FileWriter(args[0], args[1]);
-        fileWriter.writePlayersInFile(players);
+        GameOutput myFileWriter = new GameOutput(args[0], args[1]);
+        myFileWriter.writePlayersInFile(players);
     }
 }

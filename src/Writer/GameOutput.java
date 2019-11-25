@@ -4,11 +4,11 @@ import fileio.FileSystem;
 
 import java.util.Vector;
 
-public class FileWriter {
+public class GameOutput {
     private final String mInputPath;
     private final String mOutputPath;
 
-    public FileWriter(final String inputPath, final String mOutputPath) {
+    public GameOutput(final String inputPath, final String mOutputPath) {
         this.mInputPath = inputPath;
         this.mOutputPath = mOutputPath;
     }

@@ -13,6 +13,7 @@ public class Game {
                 int currentPlayerId = players.get(j).getId();
                 int xPos = players.get(j).getxPos();
                 int yPos = players.get(j).getyPos();
+                // daca nu se poate misca in runda curenta
                 if (!players.get(j).getMovPermission()){
                     players.get(j).setMovPermission(true);
                     continue;
@@ -21,21 +22,33 @@ public class Game {
                     case 'U':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int xPos1 = xPos - 1;
+                        if (xPos1 >= mapWidth){
+                            break;
+                        }
                         map.get(xPos1).get(yPos).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos1);
                     case 'D':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int xPos2 = xPos + 1;
+                        if (xPos2 >= mapWidth){
+                            break;
+                        }
                         map.get(xPos2).get(yPos).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos2);
                     case 'L':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int yPos1 = yPos - 1;
+                        if (yPos1 >= mapLength){
+                            break;
+                        }
                         map.get(xPos).get(yPos1).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos1);
                     case 'R':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int yPos2 = yPos + 1;
+                        if (yPos2 >= mapLength){
+                            break;
+                        }
                         map.get(xPos).get(yPos2).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos2);
                     case '_':
