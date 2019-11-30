@@ -34,10 +34,10 @@ public class GameInputLoader {
                 for (int j = 0; j < mapWidth; j++) {
                     character = word.charAt(j);
                     g.add(character);
+
                 }
                 groundMatrix.add(g);
             }
-
             nrPlayers = fs.nextInt();
             // citire jucatori
             for (int i = 0; i < nrPlayers; ++i) {
@@ -49,9 +49,7 @@ public class GameInputLoader {
                 }
                 playersPosMatrix.add(t);
             }
-
             nrRounds = fs.nextInt();
-
             for (int i = 0; i < nrRounds; ++i) {
                 Vector<Character> m = new Vector<>();
                 String word = fs.nextWord();

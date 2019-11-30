@@ -9,7 +9,7 @@ public class Execute implements Ability{
     private final static float PyromancerVictimModifier = 0.1f;
     private final static float WizardVictimModifier = -0.2f;
 
-    public float levelAndGroundDamage(Ground ground, Player attacker){
+    private float levelAndGroundDamage(Ground ground, Player attacker){
         float landModifier = attacker.acceptLandModifier(ground);
         int attackerLevel = attacker.getLevel();
         float levelDamage = baseDamage + attackerLevel * plusDamagePerLevel;
@@ -30,8 +30,6 @@ public class Execute implements Ability{
             // modificare hp
             rogue.subHp(finalDamage);
         }
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, rogue);
     }
 
     @Override
@@ -48,8 +46,6 @@ public class Execute implements Ability{
             // modificare hp
             wizard.subHp(finalDamage);
         }
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, wizard);
     }
 
     @Override
@@ -66,8 +62,6 @@ public class Execute implements Ability{
             // modificare hp
             knight.subHp(finalDamage);
         }
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, knight);
     }
 
     @Override
@@ -83,24 +77,6 @@ public class Execute implements Ability{
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + PyromancerVictimModifier));
             // modificare hp
             pyromancer.subHp(finalDamage);
-        }
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, pyromancer);
-    }
-    public void verifyVictimDead(Player attacker, Player victim){
-        if (!victim.getLife()){
-            int max;
-            int a = 0;
-            int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
-            int xpWinner = attacker.getXp();
-            int newXpWinner;
-            if (a > b){
-                max = a;
-            } else {
-                max = b;
-            }
-            newXpWinner = xpWinner + max;
-            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
         }
     }
 }

@@ -10,7 +10,7 @@ public abstract class Player {
     private boolean life;
     private int round;
     private boolean movPermission;
-    private int damageWithoutRaceModifier;
+    private float damageWithoutRaceModifier;
     private int nrBackstabHit;
     private int nrRoundParalyzed;
     private int overtimeDamage;
@@ -67,12 +67,15 @@ public abstract class Player {
         return movPermission;
     }
 
-    public int getDamageWithoutRaceModifier() {
+    public float getDamageWithoutRaceModifier() {
         return damageWithoutRaceModifier;
     }
 
-    public void setDamageWithoutRaceModifier(int damageWithoutRaceModifier) {
+    public void setDamageWithoutRaceModifier(float damageWithoutRaceModifier) {
         this.damageWithoutRaceModifier = damageWithoutRaceModifier;
+    }
+    public void addDamageWithoutRaceModifier(float damageWithoutRaceModifier) {
+        this.damageWithoutRaceModifier += damageWithoutRaceModifier;
     }
 
     public int getId() {
@@ -122,9 +125,6 @@ public abstract class Player {
         return level;
     }
 
-    public void addHp(int hp){
-        this.hp += hp;
-    }
 
     public void subHp(int hp){
         this.hp -= hp;
@@ -133,16 +133,19 @@ public abstract class Player {
         }
     }
 
-    public void gainXp(final int xp, final int initialHp, final int plusHpPerLevel){
-        this.xp = xp;
+    public void gainXp(final int newXp, final int initialHp, final int plusHpPerLevel){
+        this.xp = newXp;
         // daca este cazul, cresc nivelul jucatorului
         int newlevel;
-        if (this.xp > (250 + this.level * 50) && (this.level < 3)){
+        if ((this.xp > (250 + this.level * 50)) && (this.level < 4)){
             newlevel = this.level + 1;
-            if (this.xp > (250 + newlevel * 50) && (newlevel < 3)){
+            if ((this.xp > (250 + newlevel * 50)) && (newlevel < 4)){
                 newlevel++;
-                if (this.xp > (250 + newlevel * 50) && (newlevel < 3)){
+                if ((this.xp > (250 + newlevel * 50)) && (newlevel < 4)){
                     newlevel++;
+                    if ((this.xp > (250 + newlevel + 50)) && (newlevel < 4)){
+                        newlevel++;
+                    }
                 }
             }
             this.setLevel(newlevel);

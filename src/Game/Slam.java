@@ -8,7 +8,8 @@ public class Slam implements Ability{
     private final static float KnightVictimModifier = 0.2f;
     private final static float PyromancerVictimModifier = -0.1f;
     private final static float WizardVictimModifier = 0.05f;
-    public float levelAndGroundDamage(Ground ground, Player attacker){
+
+    private float levelAndGroundDamage(Ground ground, Player attacker){
         float landModifier = attacker.acceptLandModifier(ground);
         int attackerLevel = attacker.getLevel();
         float levelDamage = baseDamage + attackerLevel * plusDamagePerLevel;
@@ -17,7 +18,7 @@ public class Slam implements Ability{
     @Override
     public void attack(Rogue rogue, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + RogueVictimModifier));
         // modificare hp
         rogue.subHp(finalDamage);
@@ -26,14 +27,12 @@ public class Slam implements Ability{
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         rogue.setNrRoundParalyzed(0);
         rogue.setOvertimeDamage(0);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, rogue);
     }
 
     @Override
     public void attack(Wizard wizard, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + WizardVictimModifier));
         // modificare hp
         wizard.subHp(finalDamage);
@@ -42,14 +41,12 @@ public class Slam implements Ability{
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         wizard.setNrRoundParalyzed(0);
         wizard.setOvertimeDamage(0);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, wizard);
     }
 
     @Override
     public void attack(Knight knight, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + KnightVictimModifier));
         // modificare hp
         knight.subHp(finalDamage);
@@ -58,14 +55,12 @@ public class Slam implements Ability{
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         knight.setNrRoundParalyzed(0);
         knight.setOvertimeDamage(0);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, knight);
     }
 
     @Override
     public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + PyromancerVictimModifier));
         // modificare hp
         pyromancer.subHp(finalDamage);
@@ -74,23 +69,5 @@ public class Slam implements Ability{
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         pyromancer.setNrRoundParalyzed(0);
         pyromancer.setOvertimeDamage(0);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, pyromancer);
-    }
-    public void verifyVictimDead(Player attacker, Player victim){
-        if (!victim.getLife()){
-            int max;
-            int a = 0;
-            int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
-            int xpWinner = attacker.getXp();
-            int newXpWinner;
-            if (a > b){
-                max = a;
-            } else {
-                max = b;
-            }
-            newXpWinner = xpWinner + max;
-            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
-        }
     }
 }

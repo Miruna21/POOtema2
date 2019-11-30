@@ -1,16 +1,16 @@
 package Game;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Desert implements Ground{
-    private final static float specialLandModifier = 0.1f;
-    private List<Integer> playersOnThisPlaceId;
+    private final static float specialLandModifier = 1.1f;
+    private int nrRoundsParalyzed = 3;
+    private ArrayList<Integer> playersOnThisPlaceId;
     public Desert(){
         this.playersOnThisPlaceId = new ArrayList<>();
     }
 
-    public List<Integer> getPlayersOnThisPlaceId() {
+    public ArrayList<Integer> getPlayersOnThisPlaceId() {
         return playersOnThisPlaceId;
     }
 
@@ -22,6 +22,7 @@ public class Desert implements Ground{
     @Override
     public void removePlayerOnThisPlaceId(Integer playerOnThisPlaceId) {
         this.playersOnThisPlaceId.remove(playerOnThisPlaceId);
+        this.playersOnThisPlaceId.trimToSize();
     }
 
     @Override
@@ -30,6 +31,10 @@ public class Desert implements Ground{
             return true;
         }
         return false;
+    }
+
+    public int getNrRoundsParalyzed() {
+        return nrRoundsParalyzed;
     }
 
     @Override

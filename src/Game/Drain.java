@@ -24,8 +24,6 @@ public class Drain implements Ability{
         int finalDamage = Math.round(newPercent * baseHp);
         // modificare hp
         rogue.subHp(finalDamage);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, rogue);
     }
 
     @Override
@@ -44,8 +42,6 @@ public class Drain implements Ability{
         int finalDamage = Math.round(newPercent * baseHp);
         // modificare hp
         wizard.subHp(finalDamage);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, wizard);
     }
 
     @Override
@@ -64,8 +60,6 @@ public class Drain implements Ability{
         int finalDamage = Math.round(newPercent * baseHp);
         // modificare hp
         knight.subHp(finalDamage);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, knight);
     }
 
     @Override
@@ -84,23 +78,5 @@ public class Drain implements Ability{
         int finalDamage = Math.round(newPercent * baseHp);
         // modificare hp
         pyromancer.subHp(finalDamage);
-        // daca victima a murit, castigatorul va primi xp
-        verifyVictimDead(attacker, pyromancer);
-    }
-    public void verifyVictimDead(Player attacker, Player victim){
-        if (!victim.getLife()){
-            int max;
-            int a = 0;
-            int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
-            int xpWinner = attacker.getXp();
-            int newXpWinner;
-            if (a > b){
-                max = a;
-            } else {
-                max = b;
-            }
-            newXpWinner = xpWinner + max;
-            attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
-        }
     }
 }

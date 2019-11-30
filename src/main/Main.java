@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import Game.*;
 import Reader.GameInput;

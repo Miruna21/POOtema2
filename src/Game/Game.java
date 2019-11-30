@@ -13,6 +13,10 @@ public class Game {
                 int currentPlayerId = players.get(j).getId();
                 int xPos = players.get(j).getxPos();
                 int yPos = players.get(j).getyPos();
+                // daca jucatorul a iesit din joc
+                if (!players.get(j).getLife()){
+                    continue;
+                }
                 // daca nu se poate misca in runda curenta
                 if (!players.get(j).getMovPermission()){
                     players.get(j).setMovPermission(true);
@@ -22,11 +26,12 @@ public class Game {
                     case 'U':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int xPos1 = xPos - 1;
-                        if (xPos1 >= mapWidth){
+                        if (xPos1 < 0){
                             break;
                         }
                         map.get(xPos1).get(yPos).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos1);
+                        break;
                     case 'D':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int xPos2 = xPos + 1;
@@ -35,14 +40,16 @@ public class Game {
                         }
                         map.get(xPos2).get(yPos).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos2);
+                        break;
                     case 'L':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int yPos1 = yPos - 1;
-                        if (yPos1 >= mapLength){
+                        if (yPos1 < 0){
                             break;
                         }
                         map.get(xPos).get(yPos1).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos1);
+                        break;
                     case 'R':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
                         int yPos2 = yPos + 1;
@@ -51,18 +58,20 @@ public class Game {
                         }
                         map.get(xPos).get(yPos2).addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos2);
+                        break;
                     case '_':
+                        break;
 
                 }
             }
             lookForBattlesAndStartTheFight(map, mapLength, mapWidth, players, i);
-
+            //System.out.println("******************************");
         }
     }
-    public void lookForBattlesAndStartTheFight(final Vector<Vector<Ground>> map,
-                                               final int mapLength, final int mapWidth,
-                                                    final Vector<Player> players,
-                                                        final int currentRound){
+    private void lookForBattlesAndStartTheFight(final Vector<Vector<Ground>> map,
+                                                final int mapLength, final int mapWidth,
+                                                final Vector<Player> players,
+                                                final int currentRound){
         for (int i = 0; i < mapLength; i++){
             for (int j = 0; j < mapWidth; j++){
                 if (map.get(i).get(j).hasTwoPlayersOnThisPlace()){
@@ -92,21 +101,50 @@ public class Game {
                         players.get(firstIdPlayer).setRound(currentRound);
                         players.get(secondIdPlayer).setRound(currentRound);
                         // wizard ataca al doilea
+                        //System.out.println("atacator1: " + firstIdPlayer + " atacator2: " + secondIdPlayer);
                         if (!(players.get(firstIdPlayer) instanceof Wizard)){
-                            players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer), fightGround);
                             players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer), fightGround);
+                            players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer), fightGround);
                         } else {
-                            players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer), fightGround);
                             players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer), fightGround);
+                            players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer), fightGround);
+                        }
+                        if (!players.get(firstIdPlayer).getLife()){
+                            fightGround.removePlayerOnThisPlaceId(firstIdPlayer);
+                        }
+                        if (!players.get(secondIdPlayer).getLife()){
+                            fightGround.removePlayerOnThisPlaceId(secondIdPlayer);
                         }
                     }
+                    verifyVictimDead(players.get(firstIdPlayer), players.get(secondIdPlayer));
+                    verifyVictimDead(players.get(secondIdPlayer), players.get(firstIdPlayer));
+                    //System.out.println(players.get(firstIdPlayer).getHp() + " "
+                            //+ players.get(secondIdPlayer).getHp());
                 }
             }
         }
 
         // resetare damage fara race modifier
-        for (int i = 0; i < players.size(); i++){
-            players.get(i).setDamageWithoutRaceModifier(0);
+        for (Player index : players){
+            index.setDamageWithoutRaceModifier(0);
+        }
+    }
+    public void verifyVictimDead(Player attacker, Player victim){
+        if (!victim.getLife()){
+            int max;
+            int a = 0;
+            int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
+            int xpWinner = attacker.getXp();
+            int newXpWinner;
+            if (a > b){
+                max = a;
+            } else {
+                max = b;
+            }
+            newXpWinner = xpWinner + max;
+            if (newXpWinner != xpWinner) {
+                attacker.gainXp(newXpWinner, attacker.getInitialHp(), attacker.getPlusHpPerLevel());
+            }
         }
     }
 }

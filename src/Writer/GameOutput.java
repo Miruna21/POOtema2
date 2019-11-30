@@ -15,8 +15,8 @@ public class GameOutput {
     public void writePlayersInFile(Vector<Player> players) {
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
-            for (int i = 0; i < players.size(); i++) {
-                fs.writeWord(players.get(i).toString());
+            for (Player index : players) {
+                fs.writeWord(index.toString());
                 fs.writeNewLine();
             }
             fs.close();

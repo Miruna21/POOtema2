@@ -1,14 +1,15 @@
 package Game;
-import java.util.List;
+import java.util.ArrayList;
 
 public interface Ground {
     float transferGroundModifier(Pyromancer pyromancer);
     float transferGroundModifier(Rogue rogue);
     float transferGroundModifier(Wizard wizard);
     float transferGroundModifier(Knight knight);
+    int getNrRoundsParalyzed();
 
     void addPlayerOnThisPlaceId(Integer playerOnThisPlaceId);
     void removePlayerOnThisPlaceId(Integer playerOnThisPlaceId);
     boolean hasTwoPlayersOnThisPlace();
-    List<Integer> getPlayersOnThisPlaceId();
+    ArrayList<Integer> getPlayersOnThisPlaceId();
 }
