@@ -18,7 +18,7 @@ public class Fireblast implements Ability{
     @Override
     public void attack(Rogue rogue, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        rogue.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + RogueVictimModifier));
         // modificare hp
         rogue.subHp(finalDamage);
@@ -27,7 +27,7 @@ public class Fireblast implements Ability{
     @Override
     public void attack(Wizard wizard, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        wizard.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + WizardVictimModifier));
         // modificare hp
         wizard.subHp(finalDamage);
@@ -36,7 +36,7 @@ public class Fireblast implements Ability{
     @Override
     public void attack(Knight knight, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        knight.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + KnightVictimModifier));
         // modificare hp
         knight.subHp(finalDamage);
@@ -45,7 +45,7 @@ public class Fireblast implements Ability{
     @Override
     public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        pyromancer.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + PyromancerVictimModifier));
         // modificare hp
         pyromancer.subHp(finalDamage);

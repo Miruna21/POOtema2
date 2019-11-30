@@ -21,11 +21,11 @@ public class Execute implements Ability{
         int maxVictimHpOnHerLevel = rogue.getInitialHp() + rogue.getLevel() * rogue.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + rogue.getLevel();
         if (rogue.getHp() < hpLimit){
-            rogue.setDamageWithoutRaceModifier(Math.round(rogue.getHp()));
+            rogue.setDamageWithoutRaceModifier(rogue.getHp());
             rogue.setLife(false);
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-            rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+            rogue.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + RogueVictimModifier));
             // modificare hp
             rogue.subHp(finalDamage);
@@ -37,11 +37,14 @@ public class Execute implements Ability{
         int maxVictimHpOnHerLevel = wizard.getInitialHp() + wizard.getLevel() * wizard.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + wizard.getLevel();
         if (wizard.getHp() < hpLimit){
-            wizard.setDamageWithoutRaceModifier(Math.round(wizard.getHp()));
+            wizard.setDamageWithoutRaceModifier(wizard.getHp());
             wizard.setLife(false);
         } else {
+            //System.out.println("execute");
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-            wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+            //System.out.println(damageWithoutRaceModifier);
+            wizard.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
+            //System.out.println(wizard.getDamageWithoutRaceModifier());
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + WizardVictimModifier));
             // modificare hp
             wizard.subHp(finalDamage);
@@ -53,11 +56,11 @@ public class Execute implements Ability{
         int maxVictimHpOnHerLevel = knight.getInitialHp() + knight.getLevel() * knight.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + knight.getLevel();
         if (knight.getHp() < hpLimit){
-            knight.setDamageWithoutRaceModifier(Math.round(knight.getHp()));
+            knight.setDamageWithoutRaceModifier(knight.getHp());
             knight.setLife(false);
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-            knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+            knight.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + KnightVictimModifier));
             // modificare hp
             knight.subHp(finalDamage);
@@ -69,11 +72,11 @@ public class Execute implements Ability{
         int maxVictimHpOnHerLevel = pyromancer.getInitialHp() + pyromancer.getLevel() * pyromancer.getPlusHpPerLevel();
         float hpLimit = 0.2f * maxVictimHpOnHerLevel + pyromancer.getLevel();
         if (pyromancer.getHp() < hpLimit){
-            pyromancer.setDamageWithoutRaceModifier(Math.round(pyromancer.getHp()));
+            pyromancer.setDamageWithoutRaceModifier(pyromancer.getHp());
             pyromancer.setLife(false);
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-            pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+            pyromancer.setDamageWithoutRaceModifier(damageWithoutRaceModifier);
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + PyromancerVictimModifier));
             // modificare hp
             pyromancer.subHp(finalDamage);

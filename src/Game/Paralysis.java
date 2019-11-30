@@ -18,7 +18,7 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Rogue rogue, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        rogue.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + RogueVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         rogue.setNrRoundParalyzed(nrRoundsParalyzed);
@@ -32,7 +32,7 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Wizard wizard, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        wizard.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + WizardVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         wizard.setNrRoundParalyzed(nrRoundsParalyzed);
@@ -46,7 +46,7 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Knight knight, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        knight.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + KnightVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         knight.setNrRoundParalyzed(nrRoundsParalyzed);
@@ -60,7 +60,7 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
+        pyromancer.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + PyromancerVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         pyromancer.setNrRoundParalyzed(nrRoundsParalyzed);
