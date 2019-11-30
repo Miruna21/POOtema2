@@ -1,16 +1,19 @@
 package main;
 
-import Game.*;
-import Reader.GameInput;
-import Reader.GameInputLoader;
-import Writer.GameOutput;
+import game.*;
+import reader.GameInput;
+import reader.GameInputLoader;
+import writer.GameOutput;
 
 import java.io.IOException;
 import java.util.Vector;
 
-public class Main {
+public final class Main {
+    private Main() {
+        // just to trick checkstyle
+    }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
         GameInputLoader gameInputLoader = new GameInputLoader(args[0], args[1]);
         GameInput gameInput = gameInputLoader.load();
         int mapLength = gameInput.getMapLength();
@@ -29,9 +32,9 @@ public class Main {
         Vector<Player> players = new Vector<>(nrPlayers);
 
         // crearea hartii
-        for (int i = 0; i < mapLength; i++){
+        for (int i = 0; i < mapLength; i++) {
             Vector<Ground> vector = new Vector<>();
-            for (int j = 0; j < mapWidth; j++){
+            for (int j = 0; j < mapWidth; j++) {
                 Character character = groundMatrix.get(i).get(j);
                 vector.add(groundFactory.createGround(character));
             }
@@ -39,7 +42,7 @@ public class Main {
         }
 
         // crearea jucatorilor
-        for (int i = 0; i < nrPlayers; i++){
+        for (int i = 0; i < nrPlayers; i++) {
             Character character = playersTypeVector.get(i);
             int xPos = playersPosMatrix.get(i).get(0);
             int yPos = playersPosMatrix.get(i).get(1);
