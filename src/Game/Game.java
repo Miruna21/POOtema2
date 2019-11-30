@@ -65,7 +65,7 @@ public class Game {
                 }
             }
             lookForBattlesAndStartTheFight(map, mapLength, mapWidth, players, i);
-            //System.out.println("******************************");
+            System.out.println("******************************");
         }
     }
     private void lookForBattlesAndStartTheFight(final Vector<Vector<Ground>> map,
@@ -79,18 +79,36 @@ public class Game {
                     List<Integer> playersOnThisPlace = map.get(i).get(j).getPlayersOnThisPlaceId();
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
-                    if (players.get(firstIdPlayer).getNrRoundParalyzed() != 0){
+                    if (players.get(firstIdPlayer).getNrRoundsParalyzed() != 0){
                         int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
+                        //System.out.println(overtimeDamage);
+                        //System.out.println(overtimeDamage);
                         players.get(firstIdPlayer).subHp(overtimeDamage);
-                        players.get(firstIdPlayer).subNrRoundParalysed(1);
+                        players.get(firstIdPlayer).subNrRoundsParalysed(1);
                         if (players.get(firstIdPlayer).getHp() < 0){
                             players.get(firstIdPlayer).setLife(false);
                         }
                     }
-                    if (players.get(secondIdPlayer).getNrRoundParalyzed() != 0){
+                    if (players.get(secondIdPlayer).getNrRoundsParalyzed() != 0){
                         int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
                         players.get(secondIdPlayer).subHp(overtimeDamage);
-                        players.get(secondIdPlayer).subNrRoundParalysed(1);
+                        players.get(secondIdPlayer).subNrRoundsParalysed(1);
+                        if (players.get(firstIdPlayer).getHp() < 0){
+                            players.get(firstIdPlayer).setLife(false);
+                        }
+                    }
+                    if (players.get(firstIdPlayer).getNrRoundsIgniteHit() != 0){
+                        int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
+                        players.get(firstIdPlayer).subHp(overtimeDamage);
+                        players.get(firstIdPlayer).subNrRoundsIgniteHit(1);
+                        if (players.get(firstIdPlayer).getHp() < 0){
+                            players.get(firstIdPlayer).setLife(false);
+                        }
+                    }
+                    if (players.get(secondIdPlayer).getNrRoundsIgniteHit() != 0){
+                        int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
+                        players.get(secondIdPlayer).subHp(overtimeDamage);
+                        players.get(secondIdPlayer).subNrRoundsIgniteHit(1);
                         if (players.get(firstIdPlayer).getHp() < 0){
                             players.get(firstIdPlayer).setLife(false);
                         }
@@ -115,9 +133,9 @@ public class Game {
                         if (!players.get(secondIdPlayer).getLife()){
                             fightGround.removePlayerOnThisPlaceId(secondIdPlayer);
                         }
+                        verifyVictimDead(players.get(firstIdPlayer), players.get(secondIdPlayer));
+                        verifyVictimDead(players.get(secondIdPlayer), players.get(firstIdPlayer));
                     }
-                    verifyVictimDead(players.get(firstIdPlayer), players.get(secondIdPlayer));
-                    verifyVictimDead(players.get(secondIdPlayer), players.get(firstIdPlayer));
                     //System.out.println(players.get(firstIdPlayer).getHp() + " "
                             //+ players.get(secondIdPlayer).getHp());
                 }

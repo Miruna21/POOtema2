@@ -18,10 +18,10 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Rogue rogue, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        rogue.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
+        rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + RogueVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
-        rogue.setNrRoundParalyzed(nrRoundsParalyzed);
+        rogue.setNrRoundsParalyzed(nrRoundsParalyzed);
         rogue.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         rogue.setMovPermission(true);
@@ -32,10 +32,10 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Wizard wizard, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        wizard.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
+        wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + WizardVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
-        wizard.setNrRoundParalyzed(nrRoundsParalyzed);
+        wizard.setNrRoundsParalyzed(nrRoundsParalyzed);
         wizard.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         wizard.setMovPermission(true);
@@ -46,10 +46,10 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Knight knight, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        knight.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
+        knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + KnightVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
-        knight.setNrRoundParalyzed(nrRoundsParalyzed);
+        knight.setNrRoundsParalyzed(nrRoundsParalyzed);
         knight.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         knight.setMovPermission(true);
@@ -60,10 +60,11 @@ public class Paralysis implements Ability{
     @Override
     public void attack(Pyromancer pyromancer, Ground ground, Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
-        pyromancer.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
+        pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier) * (1 + PyromancerVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
-        pyromancer.setNrRoundParalyzed(nrRoundsParalyzed);
+        //System.out.println(finalDamage);
+        pyromancer.setNrRoundsParalyzed(nrRoundsParalyzed);
         pyromancer.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         pyromancer.setMovPermission(true);

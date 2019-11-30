@@ -12,8 +12,9 @@ public abstract class Player {
     private boolean movPermission;
     private float damageWithoutRaceModifier;
     private int nrBackstabHit;
-    private int nrRoundParalyzed;
+    private int nrRoundsParalyzed;
     private int overtimeDamage;
+    private int nrRoundsIgniteHit;
 
     public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
@@ -25,16 +26,29 @@ public abstract class Player {
         this.life = true;
         this.movPermission = true;
         this.nrBackstabHit = 0;
-        this.nrRoundParalyzed = 0;
+        this.nrRoundsParalyzed = 0;
         this.overtimeDamage = 0;
+        this.nrRoundsIgniteHit = 0;
     }
 
-    public int getNrRoundParalyzed() {
-        return nrRoundParalyzed;
+    public int getNrRoundsParalyzed() {
+        return nrRoundsParalyzed;
     }
-    public void subNrRoundParalysed(int passedRound){
-        this.nrRoundParalyzed -= passedRound;
+    public void subNrRoundsParalysed(int passedRound){
+        this.nrRoundsParalyzed -= passedRound;
     }
+    public void subNrRoundsIgniteHit(int passedRound){
+        this.nrRoundsIgniteHit -= passedRound;
+    }
+
+    public int getNrRoundsIgniteHit() {
+        return nrRoundsIgniteHit;
+    }
+
+    public void setNrRoundsIgniteHit(int nrRoundsIgniteHit) {
+        this.nrRoundsIgniteHit = nrRoundsIgniteHit;
+    }
+
     public int getOvertimeDamage() {
         return overtimeDamage;
     }
@@ -43,8 +57,8 @@ public abstract class Player {
         this.overtimeDamage = overtimeDamage;
     }
 
-    public void setNrRoundParalyzed(int nrRoundParalyzed) {
-        this.nrRoundParalyzed = nrRoundParalyzed;
+    public void setNrRoundsParalyzed(int nrRoundParalyzed) {
+        this.nrRoundsParalyzed = nrRoundParalyzed;
     }
 
     public int getNrBackstabHit() {

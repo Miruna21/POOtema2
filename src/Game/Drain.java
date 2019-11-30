@@ -82,6 +82,7 @@ public class Drain implements Ability{
         }
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
+        //System.out.println("drain" + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
     }

@@ -3,7 +3,7 @@ package Game;
 import java.util.ArrayList;
 
 public class Vulcanic implements Ground{
-    private final static float specialLandModifier = 1.1f;
+    private final static float specialLandModifier = 1.25f;
     private int nrRoundsParalyzed = 3;
     private ArrayList<Integer> playersOnThisPlaceId;
     public Vulcanic(){

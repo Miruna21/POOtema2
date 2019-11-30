@@ -44,6 +44,8 @@ public class Deflect implements Ability{
         float newPercent = percent + PyromancerVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
+        //System.out.println(damage);
+        //System.out.println("deflect" + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
     }
