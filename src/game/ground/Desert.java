@@ -1,4 +1,9 @@
-package game;
+package game.ground;
+
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Rogue;
+import game.players.Wizard;
 
 import java.util.ArrayList;
 
@@ -27,14 +32,16 @@ public final class Desert implements Ground {
 
     @Override
     public boolean hasTwoPlayersOnThisPlace() {
-        if (playersOnThisPlaceId.size() == 2) {
-            return true;
-        }
-        return false;
+        return playersOnThisPlaceId.size() == 2;
     }
 
     public int getNrRoundsParalyzed() {
         return NR_ROUNDS_PARALYZED;
+    }
+
+    @Override
+    public boolean criticalPower() {
+        return false;
     }
 
     @Override

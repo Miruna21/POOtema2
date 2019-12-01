@@ -1,22 +1,27 @@
-package game;
+package game.players;
 
-public final class Pyromancer extends Player {
-    private static final int INITIAL_HP = 500;
-    private static final int PLUS_HP_PER_LEVEL = 50;
-    private Ability fireblast = new Fireblast();
-    private Ability ignite = new Ignite();
+import game.abilities.Ability;
+import game.abilities.Deflect;
+import game.abilities.Drain;
+import game.ground.Ground;
 
-    public Pyromancer(final int id, final int xPos, final int yPos) {
+public final class Wizard extends Player {
+    private static final int INITIAL_HP = 400;
+    private static final int PLUS_HP_PER_LEVEL = 30;
+    private Ability drain = new Drain();
+    private Ability deflect = new Deflect();
+
+    public Wizard(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
         this.setHp(INITIAL_HP);
     }
 
     public Character getRace() {
-        return 'P';
+        return 'W';
     }
     @Override
     public boolean startFirst() {
-        return true;
+        return false;
     }
 
     public int getInitialHp() {
@@ -39,26 +44,25 @@ public final class Pyromancer extends Player {
 
     @Override
     public void fight(final Rogue rogue, final Ground ground, final Player attacker) {
-        fireblast.attack(rogue, ground, attacker);
-        ignite.attack(rogue, ground, attacker);
+        drain.attack(rogue, ground, attacker);
+        deflect.attack(rogue, ground, attacker);
     }
 
     @Override
     public void fight(final Wizard wizard, final Ground ground, final Player attacker) {
-        fireblast.attack(wizard, ground, attacker);
-        ignite.attack(wizard, ground, attacker);
+        drain.attack(wizard, ground, attacker);
+        deflect.attack(wizard, ground, attacker);
     }
 
     @Override
     public void fight(final Knight knight, final Ground ground, final Player attacker) {
-        fireblast.attack(knight, ground, attacker);
-        ignite.attack(knight, ground, attacker);
+        drain.attack(knight, ground, attacker);
+        deflect.attack(knight, ground, attacker);
     }
 
     @Override
     public void fight(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
-        fireblast.attack(pyromancer, ground, attacker);
-        ignite.attack(pyromancer, ground, attacker);
+        drain.attack(pyromancer, ground, attacker);
+        deflect.attack(pyromancer, ground, attacker);
     }
-
 }

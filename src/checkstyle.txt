@@ -1,9 +1,8 @@
 Starting audit...
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:91:57: 'damageWithoutRaceModifier' hides a field. [HiddenField]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Backstab.java:20:44: '3' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:125:21: '200' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:125:71: '40' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/main/Main.java:3: Using the '.*' form of import should be avoided - game.*. [AvoidStarImport]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/abilities/Backstab.java:4:8: Unused import - game.ground.Woods. [UnusedImports]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/abilities/Backstab.java:28:44: '3' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:128:21: '200' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:128:71: '40' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/reader/GameInput.java:25:12: More than 7 parameters (found 8). [ParameterNumber]
 Audit done.
-Checkstyle ends with 6 errors.
+Checkstyle ends with 5 errors.

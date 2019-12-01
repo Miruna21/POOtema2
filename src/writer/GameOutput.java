@@ -1,6 +1,7 @@
 package writer;
-import game.Player;
+
 import fileio.FileSystem;
+import game.players.Player;
 
 import java.util.Vector;
 

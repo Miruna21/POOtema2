@@ -1,13 +1,20 @@
-package game;
+package game.abilities;
 
-public final class Slam implements Ability {
-    private static final int BASE_DAMAGE = 100;
-    private static final int PLUS_HP_PER_LEVEL = 40;
+import game.ground.Ground;
+import game.players.Knight;
+import game.players.Rogue;
+import game.players.Wizard;
+import game.players.Pyromancer;
+import game.players.Player;
 
-    private static final float ROGUE_VICTIM_MODIFIER = -0.2f;
-    private static final float KNIGHT_VICTIM_MODIFIER = 0.2f;
-    private static final float PYROMANCER_VICTIM_MODIFIER = -0.1f;
-    private static final float WIZARD_VICTIM_MODIFIER = 0.05f;
+public final class Paralysis implements Ability {
+    private static final int BASE_DAMAGE = 40;
+    private static final int PLUS_HP_PER_LEVEL = 10;
+
+    private static final float ROGUE_VICTIM_MODIFIER = -0.1f;
+    private static final float KNIGHT_VICTIM_MODIFIER = -0.2f;
+    private static final float PYROMANCER_VICTIM_MODIFIER = 0.2f;
+    private static final float WIZARD_VICTIM_MODIFIER = 0.25f;
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
         float landModifier = attacker.acceptLandModifier(ground);
@@ -21,13 +28,14 @@ public final class Slam implements Ability {
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + ROGUE_VICTIM_MODIFIER));
+        int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
+        rogue.setNrRoundsParalyzed(nrRoundsParalyzed);
+        rogue.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        rogue.setMovPermission(true);
+        rogue.setNrRoundsIgniteHit(0);
         // modificare hp
         rogue.subHp(finalDamage);
-        // incapacitatea de a se misca in urmatoarea runda
-        rogue.setMovPermission(false);
-        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
-        rogue.setNrRoundsParalyzed(0);
-        rogue.setNrRoundsIgniteHit(0);
     }
 
     @Override
@@ -36,13 +44,14 @@ public final class Slam implements Ability {
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + WIZARD_VICTIM_MODIFIER));
+        int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
+        wizard.setNrRoundsParalyzed(nrRoundsParalyzed);
+        wizard.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        wizard.setMovPermission(true);
+        wizard.setNrRoundsIgniteHit(0);
         // modificare hp
         wizard.subHp(finalDamage);
-        // incapacitatea de a se misca in urmatoarea runda
-        wizard.setMovPermission(false);
-        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
-        wizard.setNrRoundsParalyzed(0);
-        wizard.setNrRoundsIgniteHit(0);
     }
 
     @Override
@@ -51,13 +60,14 @@ public final class Slam implements Ability {
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + KNIGHT_VICTIM_MODIFIER));
+        int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
+        knight.setNrRoundsParalyzed(nrRoundsParalyzed);
+        knight.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        knight.setMovPermission(true);
+        knight.setNrRoundsIgniteHit(0);
         // modificare hp
         knight.subHp(finalDamage);
-        // incapacitatea de a se misca in urmatoarea runda
-        knight.setMovPermission(false);
-        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
-        knight.setNrRoundsParalyzed(0);
-        knight.setNrRoundsIgniteHit(0);
     }
 
     @Override
@@ -66,12 +76,13 @@ public final class Slam implements Ability {
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + PYROMANCER_VICTIM_MODIFIER));
+        int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
+        pyromancer.setNrRoundsParalyzed(nrRoundsParalyzed);
+        pyromancer.setOvertimeDamage(finalDamage);
+        // inlocuiesc abilitatea trecuta overtime cu cea noua
+        pyromancer.setMovPermission(true);
+        pyromancer.setNrRoundsIgniteHit(0);
         // modificare hp
         pyromancer.subHp(finalDamage);
-        // incapacitatea de a se misca in urmatoarea runda
-        pyromancer.setMovPermission(false);
-        // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
-        pyromancer.setNrRoundsParalyzed(0);
-        pyromancer.setNrRoundsIgniteHit(0);
     }
 }

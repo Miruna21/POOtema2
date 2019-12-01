@@ -1,4 +1,11 @@
-package game;
+package game.abilities;
+
+import game.ground.Ground;
+import game.players.Knight;
+import game.players.Rogue;
+import game.players.Wizard;
+import game.players.Pyromancer;
+import game.players.Player;
 
 public final class Deflect implements Ability {
     private static final float BASE_PERCENT = 0.35f;

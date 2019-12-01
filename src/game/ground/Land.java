@@ -1,12 +1,17 @@
-package game;
+package game.ground;
+
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Rogue;
+import game.players.Wizard;
 
 import java.util.ArrayList;
 
-public final class Woods implements Ground {
+public final class Land implements Ground {
     private static final float SPECIAL_LAND_MODIFIER = 1.15f;
-    private static final int NR_ROUNDS_PARALYZED = 6;
+    private static final int NR_ROUNDS_PARALYZED = 3;
     private ArrayList<Integer> playersOnThisPlaceId;
-    public Woods() {
+    public Land() {
         this.playersOnThisPlaceId = new ArrayList<>();
     }
 
@@ -21,20 +26,22 @@ public final class Woods implements Ground {
 
     @Override
     public void removePlayerOnThisPlaceId(final Integer playerOnThisPlaceId) {
-        this.playersOnThisPlaceId.remove(Integer.valueOf(playerOnThisPlaceId));
+        this.playersOnThisPlaceId.remove(playerOnThisPlaceId);
         this.playersOnThisPlaceId.trimToSize();
     }
 
     @Override
     public boolean hasTwoPlayersOnThisPlace() {
-        if (playersOnThisPlaceId.size() == 2) {
-            return true;
-        }
-        return false;
+        return playersOnThisPlaceId.size() == 2;
     }
 
     public int getNrRoundsParalyzed() {
         return NR_ROUNDS_PARALYZED;
+    }
+
+    @Override
+    public boolean criticalPower() {
+        return false;
     }
 
     @Override
@@ -44,7 +51,7 @@ public final class Woods implements Ground {
 
     @Override
     public float transferGroundModifier(final Rogue rogue) {
-        return SPECIAL_LAND_MODIFIER;
+        return 1f;
     }
 
     @Override
@@ -54,6 +61,6 @@ public final class Woods implements Ground {
 
     @Override
     public float transferGroundModifier(final Knight knight) {
-        return 1f;
+        return SPECIAL_LAND_MODIFIER;
     }
 }

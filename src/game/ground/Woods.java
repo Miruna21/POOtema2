@@ -1,12 +1,17 @@
-package game;
+package game.ground;
+
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Rogue;
+import game.players.Wizard;
 
 import java.util.ArrayList;
 
-public final class Vulcanic implements Ground {
-    private static final float SPECIAL_LAND_MODIFIER = 1.25f;
-    private static final int NR_ROUNDS_PARALYZED = 3;
+public final class Woods implements Ground {
+    private static final float SPECIAL_LAND_MODIFIER = 1.15f;
+    private static final int NR_ROUNDS_PARALYZED = 6;
     private ArrayList<Integer> playersOnThisPlaceId;
-    public Vulcanic() {
+    public Woods() {
         this.playersOnThisPlaceId = new ArrayList<>();
     }
 
@@ -27,10 +32,7 @@ public final class Vulcanic implements Ground {
 
     @Override
     public boolean hasTwoPlayersOnThisPlace() {
-        if (playersOnThisPlaceId.size() == 2) {
-            return true;
-        }
-        return false;
+        return playersOnThisPlaceId.size() == 2;
     }
 
     public int getNrRoundsParalyzed() {
@@ -38,13 +40,18 @@ public final class Vulcanic implements Ground {
     }
 
     @Override
-    public float transferGroundModifier(final Pyromancer pyromancer) {
-        return SPECIAL_LAND_MODIFIER;
+    public boolean criticalPower() {
+        return true;
     }
 
     @Override
-    public float transferGroundModifier(final Knight knight) {
+    public float transferGroundModifier(final Pyromancer pyromancer) {
         return 1f;
+    }
+
+    @Override
+    public float transferGroundModifier(final Rogue rogue) {
+        return SPECIAL_LAND_MODIFIER;
     }
 
     @Override
@@ -53,7 +60,7 @@ public final class Vulcanic implements Ground {
     }
 
     @Override
-    public float transferGroundModifier(final Rogue rogue) {
+    public float transferGroundModifier(final Knight knight) {
         return 1f;
     }
 }

@@ -1,4 +1,4 @@
-package game;
+package game.ground;
 
 public final class GroundFactory {
     private static GroundFactory instance = null;

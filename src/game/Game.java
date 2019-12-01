@@ -1,11 +1,14 @@
 package game;
 
+import game.ground.Ground;
+import game.players.Player;
+
 import java.util.List;
 import java.util.Vector;
 
 public final class Game {
     public void movePlayersOnMapAndPlay(final int nrRounds, final int nrPlayers,
-                                 final Vector<Vector<Character>> movesMatrix,
+                                        final Vector<Vector<Character>> movesMatrix,
                                         final Vector<Vector<Ground>> map, final int mapLength,
                                         final int mapWidth, final Vector<Player> players) {
         for (int i = 0; i < nrRounds; i++) {

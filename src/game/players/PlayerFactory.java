@@ -1,4 +1,4 @@
-package game;
+package game.players;
 
 public final class PlayerFactory {
     private static PlayerFactory instance = null;

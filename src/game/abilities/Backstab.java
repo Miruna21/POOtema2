@@ -1,4 +1,12 @@
-package game;
+package game.abilities;
+
+import game.ground.Ground;
+import game.ground.Woods;
+import game.players.Knight;
+import game.players.Rogue;
+import game.players.Wizard;
+import game.players.Pyromancer;
+import game.players.Player;
 
 public final class Backstab implements Ability {
     private static final int BASE_DAMAGE = 200;
@@ -17,7 +25,7 @@ public final class Backstab implements Ability {
         float levelDamage = BASE_DAMAGE + attackerLevel * PLUS_HP_PER_LEVEL;
         float criticalHit;
         // critical hit o data la 3 lovituri daca se afla pe Woods
-        if ((attacker.getNrBackstabHit() % 3 == 0) && (ground instanceof Woods)) {
+        if ((attacker.getNrBackstabHit() % 3 == 0) && (ground.criticalPower())) {
             criticalHit = CRITICAL_HIT_VALUE;
         } else {
             criticalHit = NO_CRITICAL_HIT_VALUE;

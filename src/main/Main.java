@@ -1,6 +1,10 @@
 package main;
 
-import game.*;
+import game.Game;
+import game.ground.Ground;
+import game.ground.GroundFactory;
+import game.players.Player;
+import game.players.PlayerFactory;
 import reader.GameInput;
 import reader.GameInputLoader;
 import writer.GameOutput;

@@ -1,4 +1,10 @@
-package game;
+package game.ground;
+
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Rogue;
+import game.players.Wizard;
+
 import java.util.ArrayList;
 
 public interface Ground {
@@ -7,6 +13,7 @@ public interface Ground {
     float transferGroundModifier(Wizard wizard);
     float transferGroundModifier(Knight knight);
     int getNrRoundsParalyzed();
+    boolean criticalPower();
 
     void addPlayerOnThisPlaceId(Integer playerOnThisPlaceId);
     void removePlayerOnThisPlaceId(Integer playerOnThisPlaceId);

@@ -1,4 +1,9 @@
-package game;
+package game.players;
+
+import game.abilities.Ability;
+import game.abilities.Backstab;
+import game.abilities.Paralysis;
+import game.ground.Ground;
 
 public final class Rogue extends Player {
     private static final int INITIAL_HP = 600;

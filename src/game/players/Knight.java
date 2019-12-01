@@ -1,4 +1,9 @@
-package game;
+package game.players;
+
+import game.abilities.Ability;
+import game.abilities.Execute;
+import game.abilities.Slam;
+import game.ground.Ground;
 
 public final class Knight extends Player {
     private static final int INITIAL_HP = 900;

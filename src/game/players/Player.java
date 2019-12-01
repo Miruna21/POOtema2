@@ -1,6 +1,7 @@
-package game;
+package game.players;
 
 import constants.AuxiliaryConstants;
+import game.ground.Ground;
 
 public abstract class Player {
     private int id;
@@ -32,80 +33,80 @@ public abstract class Player {
         this.nrRoundsIgniteHit = 0;
     }
 
-    final int getNrRoundsParalyzed() {
+    public final int getNrRoundsParalyzed() {
         return nrRoundsParalyzed;
     }
-    final void subNrRoundsParalysed(final int passedRound) {
+    public final void subNrRoundsParalysed(final int passedRound) {
         this.nrRoundsParalyzed -= passedRound;
     }
-    final void subNrRoundsIgniteHit(final int passedRound) {
+    public final void subNrRoundsIgniteHit(final int passedRound) {
         this.nrRoundsIgniteHit -= passedRound;
     }
 
-    final int getNrRoundsIgniteHit() {
+    public final int getNrRoundsIgniteHit() {
         return nrRoundsIgniteHit;
     }
 
-    final void setNrRoundsIgniteHit(final int nrRoundsIgniteHit) {
+    public final void setNrRoundsIgniteHit(final int nrRoundsIgniteHit) {
         this.nrRoundsIgniteHit = nrRoundsIgniteHit;
     }
 
-    final int getOvertimeDamage() {
+    public final int getOvertimeDamage() {
         return overtimeDamage;
     }
 
-    final void setOvertimeDamage(final int overtimeDamage) {
+    public final void setOvertimeDamage(final int overtimeDamage) {
         this.overtimeDamage = overtimeDamage;
     }
 
-    final void setNrRoundsParalyzed(final int nrRoundParalyzed) {
+    public final void setNrRoundsParalyzed(final int nrRoundParalyzed) {
         this.nrRoundsParalyzed = nrRoundParalyzed;
     }
 
-   final int getNrBackstabHit() {
+   public final int getNrBackstabHit() {
         return nrBackstabHit;
     }
-    final void addNrBackstabHit(final int hit) {
+    public final void addNrBackstabHit(final int hit) {
         this.nrBackstabHit += hit;
     }
 
-    final void setxPos(final int xPos) {
+    public final void setxPos(final int xPos) {
         this.xPos = xPos;
     }
 
-    final void setyPos(final int yPos) {
+    public final void setyPos(final int yPos) {
         this.yPos = yPos;
     }
 
-    final boolean getMovPermission() {
+    public final boolean getMovPermission() {
         return movPermission;
     }
 
-    final float getDamageWithoutRaceModifier() {
+    public final float getDamageWithoutRaceModifier() {
         return damageWithoutRaceModifier;
     }
 
-    final void setDamageWithoutRaceModifier(final float damage) {
+    public final void setDamageWithoutRaceModifier(final float damage) {
         this.damageWithoutRaceModifier = damage;
     }
-    final void addDamageWithoutRaceModifier(final float damageWithoutRaceModifier) {
-        this.damageWithoutRaceModifier += damageWithoutRaceModifier;
+    public final void addDamageWithoutRaceModifier(final float damage) {
+        this.damageWithoutRaceModifier += damage;
     }
 
-    final int getId() {
+    public final int getId() {
         return id;
     }
-    final int getxPos() {
+    public final int getxPos() {
         return xPos;
     }
-    final int getyPos() {
+    public final int getyPos() {
         return yPos;
     }
-    final boolean getLife() {
+    public final boolean getLife() {
         return life;
     }
 
-    final void setMovPermission(final boolean movPermission) {
+    public final void setMovPermission(final boolean movPermission) {
         this.movPermission = movPermission;
     }
 
@@ -117,7 +118,7 @@ public abstract class Player {
         this.level = level;
     }
 
-    final void setLife(final boolean dead) {
+    public final void setLife(final boolean dead) {
         this.life = dead;
     }
 
@@ -125,7 +126,7 @@ public abstract class Player {
         return hp;
     }
 
-    final int getXp() {
+    public final int getXp() {
         return xp;
     }
 
@@ -141,7 +142,7 @@ public abstract class Player {
         }
     }
 
-    final void gainXp(final int newXp, final int initialHp, final int plusHpPerLevel) {
+    public final void gainXp(final int newXp, final int initialHp, final int plusHpPerLevel) {
         this.xp = newXp;
         // daca este cazul, cresc nivelul jucatorului
         int newlevel;
