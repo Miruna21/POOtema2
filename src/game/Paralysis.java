@@ -21,11 +21,13 @@ public final class Paralysis implements Ability {
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + ROGUEVICTIMMODIFIER));
+        System.out.println("Paralysis dmg: " + finalDamage);
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         rogue.setNrRoundsParalyzed(nrRoundsParalyzed);
         rogue.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         rogue.setMovPermission(true);
+        rogue.setNrRoundsIgniteHit(0);
         // modificare hp
         rogue.subHp(finalDamage);
     }
@@ -36,11 +38,13 @@ public final class Paralysis implements Ability {
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + WIZARDVICTIMMODIFIER));
+        System.out.println("Paralysis dmg: " + finalDamage);
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         wizard.setNrRoundsParalyzed(nrRoundsParalyzed);
         wizard.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         wizard.setMovPermission(true);
+        wizard.setNrRoundsIgniteHit(0);
         // modificare hp
         wizard.subHp(finalDamage);
     }
@@ -51,11 +55,13 @@ public final class Paralysis implements Ability {
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + KNIGHTVICTIMMODIFIER));
+        System.out.println("Paralysis dmg: " + finalDamage);
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         knight.setNrRoundsParalyzed(nrRoundsParalyzed);
         knight.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         knight.setMovPermission(true);
+        knight.setNrRoundsIgniteHit(0);
         // modificare hp
         knight.subHp(finalDamage);
     }
@@ -66,11 +72,13 @@ public final class Paralysis implements Ability {
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + PYROMANCERVICTIMMODIFIER));
+        System.out.println("Paralysis dmg: " + finalDamage);
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         pyromancer.setNrRoundsParalyzed(nrRoundsParalyzed);
         pyromancer.setOvertimeDamage(finalDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
         pyromancer.setMovPermission(true);
+        pyromancer.setNrRoundsIgniteHit(0);
         // modificare hp
         pyromancer.subHp(finalDamage);
     }

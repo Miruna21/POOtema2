@@ -134,7 +134,7 @@ public abstract class Player {
 
     public final void subHp(final int hp) {
         this.hp -= hp;
-        if (this.getHp() <= 0) {
+        if (this.getHp() < 0) {
             this.setLife(false);
         }
     }

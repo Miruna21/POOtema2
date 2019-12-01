@@ -1,5 +1,7 @@
 package game;
 
+import writer.GameOutput;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -9,6 +11,7 @@ public final class Game {
                                         final Vector<Vector<Ground>> map, final int mapLength,
                                         final int mapWidth, final Vector<Player> players) {
         for (int i = 0; i < nrRounds; i++) {
+            System.out.println("RUNDA: " + i);
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
                 int currentPlayerId = players.get(j).getId();
@@ -23,6 +26,7 @@ public final class Game {
                     players.get(j).setMovPermission(true);
                     continue;
                 }
+                if (players.get(j).getNrRoundsParalyzed() != 0) continue;
                 switch (move) {
                     case 'U':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
@@ -66,6 +70,10 @@ public final class Game {
                 }
             }
             lookForBattlesAndStartTheFight(map, mapLength, mapWidth, players);
+            for (Player index : players) {
+                System.out.println(index.toString());
+            }
+
         }
     }
     private void lookForBattlesAndStartTheFight(final Vector<Vector<Ground>> map,
@@ -82,33 +90,21 @@ public final class Game {
                         int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
                         players.get(firstIdPlayer).subHp(overtimeDamage);
                         players.get(firstIdPlayer).subNrRoundsParalysed(1);
-                        if (players.get(firstIdPlayer).getHp() < 0) {
-                            players.get(firstIdPlayer).setLife(false);
-                        }
                     }
                     if (players.get(secondIdPlayer).getNrRoundsParalyzed() != 0) {
                         int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
                         players.get(secondIdPlayer).subHp(overtimeDamage);
                         players.get(secondIdPlayer).subNrRoundsParalysed(1);
-                        if (players.get(firstIdPlayer).getHp() < 0) {
-                            players.get(firstIdPlayer).setLife(false);
-                        }
                     }
                     if (players.get(firstIdPlayer).getNrRoundsIgniteHit() != 0) {
                         int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
                         players.get(firstIdPlayer).subHp(overtimeDamage);
                         players.get(firstIdPlayer).subNrRoundsIgniteHit(1);
-                        if (players.get(firstIdPlayer).getHp() < 0) {
-                            players.get(firstIdPlayer).setLife(false);
-                        }
                     }
                     if (players.get(secondIdPlayer).getNrRoundsIgniteHit() != 0) {
                         int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
                         players.get(secondIdPlayer).subHp(overtimeDamage);
                         players.get(secondIdPlayer).subNrRoundsIgniteHit(1);
-                        if (players.get(firstIdPlayer).getHp() < 0) {
-                            players.get(firstIdPlayer).setLife(false);
-                        }
                     }
                     // daca cei 2 jucatori sunt in viata, acestia se vor lupta unul cu altul
                     if (players.get(firstIdPlayer).getLife()

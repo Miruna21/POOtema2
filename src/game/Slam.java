@@ -21,13 +21,14 @@ public final class Slam implements Ability {
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + ROGUEVICTIMMODIFIER));
+        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         rogue.setMovPermission(false);
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         rogue.setNrRoundsParalyzed(0);
-        rogue.setOvertimeDamage(0);
+        rogue.setNrRoundsIgniteHit(0);
     }
 
     @Override
@@ -36,13 +37,14 @@ public final class Slam implements Ability {
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + WIZARDVICTIMMODIFIER));
+        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         wizard.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         wizard.setMovPermission(false);
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         wizard.setNrRoundsParalyzed(0);
-        wizard.setOvertimeDamage(0);
+        wizard.setNrRoundsIgniteHit(0);
     }
 
     @Override
@@ -51,13 +53,14 @@ public final class Slam implements Ability {
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + KNIGHTVICTIMMODIFIER));
+        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         knight.setMovPermission(false);
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         knight.setNrRoundsParalyzed(0);
-        knight.setOvertimeDamage(0);
+        knight.setNrRoundsIgniteHit(0);
     }
 
     @Override
@@ -66,12 +69,13 @@ public final class Slam implements Ability {
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + PYROMANCERVICTIMMODIFIER));
+        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
         pyromancer.setMovPermission(false);
         // inlocuiesc abilitatea trecuta overtime cu imposibilitatea de miscare
         pyromancer.setNrRoundsParalyzed(0);
-        pyromancer.setOvertimeDamage(0);
+        pyromancer.setNrRoundsIgniteHit(0);
     }
 }

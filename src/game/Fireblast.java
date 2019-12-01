@@ -19,8 +19,8 @@ public final class Fireblast implements Ability {
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
-        int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + ROGUEVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier* (1 + ROGUEVICTIMMODIFIER));
+        System.out.println("FIREBLAST DMG: " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
     }
@@ -29,8 +29,8 @@ public final class Fireblast implements Ability {
     public void attack(final Wizard wizard, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
-        int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + WIZARDVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + WIZARDVICTIMMODIFIER));
+        System.out.println("FIREBLAST DMG: " + finalDamage);
         // modificare hp
         wizard.subHp(finalDamage);
     }
@@ -39,8 +39,8 @@ public final class Fireblast implements Ability {
     public void attack(final Knight knight, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
-        int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + KNIGHTVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + KNIGHTVICTIMMODIFIER));
+        System.out.println("FIREBLAST DMG: " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
     }
@@ -49,8 +49,8 @@ public final class Fireblast implements Ability {
     public void attack(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
-        int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + PYROMANCERVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + PYROMANCERVICTIMMODIFIER));
+        System.out.println("FIREBLAST DMG: " + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
     }
