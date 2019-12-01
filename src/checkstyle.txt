@@ -14,16 +14,11 @@ Starting audit...
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:152:37: '250' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:152:54: '50' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:152:74: '4' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Ignite.java:24:63: '*' is not preceded with whitespace. [WhitespaceAround]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Ignite.java:42:63: '*' is not preceded with whitespace. [WhitespaceAround]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Ignite.java:60:63: '*' is not preceded with whitespace. [WhitespaceAround]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Backstab.java:20:44: '3' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:3:8: Unused import - writer.GameOutput. [UnusedImports]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:29: 'if' construct must use '{}'s. [NeedBraces]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:146:21: '200' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:146:71: '40' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Fireblast.java:22:63: '*' is not preceded with whitespace. [WhitespaceAround]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:127:21: '200' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:127:71: '40' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/main/Main.java:3: Using the '.*' form of import should be avoided - game.*. [AvoidStarImport]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/reader/GameInput.java:25:12: More than 7 parameters (found 8). [ParameterNumber]
 Audit done.
-Checkstyle ends with 26 errors.
+Checkstyle ends with 21 errors.

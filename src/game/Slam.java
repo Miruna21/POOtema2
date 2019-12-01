@@ -21,7 +21,6 @@ public final class Slam implements Ability {
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + ROGUEVICTIMMODIFIER));
-        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -37,7 +36,6 @@ public final class Slam implements Ability {
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + WIZARDVICTIMMODIFIER));
-        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         wizard.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -53,7 +51,6 @@ public final class Slam implements Ability {
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + KNIGHTVICTIMMODIFIER));
-        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -69,7 +66,6 @@ public final class Slam implements Ability {
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + PYROMANCERVICTIMMODIFIER));
-        System.out.println("SLAM DMG: " + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda

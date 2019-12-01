@@ -14,7 +14,6 @@ public final class Deflect implements Ability {
         float newPercent = percent + ROGUEVICTIMMODIFIER * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
-        System.out.println("DEFLECT DMG: " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
     }
@@ -31,7 +30,6 @@ public final class Deflect implements Ability {
         float newPercent = percent + KNIGHTVICTIMMODIFIER * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
-        System.out.println("DEFLECT DMG: " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
     }
@@ -43,7 +41,6 @@ public final class Deflect implements Ability {
         float newPercent = percent + PYROMANCERVICTIMMODIFIER * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
-        System.out.println("DEFLECT DMG: " + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
     }

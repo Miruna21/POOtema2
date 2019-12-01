@@ -25,7 +25,6 @@ public final class Drain implements Ability {
         }
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
-        System.out.println("DRAIN DMG: " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
     }
@@ -46,7 +45,6 @@ public final class Drain implements Ability {
         }
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
-        System.out.println("DRAIN DMG: " + finalDamage);
         // modificare hp
         wizard.subHp(finalDamage);
     }
@@ -67,7 +65,6 @@ public final class Drain implements Ability {
         }
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
-        System.out.println("DRAIN DMG: " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
     }
@@ -88,7 +85,6 @@ public final class Drain implements Ability {
         }
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
-        System.out.println("DRAIN DMG: " + finalDamage);
         // modificare hp
         pyromancer.subHp(finalDamage);
     }

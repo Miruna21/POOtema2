@@ -11,7 +11,6 @@ public final class Game {
                                         final Vector<Vector<Ground>> map, final int mapLength,
                                         final int mapWidth, final Vector<Player> players) {
         for (int i = 0; i < nrRounds; i++) {
-            System.out.println("RUNDA: " + i);
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
                 int currentPlayerId = players.get(j).getId();
@@ -26,7 +25,17 @@ public final class Game {
                     players.get(j).setMovPermission(true);
                     continue;
                 }
-                if (players.get(j).getNrRoundsParalyzed() != 0) continue;
+                if (players.get(j).getNrRoundsParalyzed() != 0) {
+                    int overtimeDamage = players.get(j).getOvertimeDamage();
+                    players.get(j).subHp(overtimeDamage);
+                    players.get(j).subNrRoundsParalysed(1);
+                    continue;
+                }
+                if (players.get(j).getNrRoundsIgniteHit() != 0) {
+                    int overtimeDamage = players.get(j).getOvertimeDamage();
+                    players.get(j).subHp(overtimeDamage);
+                    players.get(j).subNrRoundsIgniteHit(1);
+                }
                 switch (move) {
                     case 'U':
                         map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
@@ -70,9 +79,6 @@ public final class Game {
                 }
             }
             lookForBattlesAndStartTheFight(map, mapLength, mapWidth, players);
-            for (Player index : players) {
-                System.out.println(index.toString());
-            }
 
         }
     }
@@ -86,26 +92,6 @@ public final class Game {
                     List<Integer> playersOnThisPlace = map.get(i).get(j).getPlayersOnThisPlaceId();
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
-                    if (players.get(firstIdPlayer).getNrRoundsParalyzed() != 0) {
-                        int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
-                        players.get(firstIdPlayer).subHp(overtimeDamage);
-                        players.get(firstIdPlayer).subNrRoundsParalysed(1);
-                    }
-                    if (players.get(secondIdPlayer).getNrRoundsParalyzed() != 0) {
-                        int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
-                        players.get(secondIdPlayer).subHp(overtimeDamage);
-                        players.get(secondIdPlayer).subNrRoundsParalysed(1);
-                    }
-                    if (players.get(firstIdPlayer).getNrRoundsIgniteHit() != 0) {
-                        int overtimeDamage = players.get(firstIdPlayer).getOvertimeDamage();
-                        players.get(firstIdPlayer).subHp(overtimeDamage);
-                        players.get(firstIdPlayer).subNrRoundsIgniteHit(1);
-                    }
-                    if (players.get(secondIdPlayer).getNrRoundsIgniteHit() != 0) {
-                        int overtimeDamage = players.get(secondIdPlayer).getOvertimeDamage();
-                        players.get(secondIdPlayer).subHp(overtimeDamage);
-                        players.get(secondIdPlayer).subNrRoundsIgniteHit(1);
-                    }
                     // daca cei 2 jucatori sunt in viata, acestia se vor lupta unul cu altul
                     if (players.get(firstIdPlayer).getLife()
                             && players.get(secondIdPlayer).getLife()) {
@@ -132,11 +118,6 @@ public final class Game {
                     }
                 }
             }
-        }
-
-        // resetare damage fara race modifier
-        for (Player index : players) {
-            index.setDamageWithoutRaceModifier(0);
         }
     }
     private void verifyVictimDead(final Player attacker, final Player victim) {

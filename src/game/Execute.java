@@ -30,7 +30,6 @@ public final class Execute implements Ability {
             rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                     * (1 + ROGUEVICTIMMODIFIER));
-            System.out.println("EXECUTE DMG: " + finalDamage);
             // modificare hp
             rogue.subHp(finalDamage);
         }
@@ -49,7 +48,6 @@ public final class Execute implements Ability {
             wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                     * (1 + WIZARDVICTIMMODIFIER));
-            System.out.println("EXECUTE DMG: " + finalDamage);
             // modificare hp
             wizard.subHp(finalDamage);
         }
@@ -68,7 +66,6 @@ public final class Execute implements Ability {
             knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                     * (1 + KNIGHTVICTIMMODIFIER));
-            System.out.println("EXECUTE DMG: " + finalDamage);
             // modificare hp
             knight.subHp(finalDamage);
         }
@@ -87,7 +84,6 @@ public final class Execute implements Ability {
             pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                     * (1 + PYROMANCERVICTIMMODIFIER));
-            System.out.println("EXECUTE DMG: " + finalDamage);
             // modificare hp
             pyromancer.subHp(finalDamage);
         }

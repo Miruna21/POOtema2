@@ -33,7 +33,6 @@ public final class Backstab implements Ability {
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + ROGUEVICTIMMODIFIER));
         // modificare hp
-        System.out.println("Backstab dmg: " + finalDamage);
         rogue.subHp(finalDamage);
         attacker.addNrBackstabHit(1);
     }
@@ -45,7 +44,6 @@ public final class Backstab implements Ability {
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + WIZARDVICTIMMODIFIER));
         // modificare hp
-        System.out.println("Backstab dmg: " + finalDamage);
         wizard.subHp(finalDamage);
         attacker.addNrBackstabHit(1);
     }
@@ -57,7 +55,6 @@ public final class Backstab implements Ability {
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + KNIGHTVICTIMMODIFIER));
         // modificare hp
-        System.out.println("Backstab dmg: " + finalDamage);
         knight.subHp(finalDamage);
         attacker.addNrBackstabHit(1);
     }
@@ -69,7 +66,6 @@ public final class Backstab implements Ability {
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + PYROMANCERVICTIMMODIFIER));
         // modificare hp
-        System.out.println("Backstab dmg: " + finalDamage);
         pyromancer.subHp(finalDamage);
         attacker.addNrBackstabHit(1);
     }
