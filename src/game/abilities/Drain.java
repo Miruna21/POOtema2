@@ -25,11 +25,7 @@ public final class Drain implements Ability {
                 * rogue.getPlusHpPerLevel();
         float a = MULTIPLIER * victimMaxHpOnHerLevel;
         float b = rogue.getHp();
-        if (a < b) {
-            baseHp = a;
-        } else {
-            baseHp = b;
-        }
+        baseHp = Math.min(a, b);
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
         // modificare hp
@@ -45,11 +41,7 @@ public final class Drain implements Ability {
                 * wizard.getPlusHpPerLevel();
         float a = MULTIPLIER * victimMaxHpOnHerLevel;
         float b = wizard.getHp();
-        if (a < b) {
-            baseHp = a;
-        } else {
-            baseHp = b;
-        }
+        baseHp = Math.min(a, b);
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
         // modificare hp
@@ -65,11 +57,7 @@ public final class Drain implements Ability {
                 * knight.getPlusHpPerLevel();
         float a = MULTIPLIER * victimMaxHpOnHerLevel;
         float b = knight.getHp();
-        if (a < b) {
-            baseHp = a;
-        } else {
-            baseHp = b;
-        }
+        baseHp = Math.min(a, b);
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
         // modificare hp
@@ -85,11 +73,7 @@ public final class Drain implements Ability {
                 * pyromancer.getPlusHpPerLevel();
         float a = MULTIPLIER * victimMaxHpOnHerLevel;
         float b = pyromancer.getHp();
-        if (a < b) {
-            baseHp = a;
-        } else {
-            baseHp = b;
-        }
+        baseHp = Math.min(a, b);
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
         // modificare hp

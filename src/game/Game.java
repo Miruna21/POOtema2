@@ -128,11 +128,7 @@ public final class Game {
             int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
             int xpWinner = attacker.getXp();
             int newXpWinner;
-            if (a > b) {
-                max = a;
-            } else {
-                max = b;
-            }
+            max = Math.max(a, b);
             newXpWinner = xpWinner + max;
             if (newXpWinner != xpWinner) {
                 attacker.gainXp(newXpWinner, attacker.getInitialHp(),
