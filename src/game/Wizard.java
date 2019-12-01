@@ -1,27 +1,30 @@
 package game;
 
 public final class Wizard extends Player {
-    private static final int INITIALHP = 400;
-    private static final int PLUSHPPERLEVEL = 30;
-    private Character race = 'W';
+    private static final int INITIAL_HP = 400;
+    private static final int PLUS_HP_PER_LEVEL = 30;
     private Ability drain = new Drain();
     private Ability deflect = new Deflect();
 
     public Wizard(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
-        this.setHp(INITIALHP);
+        this.setHp(INITIAL_HP);
     }
 
     public Character getRace() {
-        return race;
+        return 'W';
+    }
+    @Override
+    public boolean startFirst() {
+        return false;
     }
 
     public int getInitialHp() {
-        return INITIALHP;
+        return INITIAL_HP;
     }
 
     public int getPlusHpPerLevel() {
-        return PLUSHPPERLEVEL;
+        return PLUS_HP_PER_LEVEL;
     }
 
     @Override

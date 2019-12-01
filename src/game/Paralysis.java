@@ -1,18 +1,18 @@
 package game;
 
 public final class Paralysis implements Ability {
-    private static final int BASEDAMAGE = 40;
-    private static final int PLUSHPPERLEVEL = 10;
+    private static final int BASE_DAMAGE = 40;
+    private static final int PLUS_HP_PER_LEVEL = 10;
 
-    private static final float ROGUEVICTIMMODIFIER = -0.1f;
-    private static final float KNIGHTVICTIMMODIFIER = -0.2f;
-    private static final float PYROMANCERVICTIMMODIFIER = 0.2f;
-    private static final float WIZARDVICTIMMODIFIER = 0.25f;
+    private static final float ROGUE_VICTIM_MODIFIER = -0.1f;
+    private static final float KNIGHT_VICTIM_MODIFIER = -0.2f;
+    private static final float PYROMANCER_VICTIM_MODIFIER = 0.2f;
+    private static final float WIZARD_VICTIM_MODIFIER = 0.25f;
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
         float landModifier = attacker.acceptLandModifier(ground);
         int attackerLevel = attacker.getLevel();
-        float levelDamage = BASEDAMAGE + attackerLevel * PLUSHPPERLEVEL;
+        float levelDamage = BASE_DAMAGE + attackerLevel * PLUS_HP_PER_LEVEL;
         return levelDamage * landModifier;
     }
     @Override
@@ -20,7 +20,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + ROGUEVICTIMMODIFIER));
+                * (1 + ROGUE_VICTIM_MODIFIER));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         rogue.setNrRoundsParalyzed(nrRoundsParalyzed);
         rogue.setOvertimeDamage(finalDamage);
@@ -36,7 +36,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + WIZARDVICTIMMODIFIER));
+                * (1 + WIZARD_VICTIM_MODIFIER));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         wizard.setNrRoundsParalyzed(nrRoundsParalyzed);
         wizard.setOvertimeDamage(finalDamage);
@@ -52,7 +52,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + KNIGHTVICTIMMODIFIER));
+                * (1 + KNIGHT_VICTIM_MODIFIER));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         knight.setNrRoundsParalyzed(nrRoundsParalyzed);
         knight.setOvertimeDamage(finalDamage);
@@ -68,7 +68,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + PYROMANCERVICTIMMODIFIER));
+                * (1 + PYROMANCER_VICTIM_MODIFIER));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         pyromancer.setNrRoundsParalyzed(nrRoundsParalyzed);
         pyromancer.setOvertimeDamage(finalDamage);

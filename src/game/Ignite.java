@@ -1,30 +1,30 @@
 package game;
 
 public final class Ignite implements Ability {
-    private static final int BASEDAMAGE = 150;
-    private static final int PLUSDAMAGEPERLEVEL1 = 20;
-    private static final int OTHERDAMAGE = 50;
-    private static final int PLUSDAMAGEPERLEVEL2 = 30;
-    private static final float ROGUEVICTIMMODIFIER = -0.2f;
-    private static final float KNIGHTVICTIMMODIFIER = 0.2f;
-    private static final float PYROMANCERVICTIMMODIFIER = -0.1f;
-    private static final float WIZARDVICTIMMODIFIER = 0.05f;
+    private static final int BASE_DAMAGE = 150;
+    private static final int PLUS_DAMAGE_PER_LEVEL1 = 20;
+    private static final int OTHER_DAMAGE = 50;
+    private static final int PLUS_DAMAGE_PER_LEVEL2 = 30;
+    private static final float ROGUE_VICTIM_MODIFIER = -0.2f;
+    private static final float KNIGHT_VICTIM_MODIFIER = 0.2f;
+    private static final float PYROMANCER_VICTIM_MODIFIER = -0.1f;
+    private static final float WIZARD_VICTIM_MODIFIER = 0.05f;
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
         float landModifier = attacker.acceptLandModifier(ground);
         int attackerLevel = attacker.getLevel();
         float levelDamage;
-        levelDamage = BASEDAMAGE + attackerLevel * PLUSDAMAGEPERLEVEL1;
+        levelDamage = BASE_DAMAGE + attackerLevel * PLUS_DAMAGE_PER_LEVEL1;
         return levelDamage * landModifier;
     }
     @Override
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         rogue.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
-        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + ROGUEVICTIMMODIFIER));
-        int overtimeDamage = Math.round((OTHERDAMAGE + attacker.getLevel()
-                * PLUSDAMAGEPERLEVEL2) * attacker.acceptLandModifier(ground)
-                * (1 + ROGUEVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + ROGUE_VICTIM_MODIFIER));
+        int overtimeDamage = Math.round((OTHER_DAMAGE + attacker.getLevel()
+                * PLUS_DAMAGE_PER_LEVEL2) * attacker.acceptLandModifier(ground)
+                * (1 + ROGUE_VICTIM_MODIFIER));
         rogue.setNrRoundsIgniteHit(2);
         rogue.setOvertimeDamage(overtimeDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
@@ -38,10 +38,10 @@ public final class Ignite implements Ability {
     public void attack(final Wizard wizard, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
-        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + WIZARDVICTIMMODIFIER));
-        int overtimeDamage = Math.round((OTHERDAMAGE + attacker.getLevel()
-                * PLUSDAMAGEPERLEVEL2) * attacker.acceptLandModifier(ground)
-                * (1 + WIZARDVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + WIZARD_VICTIM_MODIFIER));
+        int overtimeDamage = Math.round((OTHER_DAMAGE + attacker.getLevel()
+                * PLUS_DAMAGE_PER_LEVEL2) * attacker.acceptLandModifier(ground)
+                * (1 + WIZARD_VICTIM_MODIFIER));
         wizard.setNrRoundsIgniteHit(2);
         wizard.setOvertimeDamage(overtimeDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
@@ -55,10 +55,10 @@ public final class Ignite implements Ability {
     public void attack(final Knight knight, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         knight.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
-        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + KNIGHTVICTIMMODIFIER));
-        int overtimeDamage = Math.round((OTHERDAMAGE + attacker.getLevel()
-                * PLUSDAMAGEPERLEVEL2) * attacker.acceptLandModifier(ground)
-                * (1 + KNIGHTVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + KNIGHT_VICTIM_MODIFIER));
+        int overtimeDamage = Math.round((OTHER_DAMAGE + attacker.getLevel()
+                * PLUS_DAMAGE_PER_LEVEL2) * attacker.acceptLandModifier(ground)
+                * (1 + KNIGHT_VICTIM_MODIFIER));
         knight.setNrRoundsIgniteHit(2);
         knight.setOvertimeDamage(overtimeDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua
@@ -73,10 +73,10 @@ public final class Ignite implements Ability {
     public void attack(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         pyromancer.addDamageWithoutRaceModifier(damageWithoutRaceModifier);
-        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + PYROMANCERVICTIMMODIFIER));
-        int overtimeDamage = Math.round((OTHERDAMAGE + attacker.getLevel()
-                * PLUSDAMAGEPERLEVEL2) * attacker.acceptLandModifier(ground)
-                * (1 + PYROMANCERVICTIMMODIFIER));
+        int finalDamage = Math.round(damageWithoutRaceModifier * (1 + PYROMANCER_VICTIM_MODIFIER));
+        int overtimeDamage = Math.round((OTHER_DAMAGE + attacker.getLevel()
+                * PLUS_DAMAGE_PER_LEVEL2) * attacker.acceptLandModifier(ground)
+                * (1 + PYROMANCER_VICTIM_MODIFIER));
         pyromancer.setNrRoundsIgniteHit(2);
         pyromancer.setOvertimeDamage(overtimeDamage);
         // inlocuiesc abilitatea trecuta overtime cu cea noua

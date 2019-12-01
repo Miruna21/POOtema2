@@ -3,8 +3,8 @@ package game;
 import java.util.ArrayList;
 
 public final class Vulcanic implements Ground {
-    private static final float SPECIALLANDMODIFIER = 1.25f;
-    private static final int NRROUNDSPARALYZED = 3;
+    private static final float SPECIAL_LAND_MODIFIER = 1.25f;
+    private static final int NR_ROUNDS_PARALYZED = 3;
     private ArrayList<Integer> playersOnThisPlaceId;
     public Vulcanic() {
         this.playersOnThisPlaceId = new ArrayList<>();
@@ -34,12 +34,12 @@ public final class Vulcanic implements Ground {
     }
 
     public int getNrRoundsParalyzed() {
-        return NRROUNDSPARALYZED;
+        return NR_ROUNDS_PARALYZED;
     }
 
     @Override
     public float transferGroundModifier(final Pyromancer pyromancer) {
-        return SPECIALLANDMODIFIER;
+        return SPECIAL_LAND_MODIFIER;
     }
 
     @Override

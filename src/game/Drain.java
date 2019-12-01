@@ -2,17 +2,17 @@ package game;
 
 public final class Drain implements Ability {
     private static final float MULTIPLIER = 0.3f;
-    private static final float BASEPERCENT = 0.2f;
-    private static final float PLUSPERCENTPERLEVEL = 0.05f;
+    private static final float BASE_PERCENT = 0.2f;
+    private static final float PLUS_PERCENT_PER_LEVEL = 0.05f;
 
-    private static final float ROGUEVICTIMMODIFIER = -0.2f;
-    private static final float KNIGHTVICTIMMODIFIER = 0.2f;
-    private static final float PYROMANCERVICTIMMODIFIER = -0.1f;
-    private static final float WIZARDVICTIMMODIFIER = 0.05f;
+    private static final float ROGUE_VICTIM_MODIFIER = -0.2f;
+    private static final float KNIGHT_VICTIM_MODIFIER = 0.2f;
+    private static final float PYROMANCER_VICTIM_MODIFIER = -0.1f;
+    private static final float WIZARD_VICTIM_MODIFIER = 0.05f;
     @Override
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
-        float percent = BASEPERCENT + rogue.getLevel() * PLUSPERCENTPERLEVEL;
-        float newPercent = percent + ROGUEVICTIMMODIFIER * percent;
+        float percent = BASE_PERCENT + rogue.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        float newPercent = percent + ROGUE_VICTIM_MODIFIER * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = rogue.getInitialHp() + rogue.getLevel()
                 * rogue.getPlusHpPerLevel();
@@ -31,8 +31,8 @@ public final class Drain implements Ability {
 
     @Override
     public void attack(final Wizard wizard, final Ground ground, final Player attacker) {
-        float percent = BASEPERCENT + wizard.getLevel() * PLUSPERCENTPERLEVEL;
-        float newPercent = percent + WIZARDVICTIMMODIFIER * percent;
+        float percent = BASE_PERCENT + wizard.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        float newPercent = percent + WIZARD_VICTIM_MODIFIER * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = wizard.getInitialHp() + wizard.getLevel()
                 * wizard.getPlusHpPerLevel();
@@ -51,8 +51,8 @@ public final class Drain implements Ability {
 
     @Override
     public void attack(final Knight knight, final Ground ground, final Player attacker) {
-        float percent = BASEPERCENT + knight.getLevel() * PLUSPERCENTPERLEVEL;
-        float newPercent = percent + KNIGHTVICTIMMODIFIER * percent;
+        float percent = BASE_PERCENT + knight.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        float newPercent = percent + KNIGHT_VICTIM_MODIFIER * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = knight.getInitialHp() + knight.getLevel()
                 * knight.getPlusHpPerLevel();
@@ -71,8 +71,8 @@ public final class Drain implements Ability {
 
     @Override
     public void attack(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
-        float percent = BASEPERCENT + pyromancer.getLevel() * PLUSPERCENTPERLEVEL;
-        float newPercent = percent + PYROMANCERVICTIMMODIFIER * percent;
+        float percent = BASE_PERCENT + pyromancer.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        float newPercent = percent + PYROMANCER_VICTIM_MODIFIER * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = pyromancer.getInitialHp() + pyromancer.getLevel()
                 * pyromancer.getPlusHpPerLevel();

@@ -1,27 +1,30 @@
 package game;
 
 public final class Pyromancer extends Player {
-    private static final int INITIALHP = 500;
-    private static final int PLUSHPPERLEVEL = 50;
-    private Character race = 'P';
+    private static final int INITIAL_HP = 500;
+    private static final int PLUS_HP_PER_LEVEL = 50;
     private Ability fireblast = new Fireblast();
     private Ability ignite = new Ignite();
 
     public Pyromancer(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
-        this.setHp(INITIALHP);
+        this.setHp(INITIAL_HP);
     }
 
     public Character getRace() {
-        return race;
+        return 'P';
+    }
+    @Override
+    public boolean startFirst() {
+        return true;
     }
 
     public int getInitialHp() {
-        return INITIALHP;
+        return INITIAL_HP;
     }
 
     public int getPlusHpPerLevel() {
-        return PLUSHPPERLEVEL;
+        return PLUS_HP_PER_LEVEL;
     }
 
     @Override

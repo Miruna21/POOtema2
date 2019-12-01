@@ -3,8 +3,8 @@ package game;
 import java.util.ArrayList;
 
 public final class Woods implements Ground {
-    private static final float SPECIALLANDMODIFIER = 1.15f;
-    private static final int NRROUNDSPARALYZED = 6;
+    private static final float SPECIAL_LAND_MODIFIER = 1.15f;
+    private static final int NR_ROUNDS_PARALYZED = 6;
     private ArrayList<Integer> playersOnThisPlaceId;
     public Woods() {
         this.playersOnThisPlaceId = new ArrayList<>();
@@ -34,7 +34,7 @@ public final class Woods implements Ground {
     }
 
     public int getNrRoundsParalyzed() {
-        return NRROUNDSPARALYZED;
+        return NR_ROUNDS_PARALYZED;
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class Woods implements Ground {
 
     @Override
     public float transferGroundModifier(final Rogue rogue) {
-        return SPECIALLANDMODIFIER;
+        return SPECIAL_LAND_MODIFIER;
     }
 
     @Override

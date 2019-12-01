@@ -3,8 +3,8 @@ package game;
 import java.util.ArrayList;
 
 public final class Desert implements Ground {
-    private static final float SPECIALLANDMODIFIER = 1.1f;
-    private static final int NRROUNDSPARALYZED = 3;
+    private static final float SPECIAL_LAND_MODIFIER = 1.1f;
+    private static final int NR_ROUNDS_PARALYZED = 3;
     private ArrayList<Integer> playersOnThisPlaceId;
     public Desert() {
         this.playersOnThisPlaceId = new ArrayList<>();
@@ -34,7 +34,7 @@ public final class Desert implements Ground {
     }
 
     public int getNrRoundsParalyzed() {
-        return NRROUNDSPARALYZED;
+        return NR_ROUNDS_PARALYZED;
     }
 
     @Override
@@ -49,7 +49,7 @@ public final class Desert implements Ground {
 
     @Override
     public float transferGroundModifier(final Wizard wizard) {
-        return SPECIALLANDMODIFIER;
+        return SPECIAL_LAND_MODIFIER;
     }
 
     @Override

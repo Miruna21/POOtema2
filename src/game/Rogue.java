@@ -1,27 +1,30 @@
 package game;
 
 public final class Rogue extends Player {
-    private static final int INITIALHP = 600;
-    private static final int PLUSHPPERLEVEL = 40;
-    private Character race = 'R';
+    private static final int INITIAL_HP = 600;
+    private static final int PLUS_HP_PER_LEVEL = 40;
     private Ability backstab = new Backstab();
     private Ability paralysis = new Paralysis();
 
     public Rogue(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
-        this.setHp(INITIALHP);
+        this.setHp(INITIAL_HP);
     }
 
     public Character getRace() {
-        return race;
+        return 'R';
+    }
+    @Override
+    public boolean startFirst() {
+        return true;
     }
 
     public int getInitialHp() {
-        return INITIALHP;
+        return INITIAL_HP;
     }
 
     public int getPlusHpPerLevel() {
-        return PLUSHPPERLEVEL;
+        return PLUS_HP_PER_LEVEL;
     }
 
     @Override

@@ -1,26 +1,25 @@
 package game;
 
 public final class Knight extends Player {
-    private static final int INITIALHP = 900;
-    private static final int PLUSHPPERLEVEL = 80;
-    private Character race = 'K';
+    private static final int INITIAL_HP = 900;
+    private static final int PLUS_HP_PER_LEVEL = 80;
     private Ability slam = new Slam();
     private Ability execute = new Execute();
     public Knight(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
-        this.setHp(INITIALHP);
+        this.setHp(INITIAL_HP);
     }
 
     public Character getRace() {
-        return race;
+        return 'K';
     }
 
     public int getInitialHp() {
-        return INITIALHP;
+        return INITIAL_HP;
     }
 
     public int getPlusHpPerLevel() {
-        return PLUSHPPERLEVEL;
+        return PLUS_HP_PER_LEVEL;
     }
 
     @Override
@@ -31,6 +30,11 @@ public final class Knight extends Player {
     @Override
     public float acceptLandModifier(final Ground g) {
         return g.transferGroundModifier(this);
+    }
+
+    @Override
+    public boolean startFirst() {
+        return true;
     }
 
     @Override

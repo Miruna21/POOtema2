@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public final class Land implements Ground {
     private static final float SPECIAL_LAND_MODIFIER = 1.15f;
-    private static final int NRROUNDSPARALYZED = 3;
+    private static final int NR_ROUNDS_PARALYZED = 3;
     private ArrayList<Integer> playersOnThisPlaceId;
     public Land() {
         this.playersOnThisPlaceId = new ArrayList<>();
@@ -34,7 +34,7 @@ public final class Land implements Ground {
     }
 
     public int getNrRoundsParalyzed() {
-        return NRROUNDSPARALYZED;
+        return NR_ROUNDS_PARALYZED;
     }
 
     @Override

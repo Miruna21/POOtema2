@@ -2,18 +2,18 @@ package game;
 
 public final class Execute implements Ability {
     private static final float PERCENT = 0.2f;
-    private static final int BASEDAMAGE = 200;
-    private static final int PLUSDAMAGEPERLEVEL = 30;
+    private static final int BASE_DAMAGE = 200;
+    private static final int PLUS_DAMAGE_PER_LEVEL = 30;
 
-    private static final float ROGUEVICTIMMODIFIER = 0.15f;
-    private static final float KNIGHTVICTIMMODIFIER = 0;
-    private static final float PYROMANCERVICTIMMODIFIER = 0.1f;
-    private static final float WIZARDVICTIMMODIFIER = -0.2f;
+    private static final float ROGUE_VICTIM_MODIFIER = 0.15f;
+    private static final float KNIGHT_VICTIM_MODIFIER = 0;
+    private static final float PYROMANCER_VICTIM_MODIFIER = 0.1f;
+    private static final float WIZARD_VICTIM_MODIFIER = -0.2f;
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
         float landModifier = attacker.acceptLandModifier(ground);
         int attackerLevel = attacker.getLevel();
-        float levelDamage = BASEDAMAGE + attackerLevel * PLUSDAMAGEPERLEVEL;
+        float levelDamage = BASE_DAMAGE + attackerLevel * PLUS_DAMAGE_PER_LEVEL;
         return levelDamage * landModifier;
     }
 
@@ -29,7 +29,7 @@ public final class Execute implements Ability {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                    * (1 + ROGUEVICTIMMODIFIER));
+                    * (1 + ROGUE_VICTIM_MODIFIER));
             // modificare hp
             rogue.subHp(finalDamage);
         }
@@ -47,7 +47,7 @@ public final class Execute implements Ability {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                    * (1 + WIZARDVICTIMMODIFIER));
+                    * (1 + WIZARD_VICTIM_MODIFIER));
             // modificare hp
             wizard.subHp(finalDamage);
         }
@@ -65,7 +65,7 @@ public final class Execute implements Ability {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                    * (1 + KNIGHTVICTIMMODIFIER));
+                    * (1 + KNIGHT_VICTIM_MODIFIER));
             // modificare hp
             knight.subHp(finalDamage);
         }
@@ -83,7 +83,7 @@ public final class Execute implements Ability {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                    * (1 + PYROMANCERVICTIMMODIFIER));
+                    * (1 + PYROMANCER_VICTIM_MODIFIER));
             // modificare hp
             pyromancer.subHp(finalDamage);
         }

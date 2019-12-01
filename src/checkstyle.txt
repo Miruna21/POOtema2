@@ -1,24 +1,9 @@
 Starting audit...
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:66:43: 'nrBackstabHit' hides a field. [HiddenField]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:89:57: 'damageWithoutRaceModifier' hides a field. [HiddenField]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:135:39: 'hp' hides a field. [HiddenField]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:146:25: '250' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:146:44: '50' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:146:66: '4' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:148:29: '250' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:148:46: '50' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:148:66: '4' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:150:33: '250' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:150:50: '50' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:150:70: '4' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:152:37: '250' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:152:54: '50' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:152:74: '4' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Player.java:91:57: 'damageWithoutRaceModifier' hides a field. [HiddenField]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Backstab.java:20:44: '3' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:3:8: Unused import - writer.GameOutput. [UnusedImports]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:127:21: '200' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:127:71: '40' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:125:21: '200' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:125:71: '40' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/main/Main.java:3: Using the '.*' form of import should be avoided - game.*. [AvoidStarImport]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/reader/GameInput.java:25:12: More than 7 parameters (found 8). [ParameterNumber]
 Audit done.
-Checkstyle ends with 21 errors.
+Checkstyle ends with 6 errors.

@@ -1,7 +1,5 @@
 package game;
 
-import writer.GameOutput;
-
 import java.util.List;
 import java.util.Vector;
 
@@ -96,7 +94,7 @@ public final class Game {
                     if (players.get(firstIdPlayer).getLife()
                             && players.get(secondIdPlayer).getLife()) {
                         // wizard ataca al doilea
-                        if (!(players.get(firstIdPlayer) instanceof Wizard)) {
+                        if (players.get(firstIdPlayer).startFirst()) {
                             players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
                                                 fightGround);
                             players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer),

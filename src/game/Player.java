@@ -1,5 +1,7 @@
 package game;
 
+import constants.AuxiliaryConstants;
+
 public abstract class Player {
     private int id;
     private int hp;
@@ -63,8 +65,8 @@ public abstract class Player {
    final int getNrBackstabHit() {
         return nrBackstabHit;
     }
-    final void addNrBackstabHit(final int nrBackstabHit) {
-        this.nrBackstabHit += nrBackstabHit;
+    final void addNrBackstabHit(final int hit) {
+        this.nrBackstabHit += hit;
     }
 
     final void setxPos(final int xPos) {
@@ -83,8 +85,8 @@ public abstract class Player {
         return damageWithoutRaceModifier;
     }
 
-    final void setDamageWithoutRaceModifier(final float damageWithoutRaceModifier) {
-        this.damageWithoutRaceModifier = damageWithoutRaceModifier;
+    final void setDamageWithoutRaceModifier(final float damage) {
+        this.damageWithoutRaceModifier = damage;
     }
     final void addDamageWithoutRaceModifier(final float damageWithoutRaceModifier) {
         this.damageWithoutRaceModifier += damageWithoutRaceModifier;
@@ -132,8 +134,8 @@ public abstract class Player {
     }
 
 
-    public final void subHp(final int hp) {
-        this.hp -= hp;
+    public final void subHp(final int hp2) {
+        this.hp -= hp2;
         if (this.getHp() <= 0) {
             this.setLife(false);
         }
@@ -143,13 +145,21 @@ public abstract class Player {
         this.xp = newXp;
         // daca este cazul, cresc nivelul jucatorului
         int newlevel;
-        if ((this.xp > (250 + this.level * 50)) && (this.level < 4)) {
+        if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
+                        && (this.level < AuxiliaryConstants.MAX_LEVEL)) {
             newlevel = this.level + 1;
-            if ((this.xp > (250 + newlevel * 50)) && (newlevel < 4)) {
+            if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                    + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
+                            && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                 newlevel++;
-                if ((this.xp > (250 + newlevel * 50)) && (newlevel < 4)) {
+                if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                        + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
+                                && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                     newlevel++;
-                    if ((this.xp > (250 + newlevel + 50)) && (newlevel < 4)) {
+                    if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                            + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
+                                    && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                         newlevel++;
                     }
                 }
@@ -165,6 +175,7 @@ public abstract class Player {
     public abstract void isHitBy(Player p, Ground g);
 
     public abstract float acceptLandModifier(Ground g);
+    public abstract boolean startFirst();
 
     public abstract void fight(Rogue rogue, Ground ground, Player attacker);
     public abstract void fight(Wizard wizard, Ground ground, Player attacker);

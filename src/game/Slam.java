@@ -1,18 +1,18 @@
 package game;
 
 public final class Slam implements Ability {
-    private static final int BASEDAMAGE = 100;
-    private static final int PLUSHPPERLEVEL = 40;
+    private static final int BASE_DAMAGE = 100;
+    private static final int PLUS_HP_PER_LEVEL = 40;
 
-    private static final float ROGUEVICTIMMODIFIER = -0.2f;
-    private static final float KNIGHTVICTIMMODIFIER = 0.2f;
-    private static final float PYROMANCERVICTIMMODIFIER = -0.1f;
-    private static final float WIZARDVICTIMMODIFIER = 0.05f;
+    private static final float ROGUE_VICTIM_MODIFIER = -0.2f;
+    private static final float KNIGHT_VICTIM_MODIFIER = 0.2f;
+    private static final float PYROMANCER_VICTIM_MODIFIER = -0.1f;
+    private static final float WIZARD_VICTIM_MODIFIER = 0.05f;
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
         float landModifier = attacker.acceptLandModifier(ground);
         int attackerLevel = attacker.getLevel();
-        float levelDamage = BASEDAMAGE + attackerLevel * PLUSHPPERLEVEL;
+        float levelDamage = BASE_DAMAGE + attackerLevel * PLUS_HP_PER_LEVEL;
         return levelDamage * landModifier;
     }
     @Override
@@ -20,7 +20,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + ROGUEVICTIMMODIFIER));
+                * (1 + ROGUE_VICTIM_MODIFIER));
         // modificare hp
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -35,7 +35,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + WIZARDVICTIMMODIFIER));
+                * (1 + WIZARD_VICTIM_MODIFIER));
         // modificare hp
         wizard.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -50,7 +50,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + KNIGHTVICTIMMODIFIER));
+                * (1 + KNIGHT_VICTIM_MODIFIER));
         // modificare hp
         knight.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -65,7 +65,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + PYROMANCERVICTIMMODIFIER));
+                * (1 + PYROMANCER_VICTIM_MODIFIER));
         // modificare hp
         pyromancer.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
