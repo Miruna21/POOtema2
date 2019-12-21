@@ -1,0 +1,28 @@
+POO - proiect, etapa 1
+Orzata Miruna-Narcisa, 321CA
+	Ideea de la care am pornit in implementarea temei a fost sa imi creez
+o clasa abstracta "Player", care este extinsa de cele trei tipuri de jucatori
+(Pyromancer, Rogue, Knight, Wizard), interfata "Ability", care este
+implementata de toate abilitatile jucatorilor (Ignite, Drain, etc) si interfata
+"Ground", implementata de tipurile de pamant existente (Land, Vulcanic, Desert,
+Woods).
+	Clasa "Player" are metodele abstracte "isHitBy" si "fight", care depind
+de tipul jucatorului. Cand are loc o batalie, cei 2 jucatori implicati vor
+apela pe rand metoda "isHitBy". Aceasta metoda apeleaza metoda fight
+corespunzatoare tipurilor de jucatori implicati, existand 4 posibiltati pentru
+un anumit atacator, respectiv victima (un jucator se poate lupta cu unul dintre
+cele 4 tipuri de jucatori). Metoda "fight" va apela metoda "attack" specifica
+celor 2 abilitati agregate in clasa jucatorului, primind victima, pamantul
+pe care se desfasoara lupta si referinta catre atacator. In metoda "attack"
+am apelat metoda "acceptLandModifier" asupra atacatorului; implementarea
+metodei "acceptLandModifier" din clasa jucatorului aplica metoda
+"transferGroundModifier" pentru tipul de jucator asupra tipului de teren al
+luptei.
+	Am ales sa pun anumite constante specifice unei anumite clase in
+interiorul acesteia, deoarece am vrut sa ma folosesc de faptul ca exista
+relatia de double dispatch intre jucatori si abilitati, respectiv jucatori
+si pamant.
+	Pentru a-mi usura munca, am creat un playerFactory si un groundFactory.
+	Sper sa fie sugestive numele de variabile si de metode folosite.
+	Am incercat sa fac acest cod cat se poate de extensibil, chiar daca
+se repeta anumite functionalitati.

@@ -1,5 +1,6 @@
 package game;
 
+import game.ground.GameMap;
 import game.ground.Ground;
 import game.players.Player;
 
@@ -9,7 +10,7 @@ import java.util.Vector;
 public final class Game {
     public void movePlayersOnMapAndPlay(final int nrRounds, final int nrPlayers,
                                         final Vector<Vector<Character>> movesMatrix,
-                                        final Vector<Vector<Ground>> map, final int mapLength,
+                                        final GameMap gameMap, final int mapLength,
                                         final int mapWidth, final Vector<Player> players) {
         for (int i = 0; i < nrRounds; i++) {
             for (int j = 0; j < nrPlayers; j++) {
@@ -39,39 +40,47 @@ public final class Game {
                 }
                 switch (move) {
                     case 'U':
-                        map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos).get(yPos).
+                                        removePlayerOnThisPlaceId(currentPlayerId);
                         int xPos1 = xPos - 1;
                         if (xPos1 < 0) {
                             break;
                         }
-                        map.get(xPos1).get(yPos).addPlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos1).get(yPos).
+                                            addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos1);
                         break;
                     case 'D':
-                        map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos).get(yPos).
+                                            removePlayerOnThisPlaceId(currentPlayerId);
                         int xPos2 = xPos + 1;
                         if (xPos2 >= mapWidth) {
                             break;
                         }
-                        map.get(xPos2).get(yPos).addPlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos2).get(yPos).
+                                        addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos2);
                         break;
                     case 'L':
-                        map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos).get(yPos).
+                                    removePlayerOnThisPlaceId(currentPlayerId);
                         int yPos1 = yPos - 1;
                         if (yPos1 < 0) {
                             break;
                         }
-                        map.get(xPos).get(yPos1).addPlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos).get(yPos1).
+                                    addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos1);
                         break;
                     case 'R':
-                        map.get(xPos).get(yPos).removePlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos).get(yPos).
+                                    removePlayerOnThisPlaceId(currentPlayerId);
                         int yPos2 = yPos + 1;
                         if (yPos2 >= mapLength) {
                             break;
                         }
-                        map.get(xPos).get(yPos2).addPlayerOnThisPlaceId(currentPlayerId);
+                        gameMap.getMap().get(xPos).get(yPos2).
+                                        addPlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos2);
                         break;
                     case '_':
@@ -79,18 +88,19 @@ public final class Game {
                     default:
                 }
             }
-            lookForBattlesAndStartTheFight(map, mapLength, mapWidth, players);
+            lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
 
         }
     }
-    private void lookForBattlesAndStartTheFight(final Vector<Vector<Ground>> map,
+    private void lookForBattlesAndStartTheFight(final GameMap gameMap,
                                                 final int mapLength, final int mapWidth,
                                                 final Vector<Player> players) {
         for (int i = 0; i < mapLength; i++) {
             for (int j = 0; j < mapWidth; j++) {
-                if (map.get(i).get(j).hasTwoPlayersOnThisPlace()) {
-                    Ground fightGround = map.get(i).get(j);
-                    List<Integer> playersOnThisPlace = map.get(i).get(j).getPlayersOnThisPlaceId();
+                if (gameMap.getMap().get(i).get(j).hasTwoPlayersOnThisPlace()) {
+                    Ground fightGround = gameMap.getMap().get(i).get(j);
+                    List<Integer> playersOnThisPlace =
+                                        gameMap.getMap().get(i).get(j).getPlayersOnThisPlaceId();
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
                     // daca cei 2 jucatori sunt in viata, acestia se vor lupta unul cu altul

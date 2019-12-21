@@ -1,8 +1,7 @@
 package main;
 
 import game.Game;
-import game.ground.Ground;
-import game.ground.GroundFactory;
+import game.ground.GameMap;
 import game.players.Player;
 import game.players.PlayerFactory;
 import reader.GameInput;
@@ -30,32 +29,23 @@ public final class Main {
         Vector<Vector<Character>> movesMatrix = gameInput.getMovesMatrix();
 
         Game game = new Game();
-        Vector<Vector<Ground>> map = new Vector<>();
         PlayerFactory playerFactory = PlayerFactory.getInstance();
-        GroundFactory groundFactory = GroundFactory.getInstance();
         Vector<Player> players = new Vector<>(nrPlayers);
 
         // crearea hartii
-        for (int i = 0; i < mapLength; i++) {
-            Vector<Ground> vector = new Vector<>();
-            for (int j = 0; j < mapWidth; j++) {
-                Character character = groundMatrix.get(i).get(j);
-                vector.add(groundFactory.createGround(character));
-            }
-            map.add(vector);
-        }
-
+        GameMap gameMap = GameMap.getInstance();
+        gameMap.createGameMap(mapLength, mapWidth, groundMatrix);
         // crearea jucatorilor
         for (int i = 0; i < nrPlayers; i++) {
             Character character = playersTypeVector.get(i);
             int xPos = playersPosMatrix.get(i).get(0);
             int yPos = playersPosMatrix.get(i).get(1);
-            map.get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
+            gameMap.getMap().get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
             players.add(playerFactory.createPlayer(character, i, xPos, yPos));
         }
 
         // mutarea jucatorilor pe harta
-        game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, map,
+        game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, gameMap,
                 mapLength, mapWidth, players);
 
         // scrie in fisier
