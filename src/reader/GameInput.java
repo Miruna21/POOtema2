@@ -1,4 +1,5 @@
 package reader;
+import java.awt.*;
 import java.util.Vector;
 
 public class GameInput {
@@ -10,6 +11,9 @@ public class GameInput {
     private Vector<Character> playersTypeVector;
     private Vector<Vector<Integer>> playersPosMatrix;
     private Vector<Vector<Character>> movesMatrix;
+    Vector<Integer> nrAngelsPerRound;
+    Vector<String> angelsNames;
+    Vector<Vector<Point>>  angelsPos;
 
     public GameInput() {
         mapLength = 0;
@@ -20,14 +24,18 @@ public class GameInput {
         movesMatrix = null;
         playersTypeVector = null;
         playersPosMatrix = null;
+        nrAngelsPerRound = null;
+        angelsNames = null;
+        angelsPos = null;
     }
 
     public GameInput(final int mapLength, final int mapWidth,
-                        final Vector<Vector<Character>> groundMatrix,
-                            final int nrPlayers, final Vector<Character> playersTypeVector,
-                                final Vector<Vector<Integer>> playersPosMatrix,
-                                    final int nrRounds,
-                                        final Vector<Vector<Character>> movesMatrix) {
+                     final Vector<Vector<Character>> groundMatrix,
+                     final int nrPlayers, final Vector<Character> playersTypeVector,
+                     final Vector<Vector<Integer>> playersPosMatrix,
+                     final int nrRounds, final Vector<Vector<Character>> movesMatrix,
+                     final Vector<Integer> nrAngelsPerRound, final Vector<String> angelsNames,
+                     final Vector<Vector<Point>> angelsPos) {
         this.mapLength = mapLength;
         this.mapWidth = mapWidth;
         this.nrPlayers = nrPlayers;
@@ -36,6 +44,9 @@ public class GameInput {
         this.playersTypeVector = playersTypeVector;
         this.playersPosMatrix = playersPosMatrix;
         this.movesMatrix = movesMatrix;
+        this.nrAngelsPerRound = nrAngelsPerRound;
+        this.angelsNames = angelsNames;
+        this.angelsPos = angelsPos;
     }
 
     public final int getMapLength() {
@@ -68,5 +79,17 @@ public class GameInput {
 
     public final Vector<Vector<Integer>> getPlayersPosMatrix() {
         return playersPosMatrix;
+    }
+
+    public final Vector<Integer> getNrAngelsPerRound() {
+        return nrAngelsPerRound;
+    }
+
+    public final Vector<String> getAngelsNames() {
+        return angelsNames;
+    }
+
+    public final Vector<Vector<Point>> getAngelsPos() {
+        return angelsPos;
     }
 }

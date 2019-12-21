@@ -1,6 +1,8 @@
 package game.players;
 
 import constants.AuxiliaryConstants;
+import game.abilities.FightBehavior;
+import game.angels.Angel;
 import game.ground.Ground;
 
 public abstract class Player {
@@ -17,6 +19,7 @@ public abstract class Player {
     private int nrRoundsParalyzed;
     private int overtimeDamage;
     private int nrRoundsIgniteHit;
+    private FightBehavior fightBehavior;
 
     public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
@@ -31,6 +34,7 @@ public abstract class Player {
         this.nrRoundsParalyzed = 0;
         this.overtimeDamage = 0;
         this.nrRoundsIgniteHit = 0;
+        this.fightBehavior = null;
     }
 
     public final int getNrRoundsParalyzed() {
@@ -170,6 +174,11 @@ public abstract class Player {
             this.setHp(newHp);
         }
     }
+
+    public void setFightBehavior(FightBehavior fightBehavior) {
+        this.fightBehavior = fightBehavior;
+    }
+
     public abstract int getInitialHp();
     public abstract Character getRace();
     public abstract int getPlusHpPerLevel();
@@ -182,6 +191,8 @@ public abstract class Player {
     public abstract void fight(Wizard wizard, Ground ground, Player attacker);
     public abstract void fight(Knight knight, Ground ground, Player attacker);
     public abstract void fight(Pyromancer pyromancer, Ground ground, Player attacker);
+
+    public abstract void accept(Angel angel);
 
     @Override
     public final String toString() {

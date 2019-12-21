@@ -3,6 +3,7 @@ package game.players;
 import game.abilities.Ability;
 import game.abilities.Backstab;
 import game.abilities.Paralysis;
+import game.angels.Angel;
 import game.ground.Ground;
 
 public final class Rogue extends Player {
@@ -19,6 +20,11 @@ public final class Rogue extends Player {
     public Character getRace() {
         return 'R';
     }
+
+    public String getName() {
+        return "Rogue";
+    }
+
     @Override
     public boolean startFirst() {
         return true;
@@ -66,5 +72,10 @@ public final class Rogue extends Player {
     public void fight(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         backstab.attack(pyromancer, ground, attacker);
         paralysis.attack(pyromancer, ground, attacker);
+    }
+
+    @Override
+    public void accept(Angel angel) {
+        angel.visit(this);
     }
 }

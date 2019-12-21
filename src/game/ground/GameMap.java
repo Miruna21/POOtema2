@@ -5,9 +5,11 @@ import java.util.Vector;
 public final class GameMap {
     private static GameMap instance = null;
     private Vector<Vector<Ground>> map;
+
     private GameMap() {
         map = new Vector<>();
     }
+
     public static GameMap getInstance() {
         if (instance == null) {
             instance = new GameMap();

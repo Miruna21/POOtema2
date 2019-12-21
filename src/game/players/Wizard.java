@@ -3,6 +3,7 @@ package game.players;
 import game.abilities.Ability;
 import game.abilities.Deflect;
 import game.abilities.Drain;
+import game.angels.Angel;
 import game.ground.Ground;
 
 public final class Wizard extends Player {
@@ -19,6 +20,11 @@ public final class Wizard extends Player {
     public Character getRace() {
         return 'W';
     }
+
+    public String getName() {
+        return "Wizard";
+    }
+
     @Override
     public boolean startFirst() {
         return false;
@@ -64,5 +70,10 @@ public final class Wizard extends Player {
     public void fight(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         drain.attack(pyromancer, ground, attacker);
         deflect.attack(pyromancer, ground, attacker);
+    }
+
+    @Override
+    public void accept(Angel angel) {
+        angel.visit(this);
     }
 }

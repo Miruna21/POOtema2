@@ -3,6 +3,7 @@ package game.players;
 import game.abilities.Ability;
 import game.abilities.Execute;
 import game.abilities.Slam;
+import game.angels.Angel;
 import game.ground.Ground;
 
 public final class Knight extends Player {
@@ -17,6 +18,10 @@ public final class Knight extends Player {
 
     public Character getRace() {
         return 'K';
+    }
+
+    public String getName() {
+        return "Knight";
     }
 
     public int getInitialHp() {
@@ -64,5 +69,10 @@ public final class Knight extends Player {
     public void fight(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         execute.attack(pyromancer, ground, attacker);
         slam.attack(pyromancer, ground, attacker);
+    }
+
+    @Override
+    public void accept(Angel angel) {
+        angel.visit(this);
     }
 }

@@ -3,6 +3,7 @@ package game.players;
 import game.abilities.Ability;
 import game.abilities.Fireblast;
 import game.abilities.Ignite;
+import game.angels.Angel;
 import game.ground.Ground;
 
 public final class Pyromancer extends Player {
@@ -19,6 +20,11 @@ public final class Pyromancer extends Player {
     public Character getRace() {
         return 'P';
     }
+
+    public String getName() {
+        return "Pyromancer";
+    }
+
     @Override
     public boolean startFirst() {
         return true;
@@ -66,4 +72,8 @@ public final class Pyromancer extends Player {
         ignite.attack(pyromancer, ground, attacker);
     }
 
+    @Override
+    public void accept(Angel angel) {
+        angel.visit(this);
+    }
 }

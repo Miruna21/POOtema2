@@ -1,6 +1,8 @@
 package reader;
 
 import fileio.FileSystem;
+
+import java.awt.*;
 import java.util.Vector;
 
 public final class GameInputLoader {
@@ -20,6 +22,9 @@ public final class GameInputLoader {
         Vector<Character> playersTypeVector = new Vector<>();
         Vector<Vector<Integer>> playersPosMatrix = new Vector<>();
         Vector<Vector<Character>> movesMatrix = new Vector<>();
+        Vector<Integer> nrAngelsPerRound = new Vector<>();
+        Vector<String> angelsNames = new Vector<>();
+        Vector<Vector<Point>> angelsPos = new Vector<>();
 
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
@@ -30,7 +35,7 @@ public final class GameInputLoader {
             for (int i = 0; i < mapLength; ++i) {
                 Vector<Character> g = new Vector<>();
                 String word = fs.nextWord();
-                Character character;
+                char character;
                 for (int j = 0; j < mapWidth; j++) {
                     character = word.charAt(j);
                     g.add(character);
@@ -50,17 +55,39 @@ public final class GameInputLoader {
                 playersPosMatrix.add(t);
             }
             nrRounds = fs.nextInt();
+            // citire mutari
             for (int i = 0; i < nrRounds; ++i) {
                 Vector<Character> m = new Vector<>();
                 String word = fs.nextWord();
-                Character character;
+                char character;
                 for (int j = 0; j < nrPlayers; j++) {
                     character = word.charAt(j);
                     m.add(character);
                 }
                 movesMatrix.add(m);
             }
-
+            // citire ingeri
+            for (int i = 0; i < nrRounds; i++) {
+                int nrAngels = fs.nextInt();
+                nrAngelsPerRound.add(nrAngels);
+                Vector<Point> angelsRound = new Vector<>();
+                if (nrAngels == 0){
+                    angelsPos.add(angelsRound);
+                    continue;
+                }
+                for (int j = 0; j < nrAngels; j++) {
+                    String word = fs.nextWord();
+                    String[] substrings = word.split(",");
+                    angelsNames.add(substrings[0]);
+                    char xPosCharacter = substrings[1].charAt(0);
+                    char yPosCharacter = substrings[2].charAt(0);
+                    int xPos = xPosCharacter - '0';
+                    int yPos = yPosCharacter - '0';
+                    Point pos = new Point(xPos, yPos);
+                    angelsRound.add(pos);
+                }
+                angelsPos.add(angelsRound);
+            }
 
             fs.close();
 
@@ -69,6 +96,7 @@ public final class GameInputLoader {
         }
 
         return new GameInput(mapLength, mapWidth, groundMatrix, nrPlayers,
-                playersTypeVector, playersPosMatrix, nrRounds, movesMatrix);
+                playersTypeVector, playersPosMatrix, nrRounds, movesMatrix,
+                                nrAngelsPerRound, angelsNames, angelsPos);
     }
 }

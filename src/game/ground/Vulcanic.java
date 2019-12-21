@@ -11,8 +11,11 @@ public final class Vulcanic implements Ground {
     private static final float SPECIAL_LAND_MODIFIER = 1.25f;
     private static final int NR_ROUNDS_PARALYZED = 3;
     private ArrayList<Integer> playersOnThisPlaceId;
+    private ArrayList<Integer> angelsOnThisPlaceId;
+
     public Vulcanic() {
         this.playersOnThisPlaceId = new ArrayList<>();
+        this.angelsOnThisPlaceId = new ArrayList<>();
     }
 
     public ArrayList<Integer> getPlayersOnThisPlaceId() {
@@ -33,6 +36,19 @@ public final class Vulcanic implements Ground {
     @Override
     public boolean hasTwoPlayersOnThisPlace() {
         return playersOnThisPlaceId.size() == 2;
+    }
+
+    public ArrayList<Integer> getAngelsOnThisPlaceId() {
+        return angelsOnThisPlaceId;
+    }
+
+    public void addAngelsOnThisPlaceId(final Integer angelOnThisPlaceId) {
+        this.angelsOnThisPlaceId.add(angelOnThisPlaceId);
+    }
+
+    public void removeAngelOnThisPlaceId(final Integer angelOnThisPlaceId) {
+        this.angelsOnThisPlaceId.remove(angelOnThisPlaceId);
+        this.angelsOnThisPlaceId.trimToSize();
     }
 
     public int getNrRoundsParalyzed() {

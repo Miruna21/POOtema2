@@ -1,6 +1,8 @@
 package main;
 
 import game.Game;
+import game.angels.Angel;
+import game.angels.AngelsFactory;
 import game.ground.GameMap;
 import game.players.Player;
 import game.players.PlayerFactory;
@@ -8,6 +10,7 @@ import reader.GameInput;
 import reader.GameInputLoader;
 import writer.GameOutput;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -27,10 +30,15 @@ public final class Main {
         Vector<Character> playersTypeVector = gameInput.getPlayersTypeVector();
         Vector<Vector<Integer>> playersPosMatrix = gameInput.getPlayersPosMatrix();
         Vector<Vector<Character>> movesMatrix = gameInput.getMovesMatrix();
+        Vector<Integer> nrAngelsPerRound = gameInput.getNrAngelsPerRound();
+        Vector<String> angelsNames = gameInput.getAngelsNames();
+        Vector<Vector<Point>> angelsPos = gameInput.getAngelsPos();
 
         Game game = new Game();
         PlayerFactory playerFactory = PlayerFactory.getInstance();
         Vector<Player> players = new Vector<>(nrPlayers);
+        Vector<Vector<Angel>> angels = new Vector<>();
+        AngelsFactory angelsFactory = AngelsFactory.getInstance();
 
         // crearea hartii
         GameMap gameMap = GameMap.getInstance();
@@ -43,7 +51,22 @@ public final class Main {
             gameMap.getMap().get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
             players.add(playerFactory.createPlayer(character, i, xPos, yPos));
         }
-
+        // crearea ingerilor
+        for (int i = 0; i < nrRounds; i++) {
+            int nrAngels = nrAngelsPerRound.get(i);
+            Vector<Angel> angelsVector = new Vector<>();
+            if (nrAngels == 0){
+                angels.add(angelsVector);
+                continue;
+            }
+            for (int j = 0; j < nrAngels; j++) {
+                String name = angelsNames.get(j);
+                int xPos = (int)angelsPos.get(i).get(j).getX();
+                int yPos = (int)angelsPos.get(i).get(j).getY();
+                angelsVector.add(angelsFactory.createAngel(name, j, xPos, yPos));
+            }
+            angels.add(angelsVector);
+        }
         // mutarea jucatorilor pe harta
         game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, gameMap,
                 mapLength, mapWidth, players);
