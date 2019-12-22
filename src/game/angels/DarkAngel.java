@@ -1,9 +1,6 @@
 package game.angels;
 
-import game.players.Knight;
-import game.players.Pyromancer;
-import game.players.Rogue;
-import game.players.Wizard;
+import game.players.*;
 
 public class DarkAngel extends Angel {
     private static final int HP_MODIFIER_FOR_KNIGHT = 40;
@@ -25,7 +22,8 @@ public class DarkAngel extends Angel {
         if (knight.getLife()){
             // scad hp-ul jucatorului
             knight.subHp(HP_MODIFIER_FOR_KNIGHT);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(knight, this);
         }
     }
 
@@ -35,7 +33,8 @@ public class DarkAngel extends Angel {
         if (rogue.getLife()){
             // scad hp-ul jucatorului
             rogue.subHp(HP_MODIFIER_FOR_ROGUE);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(rogue, this);
         }
     }
 
@@ -45,7 +44,8 @@ public class DarkAngel extends Angel {
         if (wizard.getLife()){
             // scad hp-ul jucatorului
             wizard.subHp(HP_MODIFIER_FOR_WIZARD);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(wizard, this);
         }
     }
 
@@ -55,7 +55,15 @@ public class DarkAngel extends Angel {
         if (pyromancer.getLife()){
             // scad hp-ul jucatorului
             pyromancer.subHp(HP_MODIFIER_FOR_PYROMANCER);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(pyromancer, this);
+        }
+    }
+
+    private void verifyPlayerKilledByAngel(final Player attacker, final Angel angel){
+        // daca jucatorul a fost omorat de inger, anunt magicianul
+        if (!attacker.getLife()){
+
         }
     }
 }

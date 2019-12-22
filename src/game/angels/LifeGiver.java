@@ -5,7 +5,6 @@ import game.players.Pyromancer;
 import game.players.Rogue;
 import game.players.Wizard;
 
-import javax.swing.*;
 
 public class LifeGiver extends Angel {
     private static final int HP_MODIFIER_FOR_KNIGHT = 100;

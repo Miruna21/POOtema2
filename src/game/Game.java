@@ -128,8 +128,9 @@ public final class Game {
                         if (!players.get(secondIdPlayer).getLife()) {
                             fightGround.removePlayerOnThisPlaceId(secondIdPlayer);
                         }
-                        verifyVictimDead(players.get(firstIdPlayer), players.get(secondIdPlayer));
-                        verifyVictimDead(players.get(secondIdPlayer), players.get(firstIdPlayer));
+                        // daca a murit un jucator in lupta, ofer xp atacatorului
+                        verifyVictimDeadAfterFight(players.get(firstIdPlayer), players.get(secondIdPlayer));
+                        verifyVictimDeadAfterFight(players.get(secondIdPlayer), players.get(firstIdPlayer));
                     }
                 }
             }
@@ -150,17 +151,18 @@ public final class Game {
                 // daca exista jucatori pe pozitia unde a aparut ingerul
                 if (playersOnThisPlaceId != null) {
                     for (int playerId : playersOnThisPlaceId) {
+                        // jucatorul accepta vizita ingerului
                         players.get(playerId).accept(angelsVector.get(angelId));
-                        // verific daca ingerul a omorat jucatorul sau nu si anunt magicianul
-                        // TODO
                     }
                 }
             }
         }
     }
 
-    private void verifyVictimDead(final Player attacker, final Player victim) {
+    private void verifyVictimDeadAfterFight(final Player attacker, final Player victim) {
         if (!victim.getLife()) {
+            // daca atacatorul a omorat victima, anunt magicianul
+
             int max;
             int a = 0;
             int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
@@ -171,6 +173,7 @@ public final class Game {
             if (newXpWinner != xpWinner) {
                 attacker.gainXp(newXpWinner);
             }
+
         }
     }
 }

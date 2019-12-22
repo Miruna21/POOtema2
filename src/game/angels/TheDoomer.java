@@ -20,6 +20,7 @@ public class TheDoomer extends Angel {
         if (knight.getLife()) {
             // omor jucatorul
             knight.setLife(false);
+            // anunt magicianul
         }
     }
 
@@ -29,6 +30,7 @@ public class TheDoomer extends Angel {
         if (rogue.getLife()) {
             // omor jucatorul
             rogue.setLife(false);
+            // anunt magicianul
         }
     }
 
@@ -38,6 +40,7 @@ public class TheDoomer extends Angel {
         if (wizard.getLife()) {
             // omor jucatorul
             wizard.setLife(false);
+            // anunt magicianul
         }
     }
 
@@ -47,6 +50,7 @@ public class TheDoomer extends Angel {
         if (pyromancer.getLife()) {
             // omor jucatorul
             pyromancer.setLife(false);
+            // anunt magicianul
         }
     }
 }

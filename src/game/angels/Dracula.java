@@ -1,9 +1,6 @@
 package game.angels;
 
-import game.players.Knight;
-import game.players.Pyromancer;
-import game.players.Rogue;
-import game.players.Wizard;
+import game.players.*;
 
 public class Dracula extends Angel {
     private static final float DAMAGE_MODIFIER_FOR_KNIGHT = 0.2f;
@@ -33,7 +30,8 @@ public class Dracula extends Angel {
             knight.getSecondAbility().changeKnightVictimModifier(-DAMAGE_MODIFIER_FOR_KNIGHT);
             // scad hp-ul jucatorului
             knight.subHp(HP_MODIFIER_FOR_KNIGHT);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(knight, this);
         }
     }
 
@@ -46,7 +44,8 @@ public class Dracula extends Angel {
             rogue.getSecondAbility().changeRogueVictimModifier(-DAMAGE_MODIFIER_FOR_ROGUE);
             // scad hp-ul jucatorului
             rogue.subHp(HP_MODIFIER_FOR_ROGUE);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(rogue, this);
         }
     }
 
@@ -59,7 +58,8 @@ public class Dracula extends Angel {
             wizard.getSecondAbility().changeWizardVictimModifier(-DAMAGE_MODIFIER_FOR_WIZARD);
             // scad hp-ul jucatorului
             wizard.subHp(HP_MODIFIER_FOR_WIZARD);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(wizard, this);
         }
     }
 
@@ -72,7 +72,15 @@ public class Dracula extends Angel {
             pyromancer.getSecondAbility().changePyromancerVictimModifier(-DAMAGE_MODIFIER_FOR_PYROMANCER);
             // scad hp-ul jucatorului
             pyromancer.subHp(HP_MODIFIER_FOR_PYROMANCER);
-            // TODO verific daca ingerul a omorat jucatorul
+            // verific daca ingerul a omorat jucatorul
+            verifyPlayerKilledByAngel(pyromancer, this);
+        }
+    }
+
+    private void verifyPlayerKilledByAngel(final Player attacker, final Angel angel){
+        // daca jucatorul a fost omorat de inger, anunt magicianul
+        if (!attacker.getLife()){
+
         }
     }
 }

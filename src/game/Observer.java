@@ -10,5 +10,5 @@ public interface Observer {
     void printLevelUp(Player player);
     void printAngelApparition(Angel angel);
     void printTheHelpOfAngel(Player player, Angel angel);
-    void printThePreventionOfAPlayer(Player player, Angel angel);
+    void printTheComplicationOfAPlayer(Player player, Angel angel);
 }
