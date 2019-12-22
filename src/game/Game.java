@@ -1,9 +1,11 @@
 package game;
 
+import game.angels.Angel;
 import game.ground.GameMap;
 import game.ground.Ground;
 import game.players.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -11,7 +13,8 @@ public final class Game {
     public void movePlayersOnMapAndPlay(final int nrRounds, final int nrPlayers,
                                         final Vector<Vector<Character>> movesMatrix,
                                         final GameMap gameMap, final int mapLength,
-                                        final int mapWidth, final Vector<Player> players) {
+                                        final int mapWidth, final Vector<Player> players,
+                                        final Vector<Vector<Angel>> angels) {
         for (int i = 0; i < nrRounds; i++) {
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
@@ -89,6 +92,7 @@ public final class Game {
                 }
             }
             lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
+            lookForAngelsHelp(gameMap, mapLength, mapWidth, players, angels.get(i));
 
         }
     }
@@ -131,6 +135,30 @@ public final class Game {
             }
         }
     }
+    void lookForAngelsHelp(final GameMap gameMap, final int mapLenght, final int mapWidth,
+                           final Vector<Player> players, final Vector<Angel> angelsVector){
+        // daca vectorul de ingeri pentru runda curenta nu e gol
+        if (angelsVector.size() != 0){
+            for (Angel angel : angelsVector) {
+                ArrayList<Integer> playersOnThisPlaceId;
+                int angelId = angel.getId();
+                int xPos = angel.getxPos();
+                int yPos = angel.getyPos();
+                // anunt magicianul de aparitia ingerului
+                // TODO
+                playersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).getPlayersOnThisPlaceId();
+                // daca exista jucatori pe pozitia unde a aparut ingerul
+                if (playersOnThisPlaceId != null) {
+                    for (int playerId : playersOnThisPlaceId) {
+                        players.get(playerId).accept(angelsVector.get(angelId));
+                        // verific daca ingerul a omorat jucatorul sau nu si anunt magicianul
+                        // TODO
+                    }
+                }
+            }
+        }
+    }
+
     private void verifyVictimDead(final Player attacker, final Player victim) {
         if (!victim.getLife()) {
             int max;
@@ -141,8 +169,7 @@ public final class Game {
             max = Math.max(a, b);
             newXpWinner = xpWinner + max;
             if (newXpWinner != xpWinner) {
-                attacker.gainXp(newXpWinner, attacker.getInitialHp(),
-                                            attacker.getPlusHpPerLevel());
+                attacker.gainXp(newXpWinner);
             }
         }
     }

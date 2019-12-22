@@ -21,21 +21,45 @@ public class Spawner extends Angel {
 
     @Override
     public void visit(Knight knight) {
-
+        // daca jucatorul este mort
+        if (!knight.getLife()){
+            // readuc jucatorul la viata
+            knight.setLife(true);
+            // setez noul hp
+            knight.setHp(HP_MODIFIER_FOR_KNIGHT);
+        }
     }
 
     @Override
     public void visit(Rogue rogue) {
-
+        // daca jucatorul este mort
+        if (!rogue.getLife()){
+            // readuc jucatorul la viata
+            rogue.setLife(true);
+            // setez noul hp
+            rogue.setHp(HP_MODIFIER_FOR_ROGUE);
+        }
     }
 
     @Override
     public void visit(Wizard wizard) {
-
+        // daca jucatorul este mort
+        if (!wizard.getLife()){
+            // readuc jucatorul la viata
+            wizard.setLife(true);
+            // setez noul hp
+            wizard.setHp(HP_MODIFIER_FOR_WIZARD);
+        }
     }
 
     @Override
     public void visit(Pyromancer pyromancer) {
-
+        // daca jucatorul este mort
+        if (!pyromancer.getLife()){
+            // readuc jucatorul la viata
+            pyromancer.setLife(true);
+            // setez noul hp
+            pyromancer.setHp(HP_MODIFIER_FOR_PYROMANCER);
+        }
     }
 }

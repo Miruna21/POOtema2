@@ -17,6 +17,13 @@ public final class Wizard extends Player {
         this.setHp(INITIAL_HP);
     }
 
+    public Ability getFirstAbility(){
+        return drain;
+    }
+    public Ability getSecondAbility(){
+        return deflect;
+    }
+
     public Character getRace() {
         return 'W';
     }

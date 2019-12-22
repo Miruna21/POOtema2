@@ -15,8 +15,38 @@ public final class Backstab implements Ability {
     private static final float KNIGHT_VICTIM_MODIFIER = -0.1f;
     private static final float PYROMANCER_VICTIM_MODIFIER = 0.25f;
     private static final float WIZARD_VICTIM_MODIFIER = 0.25f;
+
     private static final float CRITICAL_HIT_VALUE = 1.5f;
     private static final float NO_CRITICAL_HIT_VALUE = 1f;
+
+    private float variableRogueVictimModifier;
+    private float variableKnightVictimModifier;
+    private float variablePyromancerVictimModifier;
+    private float variableWizardVictimModifier;
+
+    public Backstab(){
+        variableRogueVictimModifier = ROGUE_VICTIM_MODIFIER;
+        variableKnightVictimModifier = KNIGHT_VICTIM_MODIFIER;
+        variablePyromancerVictimModifier = PYROMANCER_VICTIM_MODIFIER;
+        variableWizardVictimModifier = WIZARD_VICTIM_MODIFIER;
+    }
+
+    @Override
+    public void changeRogueVictimModifier(final float number){
+        variableRogueVictimModifier += number;
+    }
+    @Override
+    public void changeKnightVictimModifier(final float number){
+        variableKnightVictimModifier += number;
+    }
+    @Override
+    public void changePyromancerVictimModifier(final float number){
+        variablePyromancerVictimModifier += number;
+    }
+    @Override
+    public void changeWizardVictimModifier(final float number){
+        variableWizardVictimModifier += number;
+    }
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
         float landModifier = attacker.acceptLandModifier(ground);

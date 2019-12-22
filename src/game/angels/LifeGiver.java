@@ -5,6 +5,8 @@ import game.players.Pyromancer;
 import game.players.Rogue;
 import game.players.Wizard;
 
+import javax.swing.*;
+
 public class LifeGiver extends Angel {
     private static final int HP_MODIFIER_FOR_KNIGHT = 100;
     private static final int HP_MODIFIER_FOR_PYROMANCER = 80;
@@ -21,21 +23,37 @@ public class LifeGiver extends Angel {
 
     @Override
     public void visit(Knight knight) {
-
+        // daca jucatorul este in viata
+        if (knight.getLife()){
+            // cresc hp-ul jucatorului
+            knight.addHp(HP_MODIFIER_FOR_KNIGHT);
+        }
     }
 
     @Override
     public void visit(Rogue rogue) {
-
+        // daca jucatorul este in viata
+        if (rogue.getLife()){
+            // cresc hp-ul jucatorului
+            rogue.addHp(HP_MODIFIER_FOR_ROGUE);
+        }
     }
 
     @Override
     public void visit(Wizard wizard) {
-
+        // daca jucatorul este in viata
+        if (wizard.getLife()){
+            // cresc hp-ul jucatorului
+            wizard.addHp(HP_MODIFIER_FOR_WIZARD);
+        }
     }
 
     @Override
     public void visit(Pyromancer pyromancer) {
-
+        // daca jucatorul este in viata
+        if (pyromancer.getLife()){
+            // cresc hp-ul jucatorului
+            pyromancer.addHp(HP_MODIFIER_FOR_PYROMANCER);
+        }
     }
 }

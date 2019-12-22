@@ -16,21 +16,37 @@ public class TheDoomer extends Angel {
 
     @Override
     public void visit(Knight knight) {
-
+        // daca jucatorul este in viata
+        if (knight.getLife()) {
+            // omor jucatorul
+            knight.setLife(false);
+        }
     }
 
     @Override
     public void visit(Rogue rogue) {
-
+        // daca jucatorul este in viata
+        if (rogue.getLife()) {
+            // omor jucatorul
+            rogue.setLife(false);
+        }
     }
 
     @Override
     public void visit(Wizard wizard) {
-
+        // daca jucatorul este in viata
+        if (wizard.getLife()) {
+            // omor jucatorul
+            wizard.setLife(false);
+        }
     }
 
     @Override
     public void visit(Pyromancer pyromancer) {
-
+        // daca jucatorul este in viata
+        if (pyromancer.getLife()) {
+            // omor jucatorul
+            pyromancer.setLife(false);
+        }
     }
 }

@@ -17,6 +17,13 @@ public final class Pyromancer extends Player {
         this.setHp(INITIAL_HP);
     }
 
+    public Ability getFirstAbility(){
+        return fireblast;
+    }
+    public Ability getSecondAbility(){
+        return ignite;
+    }
+
     public Character getRace() {
         return 'P';
     }

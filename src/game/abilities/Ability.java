@@ -12,4 +12,9 @@ public interface Ability {
     void attack(Wizard wizard, Ground ground, Player attacker);
     void attack(Knight knight, Ground ground, Player attacker);
     void attack(Pyromancer pyromancer, Ground ground, Player attacker);
+
+    void changeRogueVictimModifier(float number);
+    void changeKnightVictimModifier(float number);
+    void changePyromancerVictimModifier(float number);
+    void changeWizardVictimModifier(float number);
 }

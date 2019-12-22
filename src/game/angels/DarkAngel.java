@@ -21,21 +21,41 @@ public class DarkAngel extends Angel {
 
     @Override
     public void visit(Knight knight) {
-
+        // daca jucatorul este in viata
+        if (knight.getLife()){
+            // scad hp-ul jucatorului
+            knight.subHp(HP_MODIFIER_FOR_KNIGHT);
+            // TODO verific daca ingerul a omorat jucatorul
+        }
     }
 
     @Override
     public void visit(Rogue rogue) {
-
+        // daca jucatorul este in viata
+        if (rogue.getLife()){
+            // scad hp-ul jucatorului
+            rogue.subHp(HP_MODIFIER_FOR_ROGUE);
+            // TODO verific daca ingerul a omorat jucatorul
+        }
     }
 
     @Override
     public void visit(Wizard wizard) {
-
+        // daca jucatorul este in viata
+        if (wizard.getLife()){
+            // scad hp-ul jucatorului
+            wizard.subHp(HP_MODIFIER_FOR_WIZARD);
+            // TODO verific daca ingerul a omorat jucatorul
+        }
     }
 
     @Override
     public void visit(Pyromancer pyromancer) {
-
+        // daca jucatorul este in viata
+        if (pyromancer.getLife()){
+            // scad hp-ul jucatorului
+            pyromancer.subHp(HP_MODIFIER_FOR_PYROMANCER);
+            // TODO verific daca ingerul a omorat jucatorul
+        }
     }
 }

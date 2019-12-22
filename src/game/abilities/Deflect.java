@@ -14,6 +14,33 @@ public final class Deflect implements Ability {
     private static final float ROGUE_VICTIM_MODIFIER = 0.2f;
     private static final float KNIGHT_VICTIM_MODIFIER = 0.4f;
     private static final float PYROMANCER_VICTIM_MODIFIER = 0.3f;
+
+    private float variableRogueVictimModifier;
+    private float variableKnightVictimModifier;
+    private float variablePyromancerVictimModifier;
+
+    public Deflect(){
+        variableRogueVictimModifier = ROGUE_VICTIM_MODIFIER;
+        variableKnightVictimModifier = KNIGHT_VICTIM_MODIFIER;
+        variablePyromancerVictimModifier = PYROMANCER_VICTIM_MODIFIER;
+    }
+    @Override
+    public void changeRogueVictimModifier(final float number){
+        variableRogueVictimModifier += number;
+    }
+    @Override
+    public void changeKnightVictimModifier(final float number){
+        variableKnightVictimModifier += number;
+    }
+    @Override
+    public void changePyromancerVictimModifier(final float number){
+        variablePyromancerVictimModifier += number;
+    }
+    @Override
+    public void changeWizardVictimModifier(float number) {
+
+    }
+
     @Override
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();

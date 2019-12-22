@@ -138,6 +138,15 @@ public abstract class Player {
         return level;
     }
 
+    public final void addHp(final int hp2){
+        int sumHp = hp + hp2;
+        int maxLeveleHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
+        if (sumHp > maxLeveleHp){
+            this.hp = maxLeveleHp;
+        } else {
+            this.hp += hp2;
+        }
+    }
 
     public final void subHp(final int hp2) {
         this.hp -= hp2;
@@ -146,9 +155,11 @@ public abstract class Player {
         }
     }
 
-    public final void gainXp(final int newXp, final int initialHp, final int plusHpPerLevel) {
+    public final void gainXp(final int newXp) {
         this.xp = newXp;
         // daca este cazul, cresc nivelul jucatorului
+        int initialHp = this.getInitialHp();
+        int plusHpPerLevel = this.getPlusHpPerLevel();
         int newlevel;
         if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                 + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))

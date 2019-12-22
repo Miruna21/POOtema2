@@ -37,14 +37,17 @@ public final class Desert implements Ground {
         return playersOnThisPlaceId.size() == 2;
     }
 
+    @Override
     public ArrayList<Integer> getAngelsOnThisPlaceId() {
         return angelsOnThisPlaceId;
     }
 
+    @Override
     public void addAngelsOnThisPlaceId(final Integer angelOnThisPlaceId) {
         this.angelsOnThisPlaceId.add(angelOnThisPlaceId);
     }
 
+    @Override
     public void removeAngelOnThisPlaceId(final Integer angelOnThisPlaceId) {
         this.angelsOnThisPlaceId.remove(angelOnThisPlaceId);
         this.angelsOnThisPlaceId.trimToSize();

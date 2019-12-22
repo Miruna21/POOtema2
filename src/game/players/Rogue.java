@@ -17,6 +17,13 @@ public final class Rogue extends Player {
         this.setHp(INITIAL_HP);
     }
 
+    public Ability getFirstAbility(){
+        return backstab;
+    }
+    public Ability getSecondAbility(){
+        return paralysis;
+    }
+
     public Character getRace() {
         return 'R';
     }

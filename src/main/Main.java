@@ -35,10 +35,8 @@ public final class Main {
         Vector<Vector<Point>> angelsPos = gameInput.getAngelsPos();
 
         Game game = new Game();
-        PlayerFactory playerFactory = PlayerFactory.getInstance();
         Vector<Player> players = new Vector<>(nrPlayers);
         Vector<Vector<Angel>> angels = new Vector<>();
-        AngelsFactory angelsFactory = AngelsFactory.getInstance();
 
         // crearea hartii
         GameMap gameMap = GameMap.getInstance();
@@ -49,27 +47,28 @@ public final class Main {
             int xPos = playersPosMatrix.get(i).get(0);
             int yPos = playersPosMatrix.get(i).get(1);
             gameMap.getMap().get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
-            players.add(playerFactory.createPlayer(character, i, xPos, yPos));
+            players.add(PlayerFactory.getInstance().createPlayer(character, i, xPos, yPos));
         }
         // crearea ingerilor
         for (int i = 0; i < nrRounds; i++) {
             int nrAngels = nrAngelsPerRound.get(i);
-            Vector<Angel> angelsVector = new Vector<>();
             if (nrAngels == 0){
-                angels.add(angelsVector);
+                angels.add(null);
                 continue;
             }
+            Vector<Angel> angelsVector = new Vector<>();
             for (int j = 0; j < nrAngels; j++) {
                 String name = angelsNames.get(j);
                 int xPos = (int)angelsPos.get(i).get(j).getX();
                 int yPos = (int)angelsPos.get(i).get(j).getY();
-                angelsVector.add(angelsFactory.createAngel(name, j, xPos, yPos));
+                gameMap.getMap().get(xPos).get(yPos).addAngelsOnThisPlaceId(j);
+                angelsVector.add(AngelsFactory.getInstance().createAngel(name, j, xPos, yPos));
             }
             angels.add(angelsVector);
         }
         // mutarea jucatorilor pe harta
         game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, gameMap,
-                mapLength, mapWidth, players);
+                mapLength, mapWidth, players, angels);
 
         // scrie in fisier
         GameOutput myFileWriter = new GameOutput(args[0], args[1]);

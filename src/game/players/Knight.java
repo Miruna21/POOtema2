@@ -15,7 +15,12 @@ public final class Knight extends Player {
         super(id, xPos, yPos);
         this.setHp(INITIAL_HP);
     }
-
+    public Ability getFirstAbility(){
+        return execute;
+    }
+    public Ability getSecondAbility(){
+        return slam;
+    }
     public Character getRace() {
         return 'K';
     }
