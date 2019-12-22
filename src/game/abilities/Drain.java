@@ -49,7 +49,7 @@ public final class Drain implements Ability {
     @Override
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
         float percent = BASE_PERCENT + rogue.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        float newPercent = percent + ROGUE_VICTIM_MODIFIER * percent;
+        float newPercent = percent + variableRogueVictimModifier * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = rogue.getInitialHp() + rogue.getLevel()
                 * rogue.getPlusHpPerLevel();
@@ -65,7 +65,7 @@ public final class Drain implements Ability {
     @Override
     public void attack(final Wizard wizard, final Ground ground, final Player attacker) {
         float percent = BASE_PERCENT + wizard.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        float newPercent = percent + WIZARD_VICTIM_MODIFIER * percent;
+        float newPercent = percent + variableWizardVictimModifier * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = wizard.getInitialHp() + wizard.getLevel()
                 * wizard.getPlusHpPerLevel();
@@ -81,7 +81,7 @@ public final class Drain implements Ability {
     @Override
     public void attack(final Knight knight, final Ground ground, final Player attacker) {
         float percent = BASE_PERCENT + knight.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        float newPercent = percent + KNIGHT_VICTIM_MODIFIER * percent;
+        float newPercent = percent + variableKnightVictimModifier * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = knight.getInitialHp() + knight.getLevel()
                 * knight.getPlusHpPerLevel();
@@ -97,7 +97,7 @@ public final class Drain implements Ability {
     @Override
     public void attack(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         float percent = BASE_PERCENT + pyromancer.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        float newPercent = percent + PYROMANCER_VICTIM_MODIFIER * percent;
+        float newPercent = percent + variablePyromancerVictimModifier * percent;
         float baseHp;
         int victimMaxHpOnHerLevel = pyromancer.getInitialHp() + pyromancer.getLevel()
                 * pyromancer.getPlusHpPerLevel();

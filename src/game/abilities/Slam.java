@@ -56,7 +56,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + ROGUE_VICTIM_MODIFIER));
+                * (1 + variableRogueVictimModifier));
         // modificare hp
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -71,7 +71,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + WIZARD_VICTIM_MODIFIER));
+                * (1 + variableWizardVictimModifier));
         // modificare hp
         wizard.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -86,7 +86,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + KNIGHT_VICTIM_MODIFIER));
+                * (1 + variableKnightVictimModifier));
         // modificare hp
         knight.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -101,7 +101,7 @@ public final class Slam implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + PYROMANCER_VICTIM_MODIFIER));
+                * (1 + variablePyromancerVictimModifier));
         // modificare hp
         pyromancer.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda

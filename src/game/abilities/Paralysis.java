@@ -56,7 +56,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + ROGUE_VICTIM_MODIFIER));
+                * (1 + variableRogueVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         rogue.setNrRoundsParalyzed(nrRoundsParalyzed);
         rogue.setOvertimeDamage(finalDamage);
@@ -72,7 +72,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + WIZARD_VICTIM_MODIFIER));
+                * (1 + variableWizardVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         wizard.setNrRoundsParalyzed(nrRoundsParalyzed);
         wizard.setOvertimeDamage(finalDamage);
@@ -88,7 +88,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + KNIGHT_VICTIM_MODIFIER));
+                * (1 + variableKnightVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         knight.setNrRoundsParalyzed(nrRoundsParalyzed);
         knight.setOvertimeDamage(finalDamage);
@@ -104,7 +104,7 @@ public final class Paralysis implements Ability {
         float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
         pyromancer.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
-                * (1 + PYROMANCER_VICTIM_MODIFIER));
+                * (1 + variablePyromancerVictimModifier));
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         pyromancer.setNrRoundsParalyzed(nrRoundsParalyzed);
         pyromancer.setOvertimeDamage(finalDamage);
