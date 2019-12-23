@@ -6,6 +6,8 @@ import game.ground.Ground;
 import game.players.Player;
 import writer.GameOutput;
 
+import javax.sound.midi.Soundbank;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -16,9 +18,10 @@ public final class Game {
                                         final GameMap gameMap, final int mapLength,
                                         final int mapWidth, final Vector<Player> players,
                                         final Vector<Vector<Angel>> angels,
-                                        final GameOutput gameOutput) {
+                                        final GameOutput gameOutput) throws IOException {
+        gameOutput.startWriting();
         for (int i = 0; i < nrRounds; i++) {
-            gameOutput.writeOutputSchelet("~~ Round " + (i + 1) + " ~~");
+            gameOutput.writeOutputFrame("~~ Round " + (i + 1) + " ~~");
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
                 int currentPlayerId = players.get(j).getId();
@@ -98,9 +101,9 @@ public final class Game {
             }
             lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
             lookForAngelsHelp(gameMap, players, angels.get(i));
-            gameOutput.writeOutputSchelet("\n");
+            gameOutput.writeOutputFrame("\n");
         }
-        gameOutput.writeOutputSchelet("~~ Results ~~");
+        gameOutput.writeOutputFrame("~~ Results ~~");
     }
     private void lookForBattlesAndStartTheFight(final GameMap gameMap,
                                                 final int mapLength, final int mapWidth,

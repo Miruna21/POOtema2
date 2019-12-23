@@ -12,6 +12,7 @@ import reader.GameInputLoader;
 import writer.GameOutput;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Vector;
 
 public final class Main {
@@ -19,7 +20,7 @@ public final class Main {
         // just to trick checkstyle
     }
 
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws IOException {
         GameInputLoader gameInputLoader = new GameInputLoader(args[0], args[1]);
         GameInput gameInput = gameInputLoader.load();
         int mapLength = gameInput.getMapLength();
@@ -78,5 +79,6 @@ public final class Main {
 
         // scrie rezultatele jocului in fisier
         myFileWriter.writePlayersInFile(players);
+        myFileWriter.endWriting();
     }
 }

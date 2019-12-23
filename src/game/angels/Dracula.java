@@ -31,7 +31,7 @@ public final class Dracula extends Angel {
             // scad hp-ul jucatorului
             knight.subHp(HP_MODIFIER_FOR_KNIGHT);
             // anunt magicianul de lovitura ingerului
-            knight.getEvent().anEventHappened(knight, this, "hit");
+            knight.getEvent().anEventHappened(knight, this, "complicate");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(knight, this);
         }
@@ -47,7 +47,7 @@ public final class Dracula extends Angel {
             // scad hp-ul jucatorului
             rogue.subHp(HP_MODIFIER_FOR_ROGUE);
             // anunt magicianul de lovitura ingerului
-            rogue.getEvent().anEventHappened(rogue, this, "hit");
+            rogue.getEvent().anEventHappened(rogue, this, "complicate");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(rogue, this);
         }
@@ -63,7 +63,7 @@ public final class Dracula extends Angel {
             // scad hp-ul jucatorului
             wizard.subHp(HP_MODIFIER_FOR_WIZARD);
             // anunt magicianul de lovitura ingerului
-            wizard.getEvent().anEventHappened(wizard, this, "hit");
+            wizard.getEvent().anEventHappened(wizard, this, "complicate");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(wizard, this);
         }
@@ -81,7 +81,7 @@ public final class Dracula extends Angel {
             // scad hp-ul jucatorului
             pyromancer.subHp(HP_MODIFIER_FOR_PYROMANCER);
             // anunt magicianul de lovitura ingerului
-            pyromancer.getEvent().anEventHappened(pyromancer, this, "hit");
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "complicate");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(pyromancer, this);
         }

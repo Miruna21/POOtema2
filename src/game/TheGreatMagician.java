@@ -7,10 +7,8 @@ import writer.GameOutput;
 public final class TheGreatMagician implements Observer, Display {
     private static TheGreatMagician instance = null;
     private GameOutput gameOutput;
-    private Subject subject;
 
     private TheGreatMagician(final GameOutput gameOutput, final Subject subject) {
-        this.subject = subject;
         this.gameOutput = gameOutput;
         subject.registerObserver(this);
     }
@@ -32,9 +30,13 @@ public final class TheGreatMagician implements Observer, Display {
     public void update(final Player player, final Angel angel, final String event) {
         switch(event){
             case "kill" : printKilledPlayerByAngel(player);
+                            break;
             case "revive" : printRevivedPlayerByAngel(player);
+                            break;
             case "help" : printTheHelpOfAngel(player, angel);
+                            break;
             case "complicate" : printTheComplicationOfAPlayer(player, angel);
+                            break;
             default :
         }
     }
