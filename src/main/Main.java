@@ -66,12 +66,12 @@ public final class Main {
             }
             angels.add(angelsVector);
         }
+        GameOutput myFileWriter = new GameOutput(args[0], args[1]);
         // mutarea jucatorilor pe harta
         game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, gameMap,
-                mapLength, mapWidth, players, angels);
+                mapLength, mapWidth, players, angels, myFileWriter);
 
-        // scrie in fisier
-        GameOutput myFileWriter = new GameOutput(args[0], args[1]);
+        // scrie rezultatele jocului in fisier
         myFileWriter.writePlayersInFile(players);
     }
 }

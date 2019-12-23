@@ -25,4 +25,26 @@ public final class GameOutput {
             e1.printStackTrace();
         }
     }
+    public void writeOutputSchelet(final String schelet) {
+        try {
+            FileSystem fs = new FileSystem(mInputPath, mOutputPath);
+            fs.writeWord(schelet);
+            fs.writeNewLine();
+
+            fs.close();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
+    public void MagicianWrites(String outputString) {
+        try {
+            FileSystem fs = new FileSystem(mInputPath, mOutputPath);
+            fs.writeWord(outputString);
+            fs.writeNewLine();
+
+            fs.close();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
 }

@@ -138,6 +138,8 @@ public abstract class Player {
         return level;
     }
 
+    public abstract String getName();
+
     public final void addHp(final int hp2){
         int sumHp = hp + hp2;
         int maxLeveleHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();

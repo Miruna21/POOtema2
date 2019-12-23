@@ -4,6 +4,7 @@ import game.angels.Angel;
 import game.ground.GameMap;
 import game.ground.Ground;
 import game.players.Player;
+import writer.GameOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,11 @@ public final class Game {
                                         final Vector<Vector<Character>> movesMatrix,
                                         final GameMap gameMap, final int mapLength,
                                         final int mapWidth, final Vector<Player> players,
-                                        final Vector<Vector<Angel>> angels) {
+                                        final Vector<Vector<Angel>> angels,
+                                        final GameOutput gameOutput) {
+        Observer observer = TheGreatMagician.getInstance(gameOutput);
         for (int i = 0; i < nrRounds; i++) {
+            gameOutput.writeOutputSchelet("~~ Round " + (i + 1) + " ~~");
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
                 int currentPlayerId = players.get(j).getId();
@@ -91,14 +95,14 @@ public final class Game {
                     default:
                 }
             }
-            lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
-            lookForAngelsHelp(gameMap, mapLength, mapWidth, players, angels.get(i));
-
+            lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players, observer);
+            lookForAngelsHelp(gameMap, mapLength, mapWidth, players, angels.get(i), observer);
         }
     }
     private void lookForBattlesAndStartTheFight(final GameMap gameMap,
                                                 final int mapLength, final int mapWidth,
-                                                final Vector<Player> players) {
+                                                final Vector<Player> players,
+                                                final Observer observer) {
         for (int i = 0; i < mapLength; i++) {
             for (int j = 0; j < mapWidth; j++) {
                 if (gameMap.getMap().get(i).get(j).hasTwoPlayersOnThisPlace()) {
@@ -129,15 +133,18 @@ public final class Game {
                             fightGround.removePlayerOnThisPlaceId(secondIdPlayer);
                         }
                         // daca a murit un jucator in lupta, ofer xp atacatorului
-                        verifyVictimDeadAfterFight(players.get(firstIdPlayer), players.get(secondIdPlayer));
-                        verifyVictimDeadAfterFight(players.get(secondIdPlayer), players.get(firstIdPlayer));
+                        verifyVictimDeadAfterFight(players.get(firstIdPlayer),
+                                players.get(secondIdPlayer), observer);
+                        verifyVictimDeadAfterFight(players.get(secondIdPlayer),
+                                players.get(firstIdPlayer), observer);
                     }
                 }
             }
         }
     }
     void lookForAngelsHelp(final GameMap gameMap, final int mapLenght, final int mapWidth,
-                           final Vector<Player> players, final Vector<Angel> angelsVector){
+                           final Vector<Player> players, final Vector<Angel> angelsVector,
+                           final Observer observer){
         // daca vectorul de ingeri pentru runda curenta nu e gol
         if (angelsVector.size() != 0){
             for (Angel angel : angelsVector) {
@@ -159,7 +166,8 @@ public final class Game {
         }
     }
 
-    private void verifyVictimDeadAfterFight(final Player attacker, final Player victim) {
+    private void verifyVictimDeadAfterFight(final Player attacker, final Player victim,
+                                            final Observer observer) {
         if (!victim.getLife()) {
             // daca atacatorul a omorat victima, anunt magicianul
 

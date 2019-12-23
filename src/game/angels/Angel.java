@@ -6,16 +6,17 @@ import game.players.*;
 
 import java.util.ArrayList;
 
-public abstract class Angel implements Subject{
+public abstract class Angel implements Subject {
     private int id;
     private int xPos;
     private int yPos;
     private ArrayList<Observer> observerList;
 
-    public Angel(int id, int xPos, int yPos) {
+    public Angel(final int id, final int xPos, final int yPos) {
         this.id = id;
         this.xPos = xPos;
         this.yPos = yPos;
+        this.observerList = new ArrayList<>();
     }
 
     public int getId() {
@@ -30,41 +31,31 @@ public abstract class Angel implements Subject{
         return yPos;
     }
 
-    public abstract void visit(Knight knight);
-    public abstract void visit(Rogue rogue);
-    public abstract void visit(Wizard wizard);
-    public abstract void visit(Pyromancer pyromancer);
+    public abstract String getName();
+
+    public abstract void visit(final Knight knight);
+    public abstract void visit(final Rogue rogue);
+    public abstract void visit(final Wizard wizard);
+    public abstract void visit(final Pyromancer pyromancer);
 
     @Override
-    public void registerObserver(Observer observer) {
+    public void registerObserver(final Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(final Observer observer) {
         observerList.remove(observer);
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers(final Player player, final Angel angel, final String event) {
         for (Observer observer : observerList){
-            observer.
+            observer.update(player, angel, event);
         }
     }
 
-    public void anAngelAppears(Angel angel){
-
-    }
-    public void angelHelpsAPlayer(Angel angel, Player player){
-
-    }
-    public void angelComplicatesAPlayer(Angel angel, Player player){
-
-    }
-    public void angelKillsAPlayer(Angel angel, Player player){
-
-    }
-    public void angelRevivesAPlayer(Angel angel, Player player){
-
+    public void anEventHappened(Player player, Angel angel, String event){
+        notifyObservers(player, angel, event);
     }
 }
