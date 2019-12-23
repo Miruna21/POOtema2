@@ -99,6 +99,7 @@ public final class Game {
             lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
             lookForAngelsHelp(gameMap, players, angels.get(i));
         }
+        gameOutput.writeOutputSchelet("~~ Results ~~");
     }
     private void lookForBattlesAndStartTheFight(final GameMap gameMap,
                                                 final int mapLength, final int mapWidth,
