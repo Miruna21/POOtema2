@@ -36,7 +36,7 @@ public final class GameOutput {
             e1.printStackTrace();
         }
     }
-    public void MagicianWrites(String outputString) {
+    public void magicianWrites(final String outputString) {
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
             fs.writeWord(outputString);

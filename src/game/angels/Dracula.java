@@ -2,7 +2,7 @@ package game.angels;
 
 import game.players.*;
 
-public class Dracula extends Angel {
+public final class Dracula extends Angel {
     private static final float DAMAGE_MODIFIER_FOR_KNIGHT = 0.2f;
     private static final float DAMAGE_MODIFIER_FOR_PYROMANCER = 0.3f;
     private static final float DAMAGE_MODIFIER_FOR_ROGUE = 0.1f;
@@ -13,7 +13,7 @@ public class Dracula extends Angel {
     private static final int HP_MODIFIER_FOR_ROGUE = 35;
     private static final int HP_MODIFIER_FOR_WIZARD = 20;
 
-    public Dracula(int id, int xPos, int yPos) {
+    public Dracula(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
     }
 
@@ -22,9 +22,9 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void visit(Knight knight) {
+    public void visit(final Knight knight) {
         // daca jucatorul este in viata
-        if (knight.getLife()){
+        if (knight.getLife()) {
             // scad modificatorii de damage pentru fiecare abilitate a jucatorului
             knight.getFirstAbility().changeKnightVictimModifier(-DAMAGE_MODIFIER_FOR_KNIGHT);
             knight.getSecondAbility().changeKnightVictimModifier(-DAMAGE_MODIFIER_FOR_KNIGHT);
@@ -38,9 +38,9 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void visit(Rogue rogue) {
+    public void visit(final Rogue rogue) {
         // daca jucatorul este in viata
-        if (rogue.getLife()){
+        if (rogue.getLife()) {
             // scad modificatorii de damage pentru fiecare abilitate a jucatorului
             rogue.getFirstAbility().changeRogueVictimModifier(-DAMAGE_MODIFIER_FOR_ROGUE);
             rogue.getSecondAbility().changeRogueVictimModifier(-DAMAGE_MODIFIER_FOR_ROGUE);
@@ -54,9 +54,9 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void visit(Wizard wizard) {
+    public void visit(final Wizard wizard) {
         // daca jucatorul este in viata
-        if (wizard.getLife()){
+        if (wizard.getLife()) {
             // scad modificatorii de damage pentru fiecare abilitate a jucatorului
             wizard.getFirstAbility().changeWizardVictimModifier(-DAMAGE_MODIFIER_FOR_WIZARD);
             wizard.getSecondAbility().changeWizardVictimModifier(-DAMAGE_MODIFIER_FOR_WIZARD);
@@ -70,12 +70,14 @@ public class Dracula extends Angel {
     }
 
     @Override
-    public void visit(Pyromancer pyromancer) {
+    public void visit(final Pyromancer pyromancer) {
         // daca jucatorul este in viata
-        if (pyromancer.getLife()){
+        if (pyromancer.getLife()) {
             // scad modificatorii de damage pentru fiecare abilitate a jucatorului
-            pyromancer.getFirstAbility().changePyromancerVictimModifier(-DAMAGE_MODIFIER_FOR_PYROMANCER);
-            pyromancer.getSecondAbility().changePyromancerVictimModifier(-DAMAGE_MODIFIER_FOR_PYROMANCER);
+            pyromancer.getFirstAbility().
+                    changePyromancerVictimModifier(-DAMAGE_MODIFIER_FOR_PYROMANCER);
+            pyromancer.getSecondAbility().
+                    changePyromancerVictimModifier(-DAMAGE_MODIFIER_FOR_PYROMANCER);
             // scad hp-ul jucatorului
             pyromancer.subHp(HP_MODIFIER_FOR_PYROMANCER);
             // anunt magicianul de lovitura ingerului
@@ -85,9 +87,9 @@ public class Dracula extends Angel {
         }
     }
 
-    private void verifyPlayerKilledByAngel(final Player player, final Angel angel){
+    private void verifyPlayerKilledByAngel(final Player player, final Angel angel) {
         // daca jucatorul a fost omorat de inger, anunt magicianul
-        if (!player.getLife()){
+        if (!player.getLife()) {
             player.getEvent().anEventHappened(player, angel, "kill");
         }
     }

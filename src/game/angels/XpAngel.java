@@ -5,24 +5,24 @@ import game.players.Pyromancer;
 import game.players.Rogue;
 import game.players.Wizard;
 
-public class XpAngel extends Angel {
+public final class XpAngel extends Angel {
     private static final int XP_MODIFIER_FOR_KNIGHT = 45;
     private static final int XP_MODIFIER_FOR_PYROMANCER = 50;
     private static final int XP_MODIFIER_FOR_ROGUE = 40;
     private static final int XP_MODIFIER_FOR_WIZARD = 60;
 
-    public XpAngel(int id, int xPos, int yPos) {
+    public XpAngel(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
     }
 
     public String getName() {
-        return "XpAngel";
+        return "XPAngel";
     }
 
     @Override
-    public void visit(Knight knight) {
+    public void visit(final Knight knight) {
         // daca jucatorul este in viata
-        if (knight.getLife()){
+        if (knight.getLife()) {
             // cresc xp-ul jucatorului
             knight.gainXp(XP_MODIFIER_FOR_KNIGHT);
             // anunt magicianul de ajutorul ingerului
@@ -31,9 +31,9 @@ public class XpAngel extends Angel {
     }
 
     @Override
-    public void visit(Rogue rogue) {
+    public void visit(final Rogue rogue) {
         // daca jucatorul este in viata
-        if (rogue.getLife()){
+        if (rogue.getLife()) {
             // cresc xp-ul jucatorului
             rogue.gainXp(XP_MODIFIER_FOR_ROGUE);
             // anunt magicianul de ajutorul ingerului
@@ -42,9 +42,9 @@ public class XpAngel extends Angel {
     }
 
     @Override
-    public void visit(Wizard wizard) {
+    public void visit(final Wizard wizard) {
         // daca jucatorul este in viata
-        if (wizard.getLife()){
+        if (wizard.getLife()) {
             // cresc xp-ul jucatorului
             wizard.gainXp(XP_MODIFIER_FOR_WIZARD);
             // anunt magicianul de ajutorul ingerului
@@ -53,9 +53,9 @@ public class XpAngel extends Angel {
     }
 
     @Override
-    public void visit(Pyromancer pyromancer) {
+    public void visit(final Pyromancer pyromancer) {
         // daca jucatorul este in viata
-        if (pyromancer.getLife()){
+        if (pyromancer.getLife()) {
             // cresc xp-ul jucatorului
             pyromancer.gainXp(XP_MODIFIER_FOR_PYROMANCER);
             // anunt magicianul de ajutorul ingerului

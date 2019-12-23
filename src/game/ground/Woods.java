@@ -11,11 +11,9 @@ public final class Woods implements Ground {
     private static final float SPECIAL_LAND_MODIFIER = 1.15f;
     private static final int NR_ROUNDS_PARALYZED = 6;
     private ArrayList<Integer> playersOnThisPlaceId;
-    private ArrayList<Integer> angelsOnThisPlaceId;
 
     public Woods() {
         this.playersOnThisPlaceId = new ArrayList<>();
-        this.angelsOnThisPlaceId = new ArrayList<>();
     }
 
     public ArrayList<Integer> getPlayersOnThisPlaceId() {
@@ -36,22 +34,6 @@ public final class Woods implements Ground {
     @Override
     public boolean hasTwoPlayersOnThisPlace() {
         return playersOnThisPlaceId.size() == 2;
-    }
-
-    @Override
-    public ArrayList<Integer> getAngelsOnThisPlaceId() {
-        return angelsOnThisPlaceId;
-    }
-
-    @Override
-    public void addAngelsOnThisPlaceId(final Integer angelOnThisPlaceId) {
-        this.angelsOnThisPlaceId.add(angelOnThisPlaceId);
-    }
-
-    @Override
-    public void removeAngelOnThisPlaceId(final Integer angelOnThisPlaceId) {
-        this.angelsOnThisPlaceId.remove(angelOnThisPlaceId);
-        this.angelsOnThisPlaceId.trimToSize();
     }
 
     public int getNrRoundsParalyzed() {

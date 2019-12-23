@@ -15,30 +15,30 @@ public abstract class Angel {
         this.yPos = yPos;
     }
 
-    public void setEvent(Subject event) {
+    public final void setEvent(final Subject event) {
         this.event = event;
     }
 
-    public Subject getEvent() {
+    public final Subject getEvent() {
         return event;
     }
 
-    public int getId() {
+    public final int getId() {
         return id;
     }
 
-    public int getxPos() {
+    public final int getxPos() {
         return xPos;
     }
 
-    public int getyPos() {
+    public final int getyPos() {
         return yPos;
     }
 
     public abstract String getName();
 
-    public abstract void visit(final Knight knight);
-    public abstract void visit(final Rogue rogue);
-    public abstract void visit(final Wizard wizard);
-    public abstract void visit(final Pyromancer pyromancer);
+    public abstract void visit(Knight knight);
+    public abstract void visit(Rogue rogue);
+    public abstract void visit(Wizard wizard);
+    public abstract void visit(Pyromancer pyromancer);
 }

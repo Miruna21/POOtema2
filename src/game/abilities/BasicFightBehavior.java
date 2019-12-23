@@ -5,24 +5,24 @@ import game.players.Pyromancer;
 import game.players.Rogue;
 import game.players.Wizard;
 
-public class BasicFightBehavior implements FightBehavior{
+public final class BasicFightBehavior implements FightBehavior {
     @Override
-    public void changeFightPowers(Knight knight) {
+    public void changeFightPowers(final Knight knight) {
 
     }
 
     @Override
-    public void changeFightPowers(Rogue rogue) {
+    public void changeFightPowers(final Rogue rogue) {
 
     }
 
     @Override
-    public void changeFightPowers(Wizard wizard) {
+    public void changeFightPowers(final Wizard wizard) {
 
     }
 
     @Override
-    public void changeFightPowers(Pyromancer pyromancer) {
+    public void changeFightPowers(final Pyromancer pyromancer) {
 
     }
 }

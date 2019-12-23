@@ -71,7 +71,7 @@ public final class GameInputLoader {
                 int nrAngels = fs.nextInt();
                 nrAngelsPerRound.add(nrAngels);
                 Vector<Point> angelsRound = new Vector<>();
-                if (nrAngels == 0){
+                if (nrAngels == 0) {
                     angelsPos.add(angelsRound);
                     continue;
                 }

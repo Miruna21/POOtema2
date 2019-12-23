@@ -5,13 +5,13 @@ import game.players.Pyromancer;
 import game.players.Rogue;
 import game.players.Wizard;
 
-public class Spawner extends Angel {
+public final class Spawner extends Angel {
     private static final int HP_MODIFIER_FOR_KNIGHT = 200;
     private static final int HP_MODIFIER_FOR_PYROMANCER = 150;
     private static final int HP_MODIFIER_FOR_ROGUE = 180;
     private static final int HP_MODIFIER_FOR_WIZARD = 120;
 
-    public Spawner(int id, int xPos, int yPos) {
+    public Spawner(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
     }
 
@@ -20,9 +20,9 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void visit(Knight knight) {
+    public void visit(final Knight knight) {
         // daca jucatorul este mort
-        if (!knight.getLife()){
+        if (!knight.getLife()) {
             // readuc jucatorul la viata
             knight.setLife(true);
             // setez noul hp
@@ -33,9 +33,9 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void visit(Rogue rogue) {
+    public void visit(final Rogue rogue) {
         // daca jucatorul este mort
-        if (!rogue.getLife()){
+        if (!rogue.getLife()) {
             // readuc jucatorul la viata
             rogue.setLife(true);
             // setez noul hp
@@ -46,9 +46,9 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void visit(Wizard wizard) {
+    public void visit(final Wizard wizard) {
         // daca jucatorul este mort
-        if (!wizard.getLife()){
+        if (!wizard.getLife()) {
             // readuc jucatorul la viata
             wizard.setLife(true);
             // setez noul hp
@@ -59,9 +59,9 @@ public class Spawner extends Angel {
     }
 
     @Override
-    public void visit(Pyromancer pyromancer) {
+    public void visit(final Pyromancer pyromancer) {
         // daca jucatorul este mort
-        if (!pyromancer.getLife()){
+        if (!pyromancer.getLife()) {
             // readuc jucatorul la viata
             pyromancer.setLife(true);
             // setez noul hp

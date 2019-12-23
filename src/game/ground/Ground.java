@@ -19,8 +19,4 @@ public interface Ground {
     void removePlayerOnThisPlaceId(Integer playerOnThisPlaceId);
     boolean hasTwoPlayersOnThisPlace();
     ArrayList<Integer> getPlayersOnThisPlaceId();
-
-    ArrayList<Integer> getAngelsOnThisPlaceId();
-    void addAngelsOnThisPlaceId(final Integer angelOnThisPlaceId);
-    void removeAngelOnThisPlaceId(final Integer angelOnThisPlaceId);
 }

@@ -15,10 +15,10 @@ public final class Rogue extends Player {
         this.setHp(INITIAL_HP);
     }
 
-    public Ability getFirstAbility(){
+    public Ability getFirstAbility() {
         return backstab;
     }
-    public Ability getSecondAbility(){
+    public Ability getSecondAbility() {
         return paralysis;
     }
 
@@ -34,8 +34,8 @@ public final class Rogue extends Player {
     public void choosePlayerFightStrategy() {
         int currentHp = this.getHp();
         int maxLevelHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
-        float a = 1/7f * maxLevelHp;
-        float b =  1/5f * maxLevelHp;
+        float a = 1 / 7f * maxLevelHp;
+        float b =  1 / 5f * maxLevelHp;
         if (currentHp < a) {
             this.setFightBehavior(new DefenceFightBehavior());
             this.performFightBehavior();
@@ -100,7 +100,7 @@ public final class Rogue extends Player {
     }
 
     @Override
-    public void accept(Angel angel) {
+    public void accept(final Angel angel) {
         angel.visit(this);
     }
 }

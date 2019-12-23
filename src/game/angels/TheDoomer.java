@@ -5,8 +5,8 @@ import game.players.Pyromancer;
 import game.players.Rogue;
 import game.players.Wizard;
 
-public class TheDoomer extends Angel {
-    public TheDoomer(int id, int xPos, int yPos) {
+public final class TheDoomer extends Angel {
+    public TheDoomer(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
     }
 
@@ -15,7 +15,7 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public void visit(Knight knight) {
+    public void visit(final Knight knight) {
         // daca jucatorul este in viata
         if (knight.getLife()) {
             // omor jucatorul
@@ -26,17 +26,18 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public void visit(Rogue rogue) {
+    public void visit(final Rogue rogue) {
         // daca jucatorul este in viata
         if (rogue.getLife()) {
             // omor jucatorul
             rogue.setLife(false);
             // anunt magicianul de omorarea unui jucator de catre un inger
-            rogue.getEvent().anEventHappened(rogue, this, "kill");        }
+            rogue.getEvent().anEventHappened(rogue, this, "kill");
+        }
     }
 
     @Override
-    public void visit(Wizard wizard) {
+    public void visit(final Wizard wizard) {
         // daca jucatorul este in viata
         if (wizard.getLife()) {
             // omor jucatorul
@@ -47,7 +48,7 @@ public class TheDoomer extends Angel {
     }
 
     @Override
-    public void visit(Pyromancer pyromancer) {
+    public void visit(final Pyromancer pyromancer) {
         // daca jucatorul este in viata
         if (pyromancer.getLife()) {
             // omor jucatorul

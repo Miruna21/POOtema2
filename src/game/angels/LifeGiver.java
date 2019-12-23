@@ -6,13 +6,13 @@ import game.players.Rogue;
 import game.players.Wizard;
 
 
-public class LifeGiver extends Angel {
+public final class LifeGiver extends Angel {
     private static final int HP_MODIFIER_FOR_KNIGHT = 100;
     private static final int HP_MODIFIER_FOR_PYROMANCER = 80;
     private static final int HP_MODIFIER_FOR_ROGUE = 90;
     private static final int HP_MODIFIER_FOR_WIZARD = 120;
 
-    public LifeGiver(int id, int xPos, int yPos) {
+    public LifeGiver(final int id, final int xPos, final int yPos) {
         super(id, xPos, yPos);
     }
 
@@ -21,9 +21,9 @@ public class LifeGiver extends Angel {
     }
 
     @Override
-    public void visit(Knight knight) {
+    public void visit(final Knight knight) {
         // daca jucatorul este in viata
-        if (knight.getLife()){
+        if (knight.getLife()) {
             // cresc hp-ul jucatorului
             knight.addHp(HP_MODIFIER_FOR_KNIGHT);
             // anunt magicianul de ajutorul ingerului
@@ -32,9 +32,9 @@ public class LifeGiver extends Angel {
     }
 
     @Override
-    public void visit(Rogue rogue) {
+    public void visit(final Rogue rogue) {
         // daca jucatorul este in viata
-        if (rogue.getLife()){
+        if (rogue.getLife()) {
             // cresc hp-ul jucatorului
             rogue.addHp(HP_MODIFIER_FOR_ROGUE);
             // anunt magicianul de ajutorul ingerului
@@ -43,9 +43,9 @@ public class LifeGiver extends Angel {
     }
 
     @Override
-    public void visit(Wizard wizard) {
+    public void visit(final Wizard wizard) {
         // daca jucatorul este in viata
-        if (wizard.getLife()){
+        if (wizard.getLife()) {
             // cresc hp-ul jucatorului
             wizard.addHp(HP_MODIFIER_FOR_WIZARD);
             // anunt magicianul de ajutorul ingerului
@@ -54,9 +54,9 @@ public class LifeGiver extends Angel {
     }
 
     @Override
-    public void visit(Pyromancer pyromancer) {
+    public void visit(final Pyromancer pyromancer) {
         // daca jucatorul este in viata
-        if (pyromancer.getLife()){
+        if (pyromancer.getLife()) {
             // cresc hp-ul jucatorului
             pyromancer.addHp(HP_MODIFIER_FOR_PYROMANCER);
             // anunt magicianul de ajutorul ingerului

@@ -57,16 +57,15 @@ public final class Main {
         // crearea ingerilor
         for (int i = 0; i < nrRounds; i++) {
             int nrAngels = nrAngelsPerRound.get(i);
-            if (nrAngels == 0){
+            if (nrAngels == 0) {
                 angels.add(null);
                 continue;
             }
             Vector<Angel> angelsVector = new Vector<>();
             for (int j = 0; j < nrAngels; j++) {
                 String name = angelsNames.get(j);
-                int xPos = (int)angelsPos.get(i).get(j).getX();
-                int yPos = (int)angelsPos.get(i).get(j).getY();
-                gameMap.getMap().get(xPos).get(yPos).addAngelsOnThisPlaceId(j);
+                int xPos = (int) angelsPos.get(i).get(j).getX();
+                int yPos = (int) angelsPos.get(i).get(j).getY();
                 angelsVector.add(AngelsFactory.getInstance().createAngel(name, j, xPos, yPos));
                 // setez referinta catre obiectul event pentru toti ingerii
                 angelsVector.get(j).setEvent(event);

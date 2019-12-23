@@ -39,11 +39,11 @@ public abstract class Player {
         this.fightBehavior = null;
     }
 
-    public void setEvent(Subject event) {
+    public final void setEvent(final Subject event) {
         this.event = event;
     }
 
-    public Subject getEvent() {
+    public final Subject getEvent() {
         return event;
     }
 
@@ -150,10 +150,10 @@ public abstract class Player {
 
     public abstract String getName();
 
-    public final void addHp(final int hp2){
+    public final void addHp(final int hp2) {
         int sumHp = hp + hp2;
         int maxLeveleHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
-        if (sumHp > maxLeveleHp){
+        if (sumHp > maxLeveleHp) {
             this.hp = maxLeveleHp;
         } else {
             this.hp += hp2;
@@ -205,11 +205,11 @@ public abstract class Player {
         }
     }
     public abstract void choosePlayerFightStrategy();
-    public void setFightBehavior(FightBehavior fightBehavior) {
+    public final void setFightBehavior(final FightBehavior fightBehavior) {
         this.fightBehavior = fightBehavior;
     }
 
-    public FightBehavior getFightBehavior() {
+    public final FightBehavior getFightBehavior() {
         return fightBehavior;
     }
 

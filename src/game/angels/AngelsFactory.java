@@ -23,7 +23,7 @@ public final class AngelsFactory {
             case "SmallAngel": return new SmallAngel(id, xPos, yPos);
             case "Spawner": return new Spawner(id, xPos, yPos);
             case "TheDoomer": return new TheDoomer(id, xPos, yPos);
-            case "XpAngel": return new XpAngel(id, xPos, yPos);
+            case "XPAngel": return new XpAngel(id, xPos, yPos);
             default: return null;
         }
     }

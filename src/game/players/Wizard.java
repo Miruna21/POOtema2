@@ -15,10 +15,10 @@ public final class Wizard extends Player {
         this.setHp(INITIAL_HP);
     }
 
-    public Ability getFirstAbility(){
+    public Ability getFirstAbility() {
         return drain;
     }
-    public Ability getSecondAbility(){
+    public Ability getSecondAbility() {
         return deflect;
     }
 
@@ -34,8 +34,8 @@ public final class Wizard extends Player {
     public void choosePlayerFightStrategy() {
         int currentHp = this.getHp();
         int maxLevelHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
-        float a = 1/4f * maxLevelHp;
-        float b =  1/2f * maxLevelHp;
+        float a = 1 / 4f * maxLevelHp;
+        float b =  1 / 2f * maxLevelHp;
         if (currentHp < a) {
             this.setFightBehavior(new DefenceFightBehavior());
             this.performFightBehavior();
@@ -98,7 +98,7 @@ public final class Wizard extends Player {
     }
 
     @Override
-    public void accept(Angel angel) {
+    public void accept(final Angel angel) {
         angel.visit(this);
     }
 }

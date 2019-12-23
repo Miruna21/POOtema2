@@ -98,6 +98,7 @@ public final class Game {
             }
             lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
             lookForAngelsHelp(gameMap, players, angels.get(i));
+            gameOutput.writeOutputSchelet("\n");
         }
         gameOutput.writeOutputSchelet("~~ Results ~~");
     }
@@ -144,9 +145,9 @@ public final class Game {
         }
     }
     void lookForAngelsHelp(final GameMap gameMap, final Vector<Player> players,
-                           final Vector<Angel> angelsVector){
+                           final Vector<Angel> angelsVector) {
         // daca vectorul de ingeri pentru runda curenta nu e gol
-        if (angelsVector.size() != 0){
+        if (angelsVector != null) {
             for (Angel angel : angelsVector) {
                 ArrayList<Integer> playersOnThisPlaceId;
                 int angelId = angel.getId();
@@ -154,7 +155,8 @@ public final class Game {
                 int yPos = angel.getyPos();
                 // anunt magicianul de aparitia ingerului
                 angel.getEvent().anEventHappened(angel, "angelAppears");
-                playersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).getPlayersOnThisPlaceId();
+                playersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).
+                                                        getPlayersOnThisPlaceId();
                 // daca exista jucatori pe pozitia unde a aparut ingerul
                 if (playersOnThisPlaceId != null) {
                     for (int playerId : playersOnThisPlaceId) {

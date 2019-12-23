@@ -11,9 +11,9 @@ public class GameInput {
     private Vector<Character> playersTypeVector;
     private Vector<Vector<Integer>> playersPosMatrix;
     private Vector<Vector<Character>> movesMatrix;
-    Vector<Integer> nrAngelsPerRound;
-    Vector<String> angelsNames;
-    Vector<Vector<Point>>  angelsPos;
+    private Vector<Integer> nrAngelsPerRound;
+    private Vector<String> angelsNames;
+    private Vector<Vector<Point>>  angelsPos;
 
     public GameInput() {
         mapLength = 0;

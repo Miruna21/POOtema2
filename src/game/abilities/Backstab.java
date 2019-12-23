@@ -24,7 +24,7 @@ public final class Backstab implements Ability {
     private float variablePyromancerVictimModifier;
     private float variableWizardVictimModifier;
 
-    public Backstab(){
+    public Backstab() {
         variableRogueVictimModifier = ROGUE_VICTIM_MODIFIER;
         variableKnightVictimModifier = KNIGHT_VICTIM_MODIFIER;
         variablePyromancerVictimModifier = PYROMANCER_VICTIM_MODIFIER;
@@ -32,19 +32,19 @@ public final class Backstab implements Ability {
     }
 
     @Override
-    public void changeRogueVictimModifier(final float number){
+    public void changeRogueVictimModifier(final float number) {
         variableRogueVictimModifier += number;
     }
     @Override
-    public void changeKnightVictimModifier(final float number){
+    public void changeKnightVictimModifier(final float number) {
         variableKnightVictimModifier += number;
     }
     @Override
-    public void changePyromancerVictimModifier(final float number){
+    public void changePyromancerVictimModifier(final float number) {
         variablePyromancerVictimModifier += number;
     }
     @Override
-    public void changeWizardVictimModifier(final float number){
+    public void changeWizardVictimModifier(final float number) {
         variableWizardVictimModifier += number;
     }
 
