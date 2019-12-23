@@ -1,8 +1,6 @@
 package game.players;
 
-import game.abilities.Ability;
-import game.abilities.Backstab;
-import game.abilities.Paralysis;
+import game.abilities.*;
 import game.angels.Angel;
 import game.ground.Ground;
 
@@ -30,6 +28,26 @@ public final class Rogue extends Player {
 
     public String getName() {
         return "Rogue";
+    }
+
+    @Override
+    public void choosePlayerFightStrategy() {
+        int currentHp = this.getHp();
+        int maxLevelHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
+        float a = 1/7f * maxLevelHp;
+        float b =  1/5f * maxLevelHp;
+        if (currentHp < a) {
+            this.setFightBehavior(new DefenceFightBehavior());
+            this.performFightBehavior();
+        } else if ((currentHp > a) && (currentHp < b)) {
+            this.setFightBehavior(new AtackFightBehavior());
+            this.performFightBehavior();
+        }
+    }
+
+    @Override
+    public void performFightBehavior() {
+        this.getFightBehavior().changeFightPowers(this);
     }
 
     @Override

@@ -177,30 +177,43 @@ public abstract class Player {
                 + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                         && (this.level < AuxiliaryConstants.MAX_LEVEL)) {
             newlevel = this.level + 1;
+            this.setLevel(newlevel);
+            event.anEventHappened(this, "levelUp");
             if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                     + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                             && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                 newlevel++;
+                this.setLevel(newlevel);
+                event.anEventHappened(this, "levelUp");
                 if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                         + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                                 && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                     newlevel++;
+                    this.setLevel(newlevel);
+                    event.anEventHappened(this, "levelUp");
                     if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                             + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                                     && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                         newlevel++;
+                        this.setLevel(newlevel);
+                        event.anEventHappened(this, "levelUp");
                     }
                 }
             }
-            this.setLevel(newlevel);
             int newHp = initialHp + plusHpPerLevel * newlevel;
             this.setHp(newHp);
         }
     }
-
+    public abstract void choosePlayerFightStrategy();
     public void setFightBehavior(FightBehavior fightBehavior) {
         this.fightBehavior = fightBehavior;
     }
+
+    public FightBehavior getFightBehavior() {
+        return fightBehavior;
+    }
+
+    public abstract void performFightBehavior();
 
     public abstract int getInitialHp();
     public abstract Character getRace();

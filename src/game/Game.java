@@ -44,6 +44,8 @@ public final class Game {
                     players.get(j).subHp(overtimeDamage);
                     players.get(j).subNrRoundsIgniteHit(1);
                 }
+                // aleg strategia de lupta pentru jucator
+                players.get(currentPlayerId).choosePlayerFightStrategy();
                 switch (move) {
                     case 'U':
                         gameMap.getMap().get(xPos).get(yPos).

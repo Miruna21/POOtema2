@@ -1,8 +1,6 @@
 package game.players;
 
-import game.abilities.Ability;
-import game.abilities.Deflect;
-import game.abilities.Drain;
+import game.abilities.*;
 import game.angels.Angel;
 import game.ground.Ground;
 
@@ -30,6 +28,26 @@ public final class Wizard extends Player {
 
     public String getName() {
         return "Wizard";
+    }
+
+    @Override
+    public void choosePlayerFightStrategy() {
+        int currentHp = this.getHp();
+        int maxLevelHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
+        float a = 1/4f * maxLevelHp;
+        float b =  1/2f * maxLevelHp;
+        if (currentHp < a) {
+            this.setFightBehavior(new DefenceFightBehavior());
+            this.performFightBehavior();
+        } else if ((currentHp > a) && (currentHp < b)) {
+            this.setFightBehavior(new AtackFightBehavior());
+            this.performFightBehavior();
+        }
+    }
+
+    @Override
+    public void performFightBehavior() {
+        this.getFightBehavior().changeFightPowers(this);
     }
 
     @Override
