@@ -7,35 +7,49 @@ import writer.GameOutput;
 public class TheGreatMagician implements Observer, Display{
     private static TheGreatMagician instance = null;
     private GameOutput gameOutput;
+    Subject subject;
 
-    private TheGreatMagician(final GameOutput gameOutput){
+    private TheGreatMagician(final GameOutput gameOutput, final Subject subject){
+        this.subject = subject;
         this.gameOutput = gameOutput;
+        subject.registerObserver(this);
     }
-    public static TheGreatMagician getInstance(final GameOutput gameOutput) {
+    public static TheGreatMagician getInstance(final GameOutput gameOutput, final Subject subject) {
         if (instance == null) {
-            instance = new TheGreatMagician(gameOutput);
+            instance = new TheGreatMagician(gameOutput, subject);
         }
         return instance;
     }
 
     @Override
     public void update(final Player victim, final Player attacker, final String event) {
-        switch(event) {
-            case "fightKilled" : printKilledPlayerInTheFight(victim, attacker);
-            case "levelUp" : printLevelUp(attacker);
-            default :
+        if ("fightKilled".equals(event)) {
+            printKilledPlayerInTheFight(victim, attacker);
         }
     }
 
     @Override
     public void update(final Player player, final Angel angel, final String event) {
         switch(event){
-            case "angelAppears" : printAngelApparition(angel);
             case "kill" : printKilledPlayerByAngel(player);
             case "revive" : printRevivedPlayerByAngel(player);
             case "help" : printTheHelpOfAngel(player, angel);
             case "complicate" : printTheComplicationOfAPlayer(player, angel);
             default :
+        }
+    }
+
+    @Override
+    public void update(Angel angel, String event) {
+        if (event.equals("angelAppears")) {
+            printAngelApparition(angel);
+        }
+    }
+
+    @Override
+    public void update(Player player, String event) {
+        if (event.equals("levelUp")) {
+            printLevelUp(player);
         }
     }
 

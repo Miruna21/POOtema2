@@ -26,6 +26,8 @@ public class DamageAngel extends Angel {
             // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
             knight.getFirstAbility().changeKnightVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
             knight.getSecondAbility().changeKnightVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
+            // anunt magicianul de ajutorul ingerului
+            knight.getEvent().anEventHappened(knight, this, "help");
         }
     }
 
@@ -36,6 +38,8 @@ public class DamageAngel extends Angel {
             // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
             rogue.getFirstAbility().changeRogueVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
             rogue.getSecondAbility().changeRogueVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
+            // anunt magicianul de ajutorul ingerului
+            rogue.getEvent().anEventHappened(rogue, this, "help");
         }
     }
 
@@ -46,6 +50,8 @@ public class DamageAngel extends Angel {
             // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
             wizard.getFirstAbility().changeWizardVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
             wizard.getSecondAbility().changeWizardVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
+            // anunt magicianul de ajutorul ingerului
+            wizard.getEvent().anEventHappened(wizard, this, "help");
         }
     }
 
@@ -56,6 +62,8 @@ public class DamageAngel extends Angel {
             // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
             pyromancer.getFirstAbility().changePyromancerVictimModifier(DAMAGE_MODIFIER_FOR_PYROMANCER);
             pyromancer.getSecondAbility().changePyromancerVictimModifier(DAMAGE_MODIFIER_FOR_PYROMANCER);
+            // anunt magicianul de ajutorul ingerului
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
         }
     }
 }

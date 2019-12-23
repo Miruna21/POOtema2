@@ -22,6 +22,8 @@ public class DarkAngel extends Angel {
         if (knight.getLife()){
             // scad hp-ul jucatorului
             knight.subHp(HP_MODIFIER_FOR_KNIGHT);
+            // anunt magicianul de lovitura ingerului
+            knight.getEvent().anEventHappened(knight, this, "hit");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(knight, this);
         }
@@ -33,6 +35,8 @@ public class DarkAngel extends Angel {
         if (rogue.getLife()){
             // scad hp-ul jucatorului
             rogue.subHp(HP_MODIFIER_FOR_ROGUE);
+            // anunt magicianul de lovitura ingerului
+            rogue.getEvent().anEventHappened(rogue, this, "hit");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(rogue, this);
         }
@@ -44,6 +48,8 @@ public class DarkAngel extends Angel {
         if (wizard.getLife()){
             // scad hp-ul jucatorului
             wizard.subHp(HP_MODIFIER_FOR_WIZARD);
+            // anunt magicianul de lovitura ingerului
+            wizard.getEvent().anEventHappened(wizard, this, "hit");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(wizard, this);
         }
@@ -55,15 +61,17 @@ public class DarkAngel extends Angel {
         if (pyromancer.getLife()){
             // scad hp-ul jucatorului
             pyromancer.subHp(HP_MODIFIER_FOR_PYROMANCER);
+            // anunt magicianul de lovitura ingerului
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "hit");
             // verific daca ingerul a omorat jucatorul
             verifyPlayerKilledByAngel(pyromancer, this);
         }
     }
 
-    private void verifyPlayerKilledByAngel(final Player attacker, final Angel angel){
+    private void verifyPlayerKilledByAngel(final Player player, final Angel angel){
         // daca jucatorul a fost omorat de inger, anunt magicianul
-        if (!attacker.getLife()){
-
+        if (!player.getLife()){
+            player.getEvent().anEventHappened(player, angel, "kill");
         }
     }
 }

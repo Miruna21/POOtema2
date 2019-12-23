@@ -1,6 +1,7 @@
 package game.players;
 
 import constants.AuxiliaryConstants;
+import game.Subject;
 import game.abilities.FightBehavior;
 import game.angels.Angel;
 import game.ground.Ground;
@@ -20,6 +21,7 @@ public abstract class Player {
     private int overtimeDamage;
     private int nrRoundsIgniteHit;
     private FightBehavior fightBehavior;
+    private Subject event;
 
     public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
@@ -35,6 +37,14 @@ public abstract class Player {
         this.overtimeDamage = 0;
         this.nrRoundsIgniteHit = 0;
         this.fightBehavior = null;
+    }
+
+    public void setEvent(Subject event) {
+        this.event = event;
+    }
+
+    public Subject getEvent() {
+        return event;
     }
 
     public final int getNrRoundsParalyzed() {

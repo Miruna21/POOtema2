@@ -28,6 +28,8 @@ public class LevelUpAngel extends Angel {
             knight.getSecondAbility().changeKnightVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
             // ofer Xp jucatorului pentru a trece la nivelul urmator
             // TODO
+            // anunt magicianul de ajutorul ingerului
+            knight.getEvent().anEventHappened(knight, this, "help");
         }
     }
 
@@ -40,6 +42,8 @@ public class LevelUpAngel extends Angel {
             rogue.getSecondAbility().changeRogueVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
             // ofer Xp jucatorului pentru a trece la nivelul urmator
             // TODO
+            // anunt magicianul de ajutorul ingerului
+            rogue.getEvent().anEventHappened(rogue, this, "help");
         }
     }
 
@@ -52,6 +56,8 @@ public class LevelUpAngel extends Angel {
             wizard.getSecondAbility().changeWizardVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
             // ofer Xp jucatorului pentru a trece la nivelul urmator
             // TODO
+            // anunt magicianul de ajutorul ingerului
+            wizard.getEvent().anEventHappened(wizard, this, "help");
         }
     }
 
@@ -64,6 +70,8 @@ public class LevelUpAngel extends Angel {
             pyromancer.getSecondAbility().changePyromancerVictimModifier(DAMAGE_MODIFIER_FOR_PYROMANCER);
             // ofer Xp jucatorului pentru a trece la nivelul urmator
             // TODO
+            // anunt magicianul de ajutorul ingerului
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
         }
     }
 }

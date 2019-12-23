@@ -1,6 +1,7 @@
 package main;
 
-import game.Game;
+import game.*;
+import game.Event;
 import game.angels.Angel;
 import game.angels.AngelsFactory;
 import game.ground.GameMap;
@@ -11,7 +12,6 @@ import reader.GameInputLoader;
 import writer.GameOutput;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.Vector;
 
 public final class Main {
@@ -19,7 +19,7 @@ public final class Main {
         // just to trick checkstyle
     }
 
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) {
         GameInputLoader gameInputLoader = new GameInputLoader(args[0], args[1]);
         GameInput gameInput = gameInputLoader.load();
         int mapLength = gameInput.getMapLength();
@@ -37,6 +37,9 @@ public final class Main {
         Game game = new Game();
         Vector<Player> players = new Vector<>(nrPlayers);
         Vector<Vector<Angel>> angels = new Vector<>();
+        GameOutput myFileWriter = new GameOutput(args[0], args[1]);
+        Subject event = new Event();
+        Observer observer = TheGreatMagician.getInstance(myFileWriter, event);
 
         // crearea hartii
         GameMap gameMap = GameMap.getInstance();
@@ -48,6 +51,8 @@ public final class Main {
             int yPos = playersPosMatrix.get(i).get(1);
             gameMap.getMap().get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
             players.add(PlayerFactory.getInstance().createPlayer(character, i, xPos, yPos));
+            // setez referinta catre obiectul event pentru toti jucatorii
+            players.get(i).setEvent(event);
         }
         // crearea ingerilor
         for (int i = 0; i < nrRounds; i++) {
@@ -63,10 +68,11 @@ public final class Main {
                 int yPos = (int)angelsPos.get(i).get(j).getY();
                 gameMap.getMap().get(xPos).get(yPos).addAngelsOnThisPlaceId(j);
                 angelsVector.add(AngelsFactory.getInstance().createAngel(name, j, xPos, yPos));
+                // setez referinta catre obiectul event pentru toti ingerii
+                angelsVector.get(j).setEvent(event);
             }
             angels.add(angelsVector);
         }
-        GameOutput myFileWriter = new GameOutput(args[0], args[1]);
         // mutarea jucatorilor pe harta
         game.movePlayersOnMapAndPlay(nrRounds, nrPlayers, movesMatrix, gameMap,
                 mapLength, mapWidth, players, angels, myFileWriter);

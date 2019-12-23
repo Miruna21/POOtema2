@@ -33,6 +33,8 @@ public class SmallAngel extends Angel {
             knight.getSecondAbility().changeKnightVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
             // cresc hp-ul jucatorului
             knight.addHp(HP_MODIFIER_FOR_KNIGHT);
+            // anunt magicianul de ajutorul ingerului
+            knight.getEvent().anEventHappened(knight, this, "help");
         }
     }
 
@@ -45,6 +47,8 @@ public class SmallAngel extends Angel {
             rogue.getSecondAbility().changeRogueVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
             // cresc hp-ul jucatorului
             rogue.addHp(HP_MODIFIER_FOR_ROGUE);
+            // anunt magicianul de ajutorul ingerului
+            rogue.getEvent().anEventHappened(rogue, this, "help");
         }
     }
 
@@ -57,6 +61,8 @@ public class SmallAngel extends Angel {
             wizard.getSecondAbility().changeWizardVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
             // cresc hp-ul jucatorului
             wizard.addHp(HP_MODIFIER_FOR_WIZARD);
+            // anunt magicianul de ajutorul ingerului
+            wizard.getEvent().anEventHappened(wizard, this, "help");
         }
     }
 
@@ -69,6 +75,8 @@ public class SmallAngel extends Angel {
             pyromancer.getSecondAbility().changePyromancerVictimModifier(DAMAGE_MODIFIER_FOR_PYROMANCER);
             // cresc hp-ul jucatorului
             pyromancer.addHp(HP_MODIFIER_FOR_PYROMANCER);
+            // anunt magicianul de ajutorul ingerului
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
         }
     }
 }

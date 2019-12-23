@@ -17,7 +17,6 @@ public final class Game {
                                         final int mapWidth, final Vector<Player> players,
                                         final Vector<Vector<Angel>> angels,
                                         final GameOutput gameOutput) {
-        Observer observer = TheGreatMagician.getInstance(gameOutput);
         for (int i = 0; i < nrRounds; i++) {
             gameOutput.writeOutputSchelet("~~ Round " + (i + 1) + " ~~");
             for (int j = 0; j < nrPlayers; j++) {
@@ -95,14 +94,13 @@ public final class Game {
                     default:
                 }
             }
-            lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players, observer);
-            lookForAngelsHelp(gameMap, mapLength, mapWidth, players, angels.get(i), observer);
+            lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
+            lookForAngelsHelp(gameMap, players, angels.get(i));
         }
     }
     private void lookForBattlesAndStartTheFight(final GameMap gameMap,
                                                 final int mapLength, final int mapWidth,
-                                                final Vector<Player> players,
-                                                final Observer observer) {
+                                                final Vector<Player> players) {
         for (int i = 0; i < mapLength; i++) {
             for (int j = 0; j < mapWidth; j++) {
                 if (gameMap.getMap().get(i).get(j).hasTwoPlayersOnThisPlace()) {
@@ -134,17 +132,16 @@ public final class Game {
                         }
                         // daca a murit un jucator in lupta, ofer xp atacatorului
                         verifyVictimDeadAfterFight(players.get(firstIdPlayer),
-                                players.get(secondIdPlayer), observer);
+                                players.get(secondIdPlayer));
                         verifyVictimDeadAfterFight(players.get(secondIdPlayer),
-                                players.get(firstIdPlayer), observer);
+                                players.get(firstIdPlayer));
                     }
                 }
             }
         }
     }
-    void lookForAngelsHelp(final GameMap gameMap, final int mapLenght, final int mapWidth,
-                           final Vector<Player> players, final Vector<Angel> angelsVector,
-                           final Observer observer){
+    void lookForAngelsHelp(final GameMap gameMap, final Vector<Player> players,
+                           final Vector<Angel> angelsVector){
         // daca vectorul de ingeri pentru runda curenta nu e gol
         if (angelsVector.size() != 0){
             for (Angel angel : angelsVector) {
@@ -153,7 +150,7 @@ public final class Game {
                 int xPos = angel.getxPos();
                 int yPos = angel.getyPos();
                 // anunt magicianul de aparitia ingerului
-                // TODO
+                angel.getEvent().anEventHappened(angel, "angelAppears");
                 playersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).getPlayersOnThisPlaceId();
                 // daca exista jucatori pe pozitia unde a aparut ingerul
                 if (playersOnThisPlaceId != null) {
@@ -166,11 +163,10 @@ public final class Game {
         }
     }
 
-    private void verifyVictimDeadAfterFight(final Player attacker, final Player victim,
-                                            final Observer observer) {
+    private void verifyVictimDeadAfterFight(final Player attacker, final Player victim) {
         if (!victim.getLife()) {
             // daca atacatorul a omorat victima, anunt magicianul
-
+            attacker.getEvent().anEventHappened(victim, attacker, "fightKilled");
             int max;
             int a = 0;
             int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
@@ -181,7 +177,6 @@ public final class Game {
             if (newXpWinner != xpWinner) {
                 attacker.gainXp(newXpWinner);
             }
-
         }
     }
 }

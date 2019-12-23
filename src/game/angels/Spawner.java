@@ -27,6 +27,8 @@ public class Spawner extends Angel {
             knight.setLife(true);
             // setez noul hp
             knight.setHp(HP_MODIFIER_FOR_KNIGHT);
+            // anunt magicianul de aducerea la viata a unui jucator de catre un inger
+            knight.getEvent().anEventHappened(knight, this, "revive");
         }
     }
 
@@ -38,6 +40,8 @@ public class Spawner extends Angel {
             rogue.setLife(true);
             // setez noul hp
             rogue.setHp(HP_MODIFIER_FOR_ROGUE);
+            // anunt magicianul de aducerea la viata a unui jucator de catre un inger
+            rogue.getEvent().anEventHappened(rogue, this, "revive");
         }
     }
 
@@ -49,6 +53,8 @@ public class Spawner extends Angel {
             wizard.setLife(true);
             // setez noul hp
             wizard.setHp(HP_MODIFIER_FOR_WIZARD);
+            // anunt magicianul de aducerea la viata a unui jucator de catre un inger
+            wizard.getEvent().anEventHappened(wizard, this, "revive");
         }
     }
 
@@ -60,6 +66,8 @@ public class Spawner extends Angel {
             pyromancer.setLife(true);
             // setez noul hp
             pyromancer.setHp(HP_MODIFIER_FOR_PYROMANCER);
+            // anunt magicianul de aducerea la viata a unui jucator de catre un inger
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "revive");
         }
     }
 }

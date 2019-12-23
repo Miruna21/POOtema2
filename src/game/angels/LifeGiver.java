@@ -26,6 +26,8 @@ public class LifeGiver extends Angel {
         if (knight.getLife()){
             // cresc hp-ul jucatorului
             knight.addHp(HP_MODIFIER_FOR_KNIGHT);
+            // anunt magicianul de ajutorul ingerului
+            knight.getEvent().anEventHappened(knight, this, "help");
         }
     }
 
@@ -35,6 +37,8 @@ public class LifeGiver extends Angel {
         if (rogue.getLife()){
             // cresc hp-ul jucatorului
             rogue.addHp(HP_MODIFIER_FOR_ROGUE);
+            // anunt magicianul de ajutorul ingerului
+            rogue.getEvent().anEventHappened(rogue, this, "help");
         }
     }
 
@@ -44,6 +48,8 @@ public class LifeGiver extends Angel {
         if (wizard.getLife()){
             // cresc hp-ul jucatorului
             wizard.addHp(HP_MODIFIER_FOR_WIZARD);
+            // anunt magicianul de ajutorul ingerului
+            wizard.getEvent().anEventHappened(wizard, this, "help");
         }
     }
 
@@ -53,6 +59,8 @@ public class LifeGiver extends Angel {
         if (pyromancer.getLife()){
             // cresc hp-ul jucatorului
             pyromancer.addHp(HP_MODIFIER_FOR_PYROMANCER);
+            // anunt magicianul de ajutorul ingerului
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
         }
     }
 }

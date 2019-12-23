@@ -20,7 +20,8 @@ public class TheDoomer extends Angel {
         if (knight.getLife()) {
             // omor jucatorul
             knight.setLife(false);
-            // anunt magicianul
+            // anunt magicianul de omorarea unui jucator de catre un inger
+            knight.getEvent().anEventHappened(knight, this, "kill");
         }
     }
 
@@ -30,8 +31,8 @@ public class TheDoomer extends Angel {
         if (rogue.getLife()) {
             // omor jucatorul
             rogue.setLife(false);
-            // anunt magicianul
-        }
+            // anunt magicianul de omorarea unui jucator de catre un inger
+            rogue.getEvent().anEventHappened(rogue, this, "kill");        }
     }
 
     @Override
@@ -40,7 +41,8 @@ public class TheDoomer extends Angel {
         if (wizard.getLife()) {
             // omor jucatorul
             wizard.setLife(false);
-            // anunt magicianul
+            // anunt magicianul de omorarea unui jucator de catre un inger
+            wizard.getEvent().anEventHappened(wizard, this, "kill");
         }
     }
 
@@ -50,7 +52,8 @@ public class TheDoomer extends Angel {
         if (pyromancer.getLife()) {
             // omor jucatorul
             pyromancer.setLife(false);
-            // anunt magicianul
+            // anunt magicianul de omorarea unui jucator de catre un inger
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "kill");
         }
     }
 }

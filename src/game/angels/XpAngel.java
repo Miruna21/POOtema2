@@ -25,6 +25,8 @@ public class XpAngel extends Angel {
         if (knight.getLife()){
             // cresc xp-ul jucatorului
             knight.gainXp(XP_MODIFIER_FOR_KNIGHT);
+            // anunt magicianul de ajutorul ingerului
+            knight.getEvent().anEventHappened(knight, this, "help");
         }
     }
 
@@ -34,6 +36,8 @@ public class XpAngel extends Angel {
         if (rogue.getLife()){
             // cresc xp-ul jucatorului
             rogue.gainXp(XP_MODIFIER_FOR_ROGUE);
+            // anunt magicianul de ajutorul ingerului
+            rogue.getEvent().anEventHappened(rogue, this, "help");
         }
     }
 
@@ -43,6 +47,8 @@ public class XpAngel extends Angel {
         if (wizard.getLife()){
             // cresc xp-ul jucatorului
             wizard.gainXp(XP_MODIFIER_FOR_WIZARD);
+            // anunt magicianul de ajutorul ingerului
+            wizard.getEvent().anEventHappened(wizard, this, "help");
         }
     }
 
@@ -52,6 +58,8 @@ public class XpAngel extends Angel {
         if (pyromancer.getLife()){
             // cresc xp-ul jucatorului
             pyromancer.gainXp(XP_MODIFIER_FOR_PYROMANCER);
+            // anunt magicianul de ajutorul ingerului
+            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
         }
     }
 }
