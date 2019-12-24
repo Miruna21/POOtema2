@@ -22,8 +22,8 @@ public final class AtackFightBehavior implements FightBehavior {
         int newHp = (int) (knight.getHp() - HP_PROCENT_KNIGHT_MODIFIER * knight.getHp());
         knight.setHp(newHp);
         // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-        knight.getFirstAbility().changeKnightVictimModifier(KNIGHT_ATTACKER_MODIFIER);
-        knight.getSecondAbility().changeKnightVictimModifier(KNIGHT_ATTACKER_MODIFIER);
+        knight.getFirstAbility().changeAllVictimModifier(KNIGHT_ATTACKER_MODIFIER);
+        knight.getSecondAbility().changeAllVictimModifier(KNIGHT_ATTACKER_MODIFIER);
     }
 
     @Override
@@ -32,8 +32,8 @@ public final class AtackFightBehavior implements FightBehavior {
         int newHp = (int) (rogue.getHp() - HP_PROCENT_ROGUE_MODIFIER * rogue.getHp());
         rogue.setHp(newHp);
         // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-        rogue.getFirstAbility().changeKnightVictimModifier(ROGUE_ATTACKER_MODIFIER);
-        rogue.getSecondAbility().changeKnightVictimModifier(ROGUE_ATTACKER_MODIFIER);
+        rogue.getFirstAbility().changeAllVictimModifier(ROGUE_ATTACKER_MODIFIER);
+        rogue.getSecondAbility().changeAllVictimModifier(ROGUE_ATTACKER_MODIFIER);
     }
 
     @Override
@@ -42,8 +42,8 @@ public final class AtackFightBehavior implements FightBehavior {
         int newHp = (int) (wizard.getHp() - HP_PROCENT_WIZARD_MODIFIER * wizard.getHp());
         wizard.setHp(newHp);
         // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-        wizard.getFirstAbility().changeKnightVictimModifier(WIZARD_ATTACKER_MODIFIER);
-        wizard.getSecondAbility().changeKnightVictimModifier(WIZARD_ATTACKER_MODIFIER);
+        wizard.getFirstAbility().changeAllVictimModifier(WIZARD_ATTACKER_MODIFIER);
+        wizard.getSecondAbility().changeAllVictimModifier(WIZARD_ATTACKER_MODIFIER);
     }
 
     @Override
@@ -53,7 +53,7 @@ public final class AtackFightBehavior implements FightBehavior {
                 * pyromancer.getHp());
         pyromancer.setHp(newHp);
         // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-        pyromancer.getFirstAbility().changeKnightVictimModifier(PYROMANCER_ATTACKER_MODIFIER);
-        pyromancer.getSecondAbility().changeKnightVictimModifier(PYROMANCER_ATTACKER_MODIFIER);
+        pyromancer.getFirstAbility().changeAllVictimModifier(PYROMANCER_ATTACKER_MODIFIER);
+        pyromancer.getSecondAbility().changeAllVictimModifier(PYROMANCER_ATTACKER_MODIFIER);
     }
 }

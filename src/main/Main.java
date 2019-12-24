@@ -32,7 +32,7 @@ public final class Main {
         Vector<Vector<Integer>> playersPosMatrix = gameInput.getPlayersPosMatrix();
         Vector<Vector<Character>> movesMatrix = gameInput.getMovesMatrix();
         Vector<Integer> nrAngelsPerRound = gameInput.getNrAngelsPerRound();
-        Vector<String> angelsNames = gameInput.getAngelsNames();
+        Vector<Vector<String>> angelsNames = gameInput.getAngelsNames();
         Vector<Vector<Point>> angelsPos = gameInput.getAngelsPos();
 
         Game game = new Game();
@@ -64,7 +64,7 @@ public final class Main {
             }
             Vector<Angel> angelsVector = new Vector<>();
             for (int j = 0; j < nrAngels; j++) {
-                String name = angelsNames.get(j);
+                String name = angelsNames.get(i).get(j);
                 int xPos = (int) angelsPos.get(i).get(j).getX();
                 int yPos = (int) angelsPos.get(i).get(j).getY();
                 angelsVector.add(AngelsFactory.getInstance().createAngel(name, j, xPos, yPos));

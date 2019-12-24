@@ -29,19 +29,10 @@ public final class Slam implements Ability {
     }
 
     @Override
-    public void changeRogueVictimModifier(final float number) {
-        variableRogueVictimModifier += number;
-    }
-    @Override
-    public void changeKnightVictimModifier(final float number) {
+    public void changeAllVictimModifier(float number) {
         variableKnightVictimModifier += number;
-    }
-    @Override
-    public void changePyromancerVictimModifier(final float number) {
+        variableRogueVictimModifier += number;
         variablePyromancerVictimModifier += number;
-    }
-    @Override
-    public void changeWizardVictimModifier(final float number) {
         variableWizardVictimModifier += number;
     }
 

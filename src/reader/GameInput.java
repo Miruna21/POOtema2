@@ -12,7 +12,7 @@ public class GameInput {
     private Vector<Vector<Integer>> playersPosMatrix;
     private Vector<Vector<Character>> movesMatrix;
     private Vector<Integer> nrAngelsPerRound;
-    private Vector<String> angelsNames;
+    private Vector<Vector<String>> angelsNames;
     private Vector<Vector<Point>>  angelsPos;
 
     public GameInput() {
@@ -34,7 +34,7 @@ public class GameInput {
                      final int nrPlayers, final Vector<Character> playersTypeVector,
                      final Vector<Vector<Integer>> playersPosMatrix,
                      final int nrRounds, final Vector<Vector<Character>> movesMatrix,
-                     final Vector<Integer> nrAngelsPerRound, final Vector<String> angelsNames,
+                     final Vector<Integer> nrAngelsPerRound, final Vector<Vector<String>> angelsNames,
                      final Vector<Vector<Point>> angelsPos) {
         this.mapLength = mapLength;
         this.mapWidth = mapWidth;
@@ -85,7 +85,7 @@ public class GameInput {
         return nrAngelsPerRound;
     }
 
-    public final Vector<String> getAngelsNames() {
+    public final Vector<Vector<String>> getAngelsNames() {
         return angelsNames;
     }
 

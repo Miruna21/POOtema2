@@ -173,25 +173,25 @@ public abstract class Player {
         int initialHp = this.getInitialHp();
         int plusHpPerLevel = this.getPlusHpPerLevel();
         int newlevel;
-        if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+        if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                 + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                         && (this.level < AuxiliaryConstants.MAX_LEVEL)) {
             newlevel = this.level + 1;
             this.setLevel(newlevel);
             event.anEventHappened(this, "levelUp");
-            if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+            if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                     + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                             && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                 newlevel++;
                 this.setLevel(newlevel);
                 event.anEventHappened(this, "levelUp");
-                if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                         + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                                 && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                     newlevel++;
                     this.setLevel(newlevel);
                     event.anEventHappened(this, "levelUp");
-                    if ((this.xp > (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                    if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                             + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
                                     && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
                         newlevel++;

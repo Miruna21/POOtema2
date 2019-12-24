@@ -1,6 +1,7 @@
 package game;
 
 import game.angels.Angel;
+import game.angels.LevelUpAngel;
 import game.ground.GameMap;
 import game.ground.Ground;
 import game.players.Player;
@@ -34,12 +35,14 @@ public final class Game {
                 // daca nu se poate misca in runda curenta
                 if (!players.get(j).getMovPermission()) {
                     players.get(j).setMovPermission(true);
+                    players.get(currentPlayerId).choosePlayerFightStrategy();
                     continue;
                 }
                 if (players.get(j).getNrRoundsParalyzed() != 0) {
                     int overtimeDamage = players.get(j).getOvertimeDamage();
                     players.get(j).subHp(overtimeDamage);
                     players.get(j).subNrRoundsParalysed(1);
+                    players.get(currentPlayerId).choosePlayerFightStrategy();
                     continue;
                 }
                 if (players.get(j).getNrRoundsIgniteHit() != 0) {
@@ -101,7 +104,7 @@ public final class Game {
             }
             lookForBattlesAndStartTheFight(gameMap, mapLength, mapWidth, players);
             lookForAngelsHelp(gameMap, players, angels.get(i));
-            gameOutput.writeOutputFrame("\n");
+            gameOutput.writeOutputFrame("");
         }
         gameOutput.writeOutputFrame("~~ Results ~~");
     }

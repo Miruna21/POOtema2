@@ -24,21 +24,12 @@ public final class Deflect implements Ability {
         variableKnightVictimModifier = KNIGHT_VICTIM_MODIFIER;
         variablePyromancerVictimModifier = PYROMANCER_VICTIM_MODIFIER;
     }
-    @Override
-    public void changeRogueVictimModifier(final float number) {
-        variableRogueVictimModifier += number;
-    }
-    @Override
-    public void changeKnightVictimModifier(final float number) {
-        variableKnightVictimModifier += number;
-    }
-    @Override
-    public void changePyromancerVictimModifier(final float number) {
-        variablePyromancerVictimModifier += number;
-    }
-    @Override
-    public void changeWizardVictimModifier(final float number) {
 
+    @Override
+    public void changeAllVictimModifier(float number) {
+        variableKnightVictimModifier += number;
+        variableRogueVictimModifier += number;
+        variablePyromancerVictimModifier += number;
     }
 
     @Override

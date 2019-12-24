@@ -30,19 +30,9 @@ public final class Execute implements Ability {
     }
 
     @Override
-    public void changeRogueVictimModifier(final float number) {
+    public void changeAllVictimModifier(float number) {
         variableRogueVictimModifier += number;
-    }
-    @Override
-    public void changeKnightVictimModifier(final float number) {
-        // modificatorul de rasa pentru Knight ramane 0%
-    }
-    @Override
-    public void changePyromancerVictimModifier(final float number) {
         variablePyromancerVictimModifier += number;
-    }
-    @Override
-    public void changeWizardVictimModifier(final float number) {
         variableWizardVictimModifier += number;
     }
 

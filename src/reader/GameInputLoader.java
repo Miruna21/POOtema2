@@ -23,7 +23,7 @@ public final class GameInputLoader {
         Vector<Vector<Integer>> playersPosMatrix = new Vector<>();
         Vector<Vector<Character>> movesMatrix = new Vector<>();
         Vector<Integer> nrAngelsPerRound = new Vector<>();
-        Vector<String> angelsNames = new Vector<>();
+        Vector<Vector<String>> angelsNames = new Vector<>();
         Vector<Vector<Point>> angelsPos = new Vector<>();
 
         try {
@@ -71,14 +71,16 @@ public final class GameInputLoader {
                 int nrAngels = fs.nextInt();
                 nrAngelsPerRound.add(nrAngels);
                 Vector<Point> angelsRound = new Vector<>();
+                Vector<String> namesRound = new Vector<>();
                 if (nrAngels == 0) {
                     angelsPos.add(angelsRound);
+                    angelsNames.add(namesRound);
                     continue;
                 }
                 for (int j = 0; j < nrAngels; j++) {
                     String word = fs.nextWord();
                     String[] substrings = word.split(",");
-                    angelsNames.add(substrings[0]);
+                    namesRound.add(substrings[0]);
                     char xPosCharacter = substrings[1].charAt(0);
                     char yPosCharacter = substrings[2].charAt(0);
                     int xPos = xPosCharacter - '0';
@@ -87,6 +89,7 @@ public final class GameInputLoader {
                     angelsRound.add(pos);
                 }
                 angelsPos.add(angelsRound);
+                angelsNames.add(namesRound);
             }
 
             fs.close();
