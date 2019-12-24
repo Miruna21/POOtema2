@@ -23,9 +23,12 @@ Starting audit...
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:4:8: Unused import - game.angels.LevelUpAngel. [UnusedImports]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:5:8: Unused import - game.angels.Spawner. [UnusedImports]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:11:8: Unused import - javax.sound.midi.Soundbank. [UnusedImports]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:18:17: More than 7 parameters (found 9). [ParameterNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:182:21: '200' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:182:71: '40' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:14:8: Unused import - java.util.Iterator. [UnusedImports]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:19:17: More than 7 parameters (found 9). [ParameterNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:119: Line is longer than 100 characters (found 101). [LineLength]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:163:46: '{' is not preceded with whitespace. [WhitespaceAround]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:218:21: '200' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:218:71: '40' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/angels/DarkAngel.java:3: Using the '.*' form of import should be avoided - game.players.*. [AvoidStarImport]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/angels/Dracula.java:3: Using the '.*' form of import should be avoided - game.players.*. [AvoidStarImport]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/angels/Angel.java:4: Using the '.*' form of import should be avoided - game.players.*. [AvoidStarImport]
@@ -39,4 +42,4 @@ Starting audit...
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/reader/GameInput.java:32:12: More than 7 parameters (found 11). [ParameterNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/reader/GameInput.java:37: Line is longer than 100 characters (found 102). [LineLength]
 Audit done.
-Checkstyle ends with 39 errors.
+Checkstyle ends with 42 errors.

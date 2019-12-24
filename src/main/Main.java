@@ -50,7 +50,7 @@ public final class Main {
             Character character = playersTypeVector.get(i);
             int xPos = playersPosMatrix.get(i).get(0);
             int yPos = playersPosMatrix.get(i).get(1);
-            gameMap.getMap().get(xPos).get(yPos).addPlayerOnThisPlaceId(i);
+            gameMap.getMap().get(xPos).get(yPos).addLivePlayerOnThisPlaceId(i);
             players.add(PlayerFactory.getInstance().createPlayer(character, i, xPos, yPos));
             // setez referinta catre obiectul event pentru toti jucatorii
             players.get(i).setEvent(event);

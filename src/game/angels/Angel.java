@@ -36,6 +36,7 @@ public abstract class Angel {
     }
 
     public abstract String getName();
+    public abstract boolean visitLivePlayers();
 
     public abstract void visit(Knight knight);
     public abstract void visit(Rogue rogue);

@@ -20,6 +20,11 @@ public final class Spawner extends Angel {
     }
 
     @Override
+    public boolean visitLivePlayers() {
+        return false;
+    }
+
+    @Override
     public void visit(final Knight knight) {
         // daca jucatorul este mort
         if (!knight.getLife()) {

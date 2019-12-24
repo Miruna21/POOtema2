@@ -15,8 +15,11 @@ public interface Ground {
     int getNrRoundsParalyzed();
     boolean criticalPower();
 
-    void addPlayerOnThisPlaceId(Integer playerOnThisPlaceId);
-    void removePlayerOnThisPlaceId(Integer playerOnThisPlaceId);
-    boolean hasTwoPlayersOnThisPlace();
-    ArrayList<Integer> getPlayersOnThisPlaceId();
+    void addDeadPlayerOnThisPlaceId(Integer deadPlayerOnThisPlaceId);
+    void addLivePlayerOnThisPlaceId(Integer livePlayerOnThisPlaceId);
+    void removeDeadPlayerOnThisPlaceId(Integer deadPlayerOnThisPlaceId);
+    void removeLivePlayerOnThisPlaceId(Integer livePlayerOnThisPlaceId);
+    boolean hasTwoLivePlayersOnThisPlace();
+    ArrayList<Integer> getDeadPlayersOnThisPlaceId();
+    ArrayList<Integer> getLivePlayersOnThisPlaceId();
 }

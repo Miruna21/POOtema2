@@ -18,6 +18,11 @@ public final class LevelUpAngel extends Angel {
     }
 
     @Override
+    public boolean visitLivePlayers() {
+        return true;
+    }
+
+    @Override
     public void visit(final Knight knight) {
         // daca jucatorul este in viata
         if (knight.getLife()) {

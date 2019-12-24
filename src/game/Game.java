@@ -11,6 +11,7 @@ import writer.GameOutput;
 import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -54,46 +55,46 @@ public final class Game {
                 switch (move) {
                     case 'U':
                         gameMap.getMap().get(xPos).get(yPos).
-                                        removePlayerOnThisPlaceId(currentPlayerId);
+                                        removeLivePlayerOnThisPlaceId(currentPlayerId);
                         int xPos1 = xPos - 1;
                         if (xPos1 < 0) {
                             break;
                         }
                         gameMap.getMap().get(xPos1).get(yPos).
-                                            addPlayerOnThisPlaceId(currentPlayerId);
+                                            addLivePlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos1);
                         break;
                     case 'D':
                         gameMap.getMap().get(xPos).get(yPos).
-                                            removePlayerOnThisPlaceId(currentPlayerId);
+                                            removeLivePlayerOnThisPlaceId(currentPlayerId);
                         int xPos2 = xPos + 1;
                         if (xPos2 >= mapWidth) {
                             break;
                         }
                         gameMap.getMap().get(xPos2).get(yPos).
-                                        addPlayerOnThisPlaceId(currentPlayerId);
+                                        addLivePlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setxPos(xPos2);
                         break;
                     case 'L':
                         gameMap.getMap().get(xPos).get(yPos).
-                                    removePlayerOnThisPlaceId(currentPlayerId);
+                                    removeLivePlayerOnThisPlaceId(currentPlayerId);
                         int yPos1 = yPos - 1;
                         if (yPos1 < 0) {
                             break;
                         }
                         gameMap.getMap().get(xPos).get(yPos1).
-                                    addPlayerOnThisPlaceId(currentPlayerId);
+                                    addLivePlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos1);
                         break;
                     case 'R':
                         gameMap.getMap().get(xPos).get(yPos).
-                                    removePlayerOnThisPlaceId(currentPlayerId);
+                                    removeLivePlayerOnThisPlaceId(currentPlayerId);
                         int yPos2 = yPos + 1;
                         if (yPos2 >= mapLength) {
                             break;
                         }
                         gameMap.getMap().get(xPos).get(yPos2).
-                                        addPlayerOnThisPlaceId(currentPlayerId);
+                                        addLivePlayerOnThisPlaceId(currentPlayerId);
                         players.get(j).setyPos(yPos2);
                         break;
                     case '_':
@@ -112,39 +113,38 @@ public final class Game {
                                                 final Vector<Player> players) {
         for (int i = 0; i < mapLength; i++) {
             for (int j = 0; j < mapWidth; j++) {
-                if (gameMap.getMap().get(i).get(j).hasTwoPlayersOnThisPlace()) {
+                if (gameMap.getMap().get(i).get(j).hasTwoLivePlayersOnThisPlace()) {
                     Ground fightGround = gameMap.getMap().get(i).get(j);
                     List<Integer> playersOnThisPlace =
-                                        gameMap.getMap().get(i).get(j).getPlayersOnThisPlaceId();
+                                        gameMap.getMap().get(i).get(j).getLivePlayersOnThisPlaceId();
+                    // jucatorii se vor lupta unul cu altul
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
-                    // daca cei 2 jucatori sunt in viata, acestia se vor lupta unul cu altul
-                    if (players.get(firstIdPlayer).getLife()
-                            && players.get(secondIdPlayer).getLife()) {
-                        // wizard ataca al doilea
-                        if (players.get(firstIdPlayer).startFirst()) {
-                            players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
+                    // wizard ataca al doilea
+                    if (players.get(firstIdPlayer).startFirst()) {
+                        players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
                                                 fightGround);
-                            players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer),
+                        players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer),
                                                 fightGround);
-                        } else {
-                            players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer),
+                    } else {
+                        players.get(firstIdPlayer).isHitBy(players.get(secondIdPlayer),
                                                 fightGround);
-                            players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
+                        players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
                                                 fightGround);
-                        }
-                        if (!players.get(firstIdPlayer).getLife()) {
-                            fightGround.removePlayerOnThisPlaceId(firstIdPlayer);
-                        }
-                        if (!players.get(secondIdPlayer).getLife()) {
-                            fightGround.removePlayerOnThisPlaceId(secondIdPlayer);
-                        }
-                        // daca a murit un jucator in lupta, ofer xp atacatorului
-                        verifyVictimDeadAfterFight(players.get(firstIdPlayer),
-                                players.get(secondIdPlayer));
-                        verifyVictimDeadAfterFight(players.get(secondIdPlayer),
-                                players.get(firstIdPlayer));
                     }
+                    if (!players.get(firstIdPlayer).getLife()) {
+                        fightGround.removeLivePlayerOnThisPlaceId(firstIdPlayer);
+                        fightGround.addDeadPlayerOnThisPlaceId(firstIdPlayer);
+                    }
+                    if (!players.get(secondIdPlayer).getLife()) {
+                        fightGround.removeLivePlayerOnThisPlaceId(secondIdPlayer);
+                        fightGround.addDeadPlayerOnThisPlaceId(secondIdPlayer);
+                    }
+                    // daca a murit un jucator in lupta, ofer xp atacatorului
+                    verifyVictimDeadAfterFight(players.get(firstIdPlayer),
+                                players.get(secondIdPlayer));
+                    verifyVictimDeadAfterFight(players.get(secondIdPlayer),
+                                players.get(firstIdPlayer));
                 }
             }
         }
@@ -154,19 +154,55 @@ public final class Game {
         // daca vectorul de ingeri pentru runda curenta nu e gol
         if (angelsVector != null) {
             for (Angel angel : angelsVector) {
-                ArrayList<Integer> playersOnThisPlaceId;
                 int angelId = angel.getId();
                 int xPos = angel.getxPos();
                 int yPos = angel.getyPos();
                 // anunt magicianul de aparitia ingerului
                 angel.getEvent().anEventHappened(angel, "angelAppears");
-                playersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).
-                                                        getPlayersOnThisPlaceId();
-                // daca exista jucatori pe pozitia unde a aparut ingerul
-                if (playersOnThisPlaceId.size() != 0) {
-                    for (int playerId : playersOnThisPlaceId) {
-                        // jucatorul accepta vizita ingerului
-                        players.get(playerId).accept(angelsVector.get(angelId));
+                // daca ingerul viziteaza jucatori vii sau morti
+                if (angel.visitLivePlayers()){
+                    ArrayList<Integer> livePlayersOnThisPlaceId;
+                    ArrayList<Integer> toRemove = new ArrayList<>();
+                    livePlayersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).
+                            getLivePlayersOnThisPlaceId();
+                    // daca exista jucatori in viata pe pozitia unde a aparut ingerul
+                    if (livePlayersOnThisPlaceId.size() != 0) {
+                        for (Integer playerId : livePlayersOnThisPlaceId) {
+                            // jucatorul accepta vizita ingerului
+                            players.get(playerId).accept(angelsVector.get(angelId));
+                            // verific daca ingerul a omorat jucatorul
+                            if (!players.get(playerId).getLife()) {
+                                toRemove.add(playerId);
+                            }
+                        }
+                        for (Integer playerToRemoveId : toRemove) {
+                            gameMap.getMap().get(xPos).get(yPos).
+                                    removeLivePlayerOnThisPlaceId(playerToRemoveId);
+                            gameMap.getMap().get(xPos).get(yPos).
+                                    addDeadPlayerOnThisPlaceId(playerToRemoveId);
+                        }
+                    }
+                } else {
+                    ArrayList<Integer> deadPlayersOnThisPlaceId;
+                    ArrayList<Integer> toRemove = new ArrayList<>();
+                    deadPlayersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).
+                            getDeadPlayersOnThisPlaceId();
+                    // daca exista jucatori in viata pe pozitia unde a aparut ingerul
+                    if (deadPlayersOnThisPlaceId.size() != 0) {
+                        for (Integer playerId : deadPlayersOnThisPlaceId) {
+                            // jucatorul accepta vizita ingerului
+                            players.get(playerId).accept(angelsVector.get(angelId));
+                            // verific daca ingerul a omorat jucatorul
+                            if (!players.get(playerId).getLife()) {
+                                toRemove.add(playerId);
+                            }
+                        }
+                        for (Integer playerToRemoveId : toRemove) {
+                            gameMap.getMap().get(xPos).get(yPos).
+                                    removeDeadPlayerOnThisPlaceId(playerToRemoveId);
+                            gameMap.getMap().get(xPos).get(yPos).
+                                    addLivePlayerOnThisPlaceId(playerToRemoveId);
+                        }
                     }
                 }
             }
