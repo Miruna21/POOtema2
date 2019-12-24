@@ -55,6 +55,7 @@ public final class Deflect implements Ability {
         float newPercent = percent + variableKnightVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
+        System.out.println("deflect dmg " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
     }

@@ -81,6 +81,7 @@ public final class Drain implements Ability {
         baseHp = Math.min(a, b);
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * baseHp * landModifier);
+        System.out.println("drain dmg " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
     }

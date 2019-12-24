@@ -23,10 +23,10 @@ public final class XpAngel extends Angel {
     public void visit(final Knight knight) {
         // daca jucatorul este in viata
         if (knight.getLife()) {
-            // cresc xp-ul jucatorului
-            knight.gainXp(XP_MODIFIER_FOR_KNIGHT);
             // anunt magicianul de ajutorul ingerului
             knight.getEvent().anEventHappened(knight, this, "help");
+            // cresc xp-ul jucatorului
+            knight.gainXp(knight.getXp() + XP_MODIFIER_FOR_KNIGHT);
         }
     }
 
@@ -34,10 +34,10 @@ public final class XpAngel extends Angel {
     public void visit(final Rogue rogue) {
         // daca jucatorul este in viata
         if (rogue.getLife()) {
-            // cresc xp-ul jucatorului
-            rogue.gainXp(XP_MODIFIER_FOR_ROGUE);
             // anunt magicianul de ajutorul ingerului
             rogue.getEvent().anEventHappened(rogue, this, "help");
+            // cresc xp-ul jucatorului
+            rogue.gainXp(rogue.getXp() + XP_MODIFIER_FOR_ROGUE);
         }
     }
 
@@ -45,10 +45,10 @@ public final class XpAngel extends Angel {
     public void visit(final Wizard wizard) {
         // daca jucatorul este in viata
         if (wizard.getLife()) {
-            // cresc xp-ul jucatorului
-            wizard.gainXp(XP_MODIFIER_FOR_WIZARD);
             // anunt magicianul de ajutorul ingerului
             wizard.getEvent().anEventHappened(wizard, this, "help");
+            // cresc xp-ul jucatorului
+            wizard.gainXp(wizard.getXp() + XP_MODIFIER_FOR_WIZARD);
         }
     }
 
@@ -56,10 +56,10 @@ public final class XpAngel extends Angel {
     public void visit(final Pyromancer pyromancer) {
         // daca jucatorul este in viata
         if (pyromancer.getLife()) {
-            // cresc xp-ul jucatorului
-            pyromancer.gainXp(XP_MODIFIER_FOR_PYROMANCER);
             // anunt magicianul de ajutorul ingerului
             pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
+            // cresc xp-ul jucatorului
+            pyromancer.gainXp(pyromancer.getXp() + XP_MODIFIER_FOR_PYROMANCER);
         }
     }
 }

@@ -160,6 +160,10 @@ public abstract class Player {
         }
     }
 
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
     public final void subHp(final int hp2) {
         this.hp -= hp2;
         if (this.getHp() <= 0) {

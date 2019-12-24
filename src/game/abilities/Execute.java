@@ -69,11 +69,15 @@ public final class Execute implements Ability {
         if (wizard.getHp() < hpLimit) {
             wizard.setDamageWithoutRaceModifier(wizard.getHp());
             wizard.setLife(false);
+            System.out.println(wizard.getHp());
+            System.out.println("execute dmg mort");
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                     * (1 + variableWizardVictimModifier));
+            System.out.println(damageWithoutRaceModifier);
+            System.out.println("execute dmg " + finalDamage);
             // modificare hp
             wizard.subHp(finalDamage);
         }
