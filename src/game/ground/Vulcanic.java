@@ -6,6 +6,7 @@ import game.players.Rogue;
 import game.players.Wizard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public final class Vulcanic implements Ground {
     private static final float SPECIAL_LAND_MODIFIER = 1.25f;
@@ -29,23 +30,27 @@ public final class Vulcanic implements Ground {
     @Override
     public void addDeadPlayerOnThisPlaceId(final Integer deadPlayerOnThisPlaceId) {
         this.deadPlayersOnThisPlaceId.add(deadPlayerOnThisPlaceId);
+        Collections.sort(deadPlayersOnThisPlaceId);
     }
 
     @Override
     public void removeDeadPlayerOnThisPlaceId(final Integer deadPlayerOnThisPlaceId) {
         this.deadPlayersOnThisPlaceId.remove(deadPlayerOnThisPlaceId);
         this.deadPlayersOnThisPlaceId.trimToSize();
+        Collections.sort(deadPlayersOnThisPlaceId);
     }
 
     @Override
     public void addLivePlayerOnThisPlaceId(final Integer livePlayerOnThisPlaceId) {
         this.livePlayersOnThisPlaceId.add(livePlayerOnThisPlaceId);
+        Collections.sort(livePlayersOnThisPlaceId);
     }
 
     @Override
     public void removeLivePlayerOnThisPlaceId(final Integer livePlayerOnThisPlaceId) {
         this.livePlayersOnThisPlaceId.remove(livePlayerOnThisPlaceId);
         this.livePlayersOnThisPlaceId.trimToSize();
+        Collections.sort(livePlayersOnThisPlaceId);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package game.abilities;
 
+import constants.AuxiliaryConstants;
 import game.ground.Ground;
 import game.players.Knight;
 import game.players.Rogue;
@@ -26,18 +27,21 @@ public final class Deflect implements Ability {
     }
 
     @Override
-    public void changeAllVictimModifier(float number) {
+    public void changeAllVictimModifier(final float number) {
         variableKnightVictimModifier += number;
+        variableKnightVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variableRogueVictimModifier += number;
+        variableRogueVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variablePyromancerVictimModifier += number;
+        variablePyromancerVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
     }
 
     @Override
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();
         float percent = BASE_PERCENT + rogue.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        if (percent > 0.7f){
-            percent = 0.7f;
+        if (percent > AuxiliaryConstants.MAX_PERCENT) {
+            percent = AuxiliaryConstants.MAX_PERCENT;
         }
         float newPercent = percent + variableRogueVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
@@ -55,8 +59,8 @@ public final class Deflect implements Ability {
     public void attack(final Knight knight, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();
         float percent = BASE_PERCENT + knight.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        if (percent > 0.7f){
-            percent = 0.7f;
+        if (percent > AuxiliaryConstants.MAX_PERCENT) {
+            percent = AuxiliaryConstants.MAX_PERCENT;
         }
         float newPercent = percent + variableKnightVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
@@ -69,8 +73,8 @@ public final class Deflect implements Ability {
     public void attack(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();
         float percent = BASE_PERCENT + pyromancer.getLevel() * PLUS_PERCENT_PER_LEVEL;
-        if (percent > 0.7f){
-            percent = 0.7f;
+        if (percent > AuxiliaryConstants.MAX_PERCENT) {
+            percent = AuxiliaryConstants.MAX_PERCENT;
         }
         float newPercent = percent + variablePyromancerVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);

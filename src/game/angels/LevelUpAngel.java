@@ -1,7 +1,11 @@
 package game.angels;
 
 import constants.AuxiliaryConstants;
-import game.players.*;
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Wizard;
+import game.players.Rogue;
+import game.players.Player;
 
 public final class LevelUpAngel extends Angel {
     private static final float DAMAGE_MODIFIER_FOR_KNIGHT = 0.1f;

@@ -30,7 +30,6 @@ public final class Spawner extends Angel {
         if (!knight.getLife()) {
             // readuc jucatorul la viata
             knight.setLife(true);
-            knight.setXp(0);
             // setez noul hp
             knight.setHp(HP_MODIFIER_FOR_KNIGHT);
             // anunt magacianul de ajutorul ingerului
@@ -46,7 +45,6 @@ public final class Spawner extends Angel {
         if (!rogue.getLife()) {
             // readuc jucatorul la viata
             rogue.setLife(true);
-            rogue.setXp(0);
             // setez noul hp
             rogue.setHp(HP_MODIFIER_FOR_ROGUE);
             // anunt magacianul de ajutorul ingerului
@@ -62,7 +60,6 @@ public final class Spawner extends Angel {
         if (!wizard.getLife()) {
             // readuc jucatorul la viata
             wizard.setLife(true);
-            wizard.setXp(0);
             // setez noul hp
             wizard.setHp(HP_MODIFIER_FOR_WIZARD);
             // anunt magacianul de ajutorul ingerului
@@ -78,7 +75,6 @@ public final class Spawner extends Angel {
         if (!pyromancer.getLife()) {
             // readuc jucatorul la viata
             pyromancer.setLife(true);
-            pyromancer.setXp(0);
             // setez noul hp
             pyromancer.setHp(HP_MODIFIER_FOR_PYROMANCER);
             // anunt magacianul de ajutorul ingerului

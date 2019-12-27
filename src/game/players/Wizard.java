@@ -1,6 +1,10 @@
 package game.players;
 
-import game.abilities.*;
+import game.abilities.Drain;
+import game.abilities.Deflect;
+import game.abilities.Ability;
+import game.abilities.DefenceFightBehavior;
+import game.abilities.AtackFightBehavior;
 import game.angels.Angel;
 import game.ground.Ground;
 

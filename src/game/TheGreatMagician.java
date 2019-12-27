@@ -28,16 +28,16 @@ public final class TheGreatMagician implements Observer, Display {
 
     @Override
     public void update(final Player player, final Angel angel, final String event) {
-        switch(event){
-            case "kill" : printKilledPlayerByAngel(player);
+        switch(event) {
+            case "kill": printKilledPlayerByAngel(player);
                             break;
-            case "revive" : printRevivedPlayerByAngel(player);
+            case "revive": printRevivedPlayerByAngel(player);
                             break;
-            case "help" : printTheHelpOfAngel(player, angel);
+            case "help": printTheHelpOfAngel(player, angel);
                             break;
-            case "complicate" : printTheComplicationOfAPlayer(player, angel);
+            case "complicate": printTheComplicationOfAPlayer(player, angel);
                             break;
-            default :
+            default:
         }
     }
 

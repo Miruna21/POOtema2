@@ -1,6 +1,10 @@
 package game.angels;
 
-import game.players.*;
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Wizard;
+import game.players.Rogue;
+import game.players.Player;
 
 public final class DarkAngel extends Angel {
     private static final int HP_MODIFIER_FOR_KNIGHT = 40;

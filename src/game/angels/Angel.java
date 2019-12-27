@@ -1,7 +1,10 @@
 package game.angels;
 
 import game.Subject;
-import game.players.*;
+import game.players.Knight;
+import game.players.Pyromancer;
+import game.players.Wizard;
+import game.players.Rogue;
 
 public abstract class Angel {
     private int id;

@@ -113,12 +113,10 @@ public final class Game {
                 if (gameMap.getMap().get(i).get(j).hasTwoLivePlayersOnThisPlace()) {
                     Ground fightGround = gameMap.getMap().get(i).get(j);
                     List<Integer> playersOnThisPlace =
-                                        gameMap.getMap().get(i).get(j).getLivePlayersOnThisPlaceId();
+                            gameMap.getMap().get(i).get(j).getLivePlayersOnThisPlaceId();
                     // jucatorii se vor lupta unul cu altul
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
-                    System.out.println(firstIdPlayer + " " + players.get(firstIdPlayer).getHp());
-                    System.out.println(secondIdPlayer + " " + players.get(secondIdPlayer).getHp());
                     // wizard ataca al doilea
                     if (players.get(firstIdPlayer).startFirst()) {
                         players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
@@ -162,7 +160,7 @@ public final class Game {
                 // anunt magicianul de aparitia ingerului
                 angel.getEvent().anEventHappened(angel, "angelAppears");
                 // daca ingerul viziteaza jucatori vii sau morti
-                if (angel.visitLivePlayers()){
+                if (angel.visitLivePlayers()) {
                     ArrayList<Integer> livePlayersOnThisPlaceId;
                     ArrayList<Integer> toRemove = new ArrayList<>();
                     livePlayersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).
@@ -189,7 +187,7 @@ public final class Game {
                     ArrayList<Integer> toRemove = new ArrayList<>();
                     deadPlayersOnThisPlaceId = gameMap.getMap().get(xPos).get(yPos).
                             getDeadPlayersOnThisPlaceId();
-                    // daca exista jucatori in viata pe pozitia unde a aparut ingerul
+                    // daca exista jucatori morti pe pozitia unde a aparut ingerul
                     if (deadPlayersOnThisPlaceId.size() != 0) {
                         for (Integer playerId : deadPlayersOnThisPlaceId) {
                             // jucatorul accepta vizita ingerului
@@ -222,7 +220,8 @@ public final class Game {
             int newXpWinner;
             max = Math.max(a, b);
             newXpWinner = xpWinner + max;
-            if (newXpWinner != xpWinner) {
+            // ofer xp numai daca atacatorul este si el in viata
+            if (newXpWinner != xpWinner && attacker.getLife()) {
                 attacker.gainXp(newXpWinner);
             }
         }

@@ -1,5 +1,6 @@
 package game.abilities;
 
+import constants.AuxiliaryConstants;
 import game.ground.Ground;
 import game.players.Knight;
 import game.players.Rogue;
@@ -30,11 +31,15 @@ public final class Drain implements Ability {
     }
 
     @Override
-    public void changeAllVictimModifier(float number) {
+    public void changeAllVictimModifier(final float number) {
         variableKnightVictimModifier += number;
+        variableKnightVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variableRogueVictimModifier += number;
+        variableRogueVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variablePyromancerVictimModifier += number;
+        variablePyromancerVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variableWizardVictimModifier += number;
+        variableWizardVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
     }
 
     @Override

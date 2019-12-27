@@ -1,5 +1,6 @@
 package game.abilities;
 
+import constants.AuxiliaryConstants;
 import game.ground.Ground;
 import game.players.Knight;
 import game.players.Rogue;
@@ -32,11 +33,15 @@ public final class Backstab implements Ability {
     }
 
     @Override
-    public void changeAllVictimModifier(float number) {
+    public void changeAllVictimModifier(final float number) {
         variableKnightVictimModifier += number;
+        variableKnightVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variableRogueVictimModifier += number;
+        variableRogueVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variablePyromancerVictimModifier += number;
+        variablePyromancerVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
         variableWizardVictimModifier += number;
+        variableWizardVictimModifier -= AuxiliaryConstants.FLOAT_APPROXIMATION;
     }
 
     private float levelAndGroundDamage(final Ground ground, final Player attacker) {
@@ -82,7 +87,6 @@ public final class Backstab implements Ability {
         knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + variableKnightVictimModifier));
-        System.out.println("backstab " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
         attacker.addNrBackstabHit(1);

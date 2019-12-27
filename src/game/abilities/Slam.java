@@ -29,7 +29,7 @@ public final class Slam implements Ability {
     }
 
     @Override
-    public void changeAllVictimModifier(float number) {
+    public void changeAllVictimModifier(final float number) {
         variableKnightVictimModifier += number;
         variableRogueVictimModifier += number;
         variablePyromancerVictimModifier += number;
@@ -48,7 +48,6 @@ public final class Slam implements Ability {
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + variableRogueVictimModifier));
-        System.out.println("slam " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda

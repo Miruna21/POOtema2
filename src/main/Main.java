@@ -1,6 +1,9 @@
 package main;
 
-import game.*;
+import game.Game;
+import game.Subject;
+import game.Observer;
+import game.TheGreatMagician;
 import game.Event;
 import game.angels.Angel;
 import game.angels.AngelsFactory;
@@ -11,7 +14,7 @@ import reader.GameInput;
 import reader.GameInputLoader;
 import writer.GameOutput;
 
-import java.awt.*;
+import java.awt.Point;
 import java.io.IOException;
 import java.util.Vector;
 

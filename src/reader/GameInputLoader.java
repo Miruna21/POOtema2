@@ -1,8 +1,9 @@
 package reader;
 
+import constants.AuxiliaryConstants;
 import fileio.FileSystem;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.Vector;
 
 public final class GameInputLoader {
@@ -81,10 +82,19 @@ public final class GameInputLoader {
                     String word = fs.nextWord();
                     String[] substrings = word.split(",");
                     namesRound.add(substrings[0]);
-                    char xPosCharacter = substrings[1].charAt(0);
-                    char yPosCharacter = substrings[2].charAt(0);
-                    int xPos = xPosCharacter - '0';
-                    int yPos = yPosCharacter - '0';
+                    String xPosString = substrings[1];
+                    String yPosString = substrings[2];
+                    int xPos = 0;
+                    for (int p = 0; p < xPosString.length(); p++) {
+                        xPos = xPos * AuxiliaryConstants.ATOI_MULTIPLIER
+                                + xPosString.charAt(p) - '0';
+                    }
+                    int yPos = 0;
+
+                    for (int p = 0; p < yPosString.length(); p++) {
+                        yPos = yPos * AuxiliaryConstants.ATOI_MULTIPLIER
+                                + yPosString.charAt(p) - '0';
+                    }
                     Point pos = new Point(xPos, yPos);
                     angelsRound.add(pos);
                 }

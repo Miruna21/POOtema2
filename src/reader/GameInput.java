@@ -1,5 +1,5 @@
 package reader;
-import java.awt.*;
+import java.awt.Point;
 import java.util.Vector;
 
 public class GameInput {
@@ -34,7 +34,8 @@ public class GameInput {
                      final int nrPlayers, final Vector<Character> playersTypeVector,
                      final Vector<Vector<Integer>> playersPosMatrix,
                      final int nrRounds, final Vector<Vector<Character>> movesMatrix,
-                     final Vector<Integer> nrAngelsPerRound, final Vector<Vector<String>> angelsNames,
+                     final Vector<Integer> nrAngelsPerRound,
+                     final Vector<Vector<String>> angelsNames,
                      final Vector<Vector<Point>> angelsPos) {
         this.mapLength = mapLength;
         this.mapWidth = mapWidth;

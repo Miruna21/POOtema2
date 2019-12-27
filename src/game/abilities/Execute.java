@@ -1,5 +1,6 @@
 package game.abilities;
 
+import constants.AuxiliaryConstants;
 import game.ground.Ground;
 import game.players.Knight;
 import game.players.Rogue;
@@ -30,7 +31,7 @@ public final class Execute implements Ability {
     }
 
     @Override
-    public void changeAllVictimModifier(float number) {
+    public void changeAllVictimModifier(final float number) {
         variableRogueVictimModifier += number;
         variablePyromancerVictimModifier += number;
         variableWizardVictimModifier += number;
@@ -48,7 +49,7 @@ public final class Execute implements Ability {
         int maxVictimHpOnHerLevel = rogue.getInitialHp() + rogue.getLevel()
                 * rogue.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + rogue.getLevel();
-        if (rogue.getHp() < hpLimit && hpLimit < 0.4f) {
+        if (rogue.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
             rogue.setDamageWithoutRaceModifier(rogue.getHp());
             rogue.setLife(false);
         } else {
@@ -56,7 +57,6 @@ public final class Execute implements Ability {
             rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
             int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                     * (1 + variableRogueVictimModifier));
-            System.out.println("execute " + finalDamage);
             // modificare hp
             rogue.subHp(finalDamage);
         }
@@ -67,8 +67,7 @@ public final class Execute implements Ability {
         int maxVictimHpOnHerLevel = wizard.getInitialHp() + wizard.getLevel()
                 * wizard.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + wizard.getLevel();
-        System.out.println(PERCENT + " " + maxVictimHpOnHerLevel + " " + wizard.getLevel());
-        if (wizard.getHp() < hpLimit && hpLimit < 0.4f) {
+        if (wizard.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
             wizard.setDamageWithoutRaceModifier(wizard.getHp());
             wizard.setLife(false);
         } else {
@@ -86,7 +85,7 @@ public final class Execute implements Ability {
         int maxVictimHpOnHerLevel = knight.getInitialHp() + knight.getLevel()
                 * knight.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + knight.getLevel();
-        if (knight.getHp() < hpLimit && hpLimit < 0.4f) {
+        if (knight.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
             knight.setDamageWithoutRaceModifier(knight.getHp());
             knight.setLife(false);
         } else {
@@ -104,7 +103,7 @@ public final class Execute implements Ability {
         int maxVictimHpOnHerLevel = pyromancer.getInitialHp() + pyromancer.getLevel()
                 * pyromancer.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + pyromancer.getLevel();
-        if (pyromancer.getHp() < hpLimit && hpLimit < 0.4f) {
+        if (pyromancer.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
             pyromancer.setDamageWithoutRaceModifier(pyromancer.getHp());
             pyromancer.setLife(false);
         } else {

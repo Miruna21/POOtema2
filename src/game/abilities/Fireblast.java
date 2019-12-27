@@ -29,7 +29,7 @@ public final class Fireblast implements Ability {
     }
 
     @Override
-    public void changeAllVictimModifier(float number) {
+    public void changeAllVictimModifier(final float number) {
         variableKnightVictimModifier += number;
         variableRogueVictimModifier += number;
         variablePyromancerVictimModifier += number;
