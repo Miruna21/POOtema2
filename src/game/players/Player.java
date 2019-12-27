@@ -173,32 +173,37 @@ public abstract class Player {
 
     public final void gainXp(final int newXp) {
         this.xp = newXp;
+        System.out.println(newXp + "&&&&&&");
         // daca este cazul, cresc nivelul jucatorului
         int initialHp = this.getInitialHp();
         int plusHpPerLevel = this.getPlusHpPerLevel();
         int newlevel;
         if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                 + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                        && (this.level < AuxiliaryConstants.MAX_LEVEL)) {
+                    && this.hp > 0) {
             newlevel = this.level + 1;
             this.setLevel(newlevel);
             event.anEventHappened(this, "levelUp");
+            System.out.println("level1");
             if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                     + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                            && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
+                        && this.hp > 0) {
                 newlevel++;
                 this.setLevel(newlevel);
+                System.out.println("level2");
                 event.anEventHappened(this, "levelUp");
                 if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                         + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                                && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
+                            && this.hp > 0) {
                     newlevel++;
+                    System.out.println("level3");
                     this.setLevel(newlevel);
                     event.anEventHappened(this, "levelUp");
                     if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
                             + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                                    && (newlevel < AuxiliaryConstants.MAX_LEVEL)) {
+                                && this.hp > 0) {
                         newlevel++;
+                        System.out.println("level4");
                         this.setLevel(newlevel);
                         event.anEventHappened(this, "levelUp");
                     }

@@ -30,7 +30,9 @@ public final class Paralysis implements Ability {
 
     @Override
     public void changeAllVictimModifier(float number) {
+        System.out.println(variableKnightVictimModifier + " + " + number);
         variableKnightVictimModifier += number;
+        System.out.println(variableKnightVictimModifier + " dupa");
         variableRogueVictimModifier += number;
         variablePyromancerVictimModifier += number;
         variableWizardVictimModifier += number;
@@ -80,6 +82,7 @@ public final class Paralysis implements Ability {
         knight.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + variableKnightVictimModifier));
+        System.out.println("paralysis " + variableKnightVictimModifier);
         int nrRoundsParalyzed = ground.getNrRoundsParalyzed();
         knight.setNrRoundsParalyzed(nrRoundsParalyzed);
         knight.setOvertimeDamage(finalDamage);

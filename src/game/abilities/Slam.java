@@ -48,6 +48,7 @@ public final class Slam implements Ability {
         rogue.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + variableRogueVictimModifier));
+        System.out.println("slam " + finalDamage);
         // modificare hp
         rogue.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda
@@ -63,8 +64,6 @@ public final class Slam implements Ability {
         wizard.addDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + variableWizardVictimModifier));
-        System.out.println(damageWithoutRaceModifier);
-        System.out.println("slam dmg " + finalDamage);
         // modificare hp
         wizard.subHp(finalDamage);
         // incapacitatea de a se misca in urmatoarea runda

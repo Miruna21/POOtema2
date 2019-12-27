@@ -1,17 +1,13 @@
 package game;
 
 import game.angels.Angel;
-import game.angels.LevelUpAngel;
-import game.angels.Spawner;
 import game.ground.GameMap;
 import game.ground.Ground;
 import game.players.Player;
 import writer.GameOutput;
 
-import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -24,6 +20,7 @@ public final class Game {
                                         final GameOutput gameOutput) throws IOException {
         gameOutput.startWriting();
         for (int i = 0; i < nrRounds; i++) {
+            System.out.println("runda ****");
             gameOutput.writeOutputFrame("~~ Round " + (i + 1) + " ~~");
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
@@ -120,6 +117,8 @@ public final class Game {
                     // jucatorii se vor lupta unul cu altul
                     int firstIdPlayer = playersOnThisPlace.get(0);
                     int secondIdPlayer = playersOnThisPlace.get(1);
+                    System.out.println(firstIdPlayer + " " + players.get(firstIdPlayer).getHp());
+                    System.out.println(secondIdPlayer + " " + players.get(secondIdPlayer).getHp());
                     // wizard ataca al doilea
                     if (players.get(firstIdPlayer).startFirst()) {
                         players.get(secondIdPlayer).isHitBy(players.get(firstIdPlayer),
@@ -140,6 +139,9 @@ public final class Game {
                         fightGround.removeLivePlayerOnThisPlaceId(secondIdPlayer);
                         fightGround.addDeadPlayerOnThisPlaceId(secondIdPlayer);
                     }
+                    System.out.println("dupa");
+                    System.out.println(firstIdPlayer + " " + players.get(firstIdPlayer).getHp());
+                    System.out.println(secondIdPlayer + " " + players.get(secondIdPlayer).getHp());
                     // daca a murit un jucator in lupta, ofer xp atacatorului
                     verifyVictimDeadAfterFight(players.get(firstIdPlayer),
                                 players.get(secondIdPlayer));
@@ -192,8 +194,8 @@ public final class Game {
                         for (Integer playerId : deadPlayersOnThisPlaceId) {
                             // jucatorul accepta vizita ingerului
                             players.get(playerId).accept(angelsVector.get(angelId));
-                            // verific daca ingerul a omorat jucatorul
-                            if (!players.get(playerId).getLife()) {
+                            // verific daca ingerul a inviat jucatorul
+                            if (players.get(playerId).getLife()) {
                                 toRemove.add(playerId);
                             }
                         }

@@ -82,6 +82,7 @@ public final class Backstab implements Ability {
         knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
         int finalDamage = Math.round(Math.round(damageWithoutRaceModifier)
                 * (1 + variableKnightVictimModifier));
+        System.out.println("backstab " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
         attacker.addNrBackstabHit(1);

@@ -32,9 +32,7 @@ public final class LevelUpAngel extends Angel {
             // anunt magicianul de ajutorul ingerului
             knight.getEvent().anEventHappened(knight, this, "help");
             // ofer Xp jucatorului pentru a trece la nivelul urmator
-            if (knight.getLevel() < AuxiliaryConstants.MAX_LEVEL) {
-                knight.gainXp(getNewXp(knight));
-            }
+            knight.gainXp(getNewXp(knight));
         }
     }
 
@@ -48,9 +46,7 @@ public final class LevelUpAngel extends Angel {
             // anunt magicianul de ajutorul ingerului
             rogue.getEvent().anEventHappened(rogue, this, "help");
             // ofer Xp jucatorului pentru a trece la nivelul urmator
-            if (rogue.getLevel() < AuxiliaryConstants.MAX_LEVEL) {
-                rogue.gainXp(getNewXp(rogue));
-            }
+            rogue.gainXp(getNewXp(rogue));
         }
     }
 
@@ -64,9 +60,7 @@ public final class LevelUpAngel extends Angel {
             // anunt magicianul de ajutorul ingerului
             wizard.getEvent().anEventHappened(wizard, this, "help");
             // ofer Xp jucatorului pentru a trece la nivelul urmator
-            if (wizard.getLevel() < AuxiliaryConstants.MAX_LEVEL) {
-                wizard.gainXp(getNewXp(wizard));
-            }
+            wizard.gainXp(getNewXp(wizard));
         }
     }
 
@@ -82,9 +76,7 @@ public final class LevelUpAngel extends Angel {
             // anunt magicianul de ajutorul ingerului
             pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
             // ofer Xp jucatorului pentru a trece la nivelul urmator
-            if (pyromancer.getLevel() < AuxiliaryConstants.MAX_LEVEL) {
-                pyromancer.gainXp(getNewXp(pyromancer));
-            }
+            pyromancer.gainXp(getNewXp(pyromancer));
         }
     }
     private int getNewXp(final Player player) {

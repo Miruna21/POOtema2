@@ -36,6 +36,9 @@ public final class Deflect implements Ability {
     public void attack(final Rogue rogue, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();
         float percent = BASE_PERCENT + rogue.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        if (percent > 0.7f){
+            percent = 0.7f;
+        }
         float newPercent = percent + variableRogueVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
@@ -52,10 +55,12 @@ public final class Deflect implements Ability {
     public void attack(final Knight knight, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();
         float percent = BASE_PERCENT + knight.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        if (percent > 0.7f){
+            percent = 0.7f;
+        }
         float newPercent = percent + variableKnightVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
-        System.out.println("deflect dmg " + finalDamage);
         // modificare hp
         knight.subHp(finalDamage);
     }
@@ -64,6 +69,9 @@ public final class Deflect implements Ability {
     public void attack(final Pyromancer pyromancer, final Ground ground, final Player attacker) {
         float damage = attacker.getDamageWithoutRaceModifier();
         float percent = BASE_PERCENT + pyromancer.getLevel() * PLUS_PERCENT_PER_LEVEL;
+        if (percent > 0.7f){
+            percent = 0.7f;
+        }
         float newPercent = percent + variablePyromancerVictimModifier * percent;
         float landModifier = attacker.acceptLandModifier(ground);
         int finalDamage = Math.round(newPercent * damage * landModifier);
