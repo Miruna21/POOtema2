@@ -1,6 +1,7 @@
 package writer;
 
 import fileio.FileSystem;
+import game.Observer;
 import game.players.Player;
 
 import java.io.IOException;
@@ -21,9 +22,10 @@ public final class GameOutput {
     public void endWriting() throws IOException {
         fs.close();
     }
-    public void writePlayersInFile(final Vector<Player> players) {
+    public void writePlayersInFile(final Vector<Player> players, final Observer observer) {
         try {
             for (Player index : players) {
+                index.getEvent().removeObserver(observer);
                 fs.writeWord(index.toString());
                 fs.writeNewLine();
             }

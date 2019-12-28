@@ -20,7 +20,6 @@ public final class Game {
                                         final GameOutput gameOutput) throws IOException {
         gameOutput.startWriting();
         for (int i = 0; i < nrRounds; i++) {
-            System.out.println("runda ****");
             gameOutput.writeOutputFrame("~~ Round " + (i + 1) + " ~~");
             for (int j = 0; j < nrPlayers; j++) {
                 Character move = movesMatrix.get(i).get(j);
@@ -137,9 +136,6 @@ public final class Game {
                         fightGround.removeLivePlayerOnThisPlaceId(secondIdPlayer);
                         fightGround.addDeadPlayerOnThisPlaceId(secondIdPlayer);
                     }
-                    System.out.println("dupa");
-                    System.out.println(firstIdPlayer + " " + players.get(firstIdPlayer).getHp());
-                    System.out.println(secondIdPlayer + " " + players.get(secondIdPlayer).getHp());
                     // daca a murit un jucator in lupta, ofer xp atacatorului
                     verifyVictimDeadAfterFight(players.get(firstIdPlayer),
                                 players.get(secondIdPlayer));

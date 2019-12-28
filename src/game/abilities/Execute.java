@@ -50,8 +50,12 @@ public final class Execute implements Ability {
                 * rogue.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + rogue.getLevel();
         if (rogue.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
-            rogue.setDamageWithoutRaceModifier(rogue.getHp());
-            rogue.setLife(false);
+            if (rogue.getHp() < BASE_DAMAGE) {
+                rogue.setDamageWithoutRaceModifier(BASE_DAMAGE);
+            } else {
+                rogue.setDamageWithoutRaceModifier(rogue.getHp());
+                rogue.setLife(false);
+            }
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             rogue.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
@@ -68,8 +72,12 @@ public final class Execute implements Ability {
                 * wizard.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + wizard.getLevel();
         if (wizard.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
-            wizard.setDamageWithoutRaceModifier(wizard.getHp());
-            wizard.setLife(false);
+            if (wizard.getHp() < BASE_DAMAGE) {
+                wizard.setDamageWithoutRaceModifier(BASE_DAMAGE);
+            } else {
+                wizard.setDamageWithoutRaceModifier(wizard.getHp());
+                wizard.setLife(false);
+            }
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             wizard.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
@@ -86,8 +94,12 @@ public final class Execute implements Ability {
                 * knight.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + knight.getLevel();
         if (knight.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
-            knight.setDamageWithoutRaceModifier(knight.getHp());
-            knight.setLife(false);
+            if (knight.getHp() < BASE_DAMAGE) {
+                knight.setDamageWithoutRaceModifier(BASE_DAMAGE);
+            } else {
+                knight.setDamageWithoutRaceModifier(knight.getHp());
+                knight.setLife(false);
+            }
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             knight.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));
@@ -104,8 +116,12 @@ public final class Execute implements Ability {
                 * pyromancer.getPlusHpPerLevel();
         float hpLimit = PERCENT * maxVictimHpOnHerLevel + pyromancer.getLevel();
         if (pyromancer.getHp() < hpLimit && hpLimit < AuxiliaryConstants.MAX_HP_LIMIT) {
-            pyromancer.setDamageWithoutRaceModifier(pyromancer.getHp());
-            pyromancer.setLife(false);
+            if (pyromancer.getHp() < BASE_DAMAGE) {
+                pyromancer.setDamageWithoutRaceModifier(BASE_DAMAGE);
+            } else {
+                pyromancer.setDamageWithoutRaceModifier(pyromancer.getHp());
+                pyromancer.setLife(false);
+            }
         } else {
             float damageWithoutRaceModifier = levelAndGroundDamage(ground, attacker);
             pyromancer.setDamageWithoutRaceModifier(Math.round(damageWithoutRaceModifier));

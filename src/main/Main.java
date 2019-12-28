@@ -81,7 +81,7 @@ public final class Main {
                 mapLength, mapWidth, players, angels, myFileWriter);
 
         // scrie rezultatele jocului in fisier
-        myFileWriter.writePlayersInFile(players);
+        myFileWriter.writePlayersInFile(players, observer);
         myFileWriter.endWriting();
     }
 }

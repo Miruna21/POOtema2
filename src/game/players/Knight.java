@@ -1,8 +1,8 @@
 package game.players;
 
+import game.abilities.Ability;
 import game.abilities.Slam;
 import game.abilities.Execute;
-import game.abilities.Ability;
 import game.abilities.DefenceFightBehavior;
 import game.abilities.AtackFightBehavior;
 import game.angels.Angel;

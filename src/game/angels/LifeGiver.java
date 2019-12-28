@@ -27,45 +27,33 @@ public final class LifeGiver extends Angel {
 
     @Override
     public void visit(final Knight knight) {
-        // daca jucatorul este in viata
-        if (knight.getLife()) {
-            // cresc hp-ul jucatorului
-            knight.addHp(HP_MODIFIER_FOR_KNIGHT);
-            // anunt magicianul de ajutorul ingerului
-            knight.getEvent().anEventHappened(knight, this, "help");
-        }
+        // cresc hp-ul jucatorului
+        knight.addHp(HP_MODIFIER_FOR_KNIGHT);
+        // anunt magicianul de ajutorul ingerului
+        knight.getEvent().anEventHappened(knight, this, "help");
     }
 
     @Override
     public void visit(final Rogue rogue) {
-        // daca jucatorul este in viata
-        if (rogue.getLife()) {
-            // cresc hp-ul jucatorului
-            rogue.addHp(HP_MODIFIER_FOR_ROGUE);
-            // anunt magicianul de ajutorul ingerului
-            rogue.getEvent().anEventHappened(rogue, this, "help");
-        }
+        // cresc hp-ul jucatorului
+        rogue.addHp(HP_MODIFIER_FOR_ROGUE);
+        // anunt magicianul de ajutorul ingerului
+        rogue.getEvent().anEventHappened(rogue, this, "help");
     }
 
     @Override
     public void visit(final Wizard wizard) {
-        // daca jucatorul este in viata
-        if (wizard.getLife()) {
-            // cresc hp-ul jucatorului
-            wizard.addHp(HP_MODIFIER_FOR_WIZARD);
-            // anunt magicianul de ajutorul ingerului
-            wizard.getEvent().anEventHappened(wizard, this, "help");
-        }
+        // cresc hp-ul jucatorului
+        wizard.addHp(HP_MODIFIER_FOR_WIZARD);
+        // anunt magicianul de ajutorul ingerului
+        wizard.getEvent().anEventHappened(wizard, this, "help");
     }
 
     @Override
     public void visit(final Pyromancer pyromancer) {
-        // daca jucatorul este in viata
-        if (pyromancer.getLife()) {
-            // cresc hp-ul jucatorului
-            pyromancer.addHp(HP_MODIFIER_FOR_PYROMANCER);
-            // anunt magicianul de ajutorul ingerului
-            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
-        }
+        // cresc hp-ul jucatorului
+        pyromancer.addHp(HP_MODIFIER_FOR_PYROMANCER);
+        // anunt magicianul de ajutorul ingerului
+        pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
     }
 }

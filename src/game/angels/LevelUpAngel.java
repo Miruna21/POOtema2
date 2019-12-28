@@ -28,60 +28,48 @@ public final class LevelUpAngel extends Angel {
 
     @Override
     public void visit(final Knight knight) {
-        // daca jucatorul este in viata
-        if (knight.getLife()) {
-            // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-            knight.getFirstAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
-            knight.getSecondAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
-            // anunt magicianul de ajutorul ingerului
-            knight.getEvent().anEventHappened(knight, this, "help");
-            // ofer Xp jucatorului pentru a trece la nivelul urmator
-            knight.gainXp(getNewXp(knight));
-        }
+        // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
+        knight.getFirstAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
+        knight.getSecondAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_KNIGHT);
+        // anunt magicianul de ajutorul ingerului
+        knight.getEvent().anEventHappened(knight, this, "help");
+        // ofer Xp jucatorului pentru a trece la nivelul urmator
+        knight.gainXp(getNewXp(knight));
     }
 
     @Override
     public void visit(final Rogue rogue) {
-        // daca jucatorul este in viata
-        if (rogue.getLife()) {
-            // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-            rogue.getFirstAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
-            rogue.getSecondAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
-            // anunt magicianul de ajutorul ingerului
-            rogue.getEvent().anEventHappened(rogue, this, "help");
-            // ofer Xp jucatorului pentru a trece la nivelul urmator
-            rogue.gainXp(getNewXp(rogue));
-        }
+        // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
+        rogue.getFirstAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
+        rogue.getSecondAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_ROGUE);
+        // anunt magicianul de ajutorul ingerului
+        rogue.getEvent().anEventHappened(rogue, this, "help");
+        // ofer Xp jucatorului pentru a trece la nivelul urmator
+        rogue.gainXp(getNewXp(rogue));
     }
 
     @Override
     public void visit(final Wizard wizard) {
-        // daca jucatorul este in viata
-        if (wizard.getLife()) {
-            // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-            wizard.getFirstAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
-            wizard.getSecondAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
-            // anunt magicianul de ajutorul ingerului
-            wizard.getEvent().anEventHappened(wizard, this, "help");
-            // ofer Xp jucatorului pentru a trece la nivelul urmator
-            wizard.gainXp(getNewXp(wizard));
-        }
+        // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
+        wizard.getFirstAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
+        wizard.getSecondAbility().changeAllVictimModifier(DAMAGE_MODIFIER_FOR_WIZARD);
+        // anunt magicianul de ajutorul ingerului
+        wizard.getEvent().anEventHappened(wizard, this, "help");
+        // ofer Xp jucatorului pentru a trece la nivelul urmator
+        wizard.gainXp(getNewXp(wizard));
     }
 
     @Override
     public void visit(final Pyromancer pyromancer) {
-        // daca jucatorul este in viata
-        if (pyromancer.getLife()) {
-            // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
-            pyromancer.getFirstAbility().
+        // cresc modificatorii de damage pentru fiecare abilitate a jucatorului
+        pyromancer.getFirstAbility().
                     changeAllVictimModifier(DAMAGE_MODIFIER_FOR_PYROMANCER);
-            pyromancer.getSecondAbility().
+        pyromancer.getSecondAbility().
                     changeAllVictimModifier(DAMAGE_MODIFIER_FOR_PYROMANCER);
-            // anunt magicianul de ajutorul ingerului
-            pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
-            // ofer Xp jucatorului pentru a trece la nivelul urmator
-            pyromancer.gainXp(getNewXp(pyromancer));
-        }
+        // anunt magicianul de ajutorul ingerului
+        pyromancer.getEvent().anEventHappened(pyromancer, this, "help");
+        // ofer Xp jucatorului pentru a trece la nivelul urmator
+        pyromancer.gainXp(getNewXp(pyromancer));
     }
     private int getNewXp(final Player player) {
         return AuxiliaryConstants.BASE_LEVEL_UP_CONDITION

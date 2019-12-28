@@ -7,9 +7,8 @@ Starting audit...
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/players/Pyromancer.java:41:23: '4f' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/players/Pyromancer.java:42:24: '3f' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:15:17: More than 7 parameters (found 9). [ParameterNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:218:21: '200' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:218:71: '40' is a magic number. [MagicNumber]
-[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/TheGreatMagician.java:31:15: 'switch' is not followed by whitespace. [WhitespaceAround]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:214:21: '200' is a magic number. [MagicNumber]
+[ERROR] /home/miruna/IdeaProjects/POOtema2/src/game/Game.java:214:71: '40' is a magic number. [MagicNumber]
 [ERROR] /home/miruna/IdeaProjects/POOtema2/src/reader/GameInput.java:32:12: More than 7 parameters (found 11). [ParameterNumber]
 Audit done.
-Checkstyle ends with 12 errors.
+Checkstyle ends with 11 errors.

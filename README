@@ -1,0 +1,33 @@
+POO - proiect, etapa 2
+Orzata Miruna-Narcisa, 321CA
+	La implementarea pentru etapa I a proiectului am adaugat:
+- Singleton pentru harta, in care am inclus si un factory pentru harta(apelez
+Ground Factory pentru fiecare casuta din harta). Inainte am avut harta ca
+fiind o matrice de obiecte de tip Ground.
+- Singleton pentru Marele Magician , care implementeaza interfetele Observer si
+Display. Marele Magician are rolul de observator in cadrul pattern-ului
+observer, iar Event este pe post de subiect. Event inregistreaza, sterge si
+notifica observatorii, iar notificarea observatorilor are loc atunci cand se
+intampla un eveniment special legat de ingeri sau jucatori. Jucatorii si
+ingerii au un camp de tip Event pentru a apela metodele clasei Event de oriunde
+din cod, avand la dispozitie doar referinte catre Player si Angel. Marele
+Magician este anuntat de evenimentele ce au loc in joc si alege, in functie de
+string-ul trimis ca parametru, ce mesaj sa afiseze.
+- Factory pentru ingeri. Ingerii joaca rolul de vizitatori pentru pattern-ul
+Visitor, iar jucatorii sunt cei vizitati (accepta vizita). Ingerii
+implementeaza metoda Visit pentru fiecare tip te jucator, iar jucatorii accepta
+vizitatorul si apeleaza visit asupra acestuia.
+- Strategy pentru alegerea dinamica a strategiei unui jucator in functie de hp.
+Pentru acest pattern am adaugat in clasa Player un camp de tip FightBehavior si
+metode de set si performFightBehavior. Fiecare tip de jucator isi alege
+strategia cu ajutorul functiei choosePlayerFightStrategy si apoi apeleaza
+performFightBehavior, care executa functia changeFightPowers din interfata
+FightBehavior, implementata de clasele DefenceFightBehavior si
+AttackFightBehavior.
+    Pe fiecare pozitie de pe harta am un ArrayList cu jucatori morti si un
+ArrayList un jucatori vii, care ma ajuta pentru vizita ingerilor.
+	De asemenea, am schimbat clasa GameOutput prin adaugarea unor noi
+metode de printare, care primesc un string ca parametru si il afizeaza in
+fisier.
+	Sper sa se inteleaga codul, mai ales ca am folost nume de variabile si
+metode destul de sugestive.
