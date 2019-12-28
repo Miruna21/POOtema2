@@ -11,6 +11,9 @@ import game.ground.Ground;
 public final class Wizard extends Player {
     private static final int INITIAL_HP = 400;
     private static final int PLUS_HP_PER_LEVEL = 30;
+    private static final float MAX_HP_LIMIT = 1 / 2f;
+    private static final float MIN_HP_LIMIT = 1 / 4f;
+
     private Ability drain = new Drain();
     private Ability deflect = new Deflect();
 
@@ -38,8 +41,8 @@ public final class Wizard extends Player {
     public void choosePlayerFightStrategy() {
         int currentHp = this.getHp();
         int maxLevelHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
-        float a = 1 / 4f * maxLevelHp;
-        float b =  1 / 2f * maxLevelHp;
+        float a = MIN_HP_LIMIT * maxLevelHp;
+        float b = MAX_HP_LIMIT * maxLevelHp;
         if (currentHp < a) {
             this.setFightBehavior(new DefenceFightBehavior());
             this.performFightBehavior();

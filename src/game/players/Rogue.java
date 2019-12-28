@@ -11,6 +11,9 @@ import game.ground.Ground;
 public final class Rogue extends Player {
     private static final int INITIAL_HP = 600;
     private static final int PLUS_HP_PER_LEVEL = 40;
+    private static final float MAX_HP_LIMIT = 1 / 5f;
+    private static final float MIN_HP_LIMIT = 1 / 7f;
+
     private Ability backstab = new Backstab();
     private Ability paralysis = new Paralysis();
 
@@ -38,8 +41,8 @@ public final class Rogue extends Player {
     public void choosePlayerFightStrategy() {
         int currentHp = this.getHp();
         int maxLevelHp = this.getInitialHp() + this.getLevel() * this.getPlusHpPerLevel();
-        float a = 1 / 7f * maxLevelHp;
-        float b =  1 / 5f * maxLevelHp;
+        float a = MIN_HP_LIMIT * maxLevelHp;
+        float b = MAX_HP_LIMIT * maxLevelHp;
         if (currentHp < a) {
             this.setFightBehavior(new DefenceFightBehavior());
             this.performFightBehavior();

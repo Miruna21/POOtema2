@@ -1,5 +1,6 @@
 package game;
 
+import constants.AuxiliaryConstants;
 import game.angels.Angel;
 import game.ground.GameMap;
 import game.ground.Ground;
@@ -211,7 +212,7 @@ public final class Game {
             attacker.getEvent().anEventHappened(victim, attacker, "fightKilled");
             int max;
             int a = 0;
-            int b = 200 - (attacker.getLevel() - victim.getLevel()) * 40;
+            int b = AuxiliaryConstants.BASE_HP - (attacker.getLevel() - victim.getLevel()) * 40;
             int xpWinner = attacker.getXp();
             int newXpWinner;
             max = Math.max(a, b);
