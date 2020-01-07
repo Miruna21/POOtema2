@@ -53,6 +53,14 @@ Pyromancer 1 reached level 10
 ~~ Round 2 ~~
 Player Pyromancer 1 was killed by Rogue 0
 Player Rogue 0 was killed by Pyromancer 1
+Rogue 0 reached level 11
+Rogue 0 reached level 12
+Rogue 0 reached level 13
+Rogue 0 reached level 14
+Pyromancer 1 reached level 11
+Pyromancer 1 reached level 12
+Pyromancer 1 reached level 13
+Pyromancer 1 reached level 14
 Angel SmallAngel was spawned at 0 0
 
 ~~ Results ~~

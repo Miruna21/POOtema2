@@ -22,6 +22,7 @@ public abstract class Player {
     private int nrRoundsIgniteHit;
     private FightBehavior fightBehavior;
     private Subject event;
+    private int beforeFightLevel;
 
     public Player(final int id, final int xPos, final int yPos) {
         this.id = id;
@@ -37,6 +38,15 @@ public abstract class Player {
         this.overtimeDamage = 0;
         this.nrRoundsIgniteHit = 0;
         this.fightBehavior = null;
+        this.beforeFightLevel = 0;
+    }
+
+    public final void setBeforeFightLevel(final int beforeFightLevel) {
+        this.beforeFightLevel = beforeFightLevel;
+    }
+
+    public final int getBeforeFightLevel() {
+        return beforeFightLevel;
     }
 
     public final void setEvent(final Subject event) {
@@ -173,27 +183,23 @@ public abstract class Player {
         int initialHp = this.getInitialHp();
         int plusHpPerLevel = this.getPlusHpPerLevel();
         int newlevel;
-        if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
-                + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                    && this.hp > 0) {
+        if (this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                + this.level * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL)) {
             newlevel = this.level + 1;
             this.setLevel(newlevel);
             event.anEventHappened(this, "levelUp");
-            if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
-                    + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                        && this.hp > 0) {
+            if (this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                    + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL)) {
                 newlevel++;
                 this.setLevel(newlevel);
                 event.anEventHappened(this, "levelUp");
-                if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
-                        + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                            && this.hp > 0) {
+                if (this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                        + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL)) {
                     newlevel++;
                     this.setLevel(newlevel);
                     event.anEventHappened(this, "levelUp");
-                    if ((this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
-                            + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL))
-                                && this.hp > 0) {
+                    if (this.xp >= (AuxiliaryConstants.BASE_LEVEL_UP_CONDITION
+                            + newlevel * AuxiliaryConstants.PLUS_LEVEL_UP_CONDITION_PER_LEVEL)) {
                         newlevel++;
                         this.setLevel(newlevel);
                         event.anEventHappened(this, "levelUp");

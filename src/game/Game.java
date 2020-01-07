@@ -137,6 +137,23 @@ public final class Game {
                         fightGround.removeLivePlayerOnThisPlaceId(secondIdPlayer);
                         fightGround.addDeadPlayerOnThisPlaceId(secondIdPlayer);
                     }
+                    if (!players.get(secondIdPlayer).getLife()) {
+                        // daca atacatorul a omorat victima, anunt magicianul
+                        players.get(firstIdPlayer).getEvent().
+                                anEventHappened(players.get(secondIdPlayer),
+                                        players.get(firstIdPlayer), "fightKilled");
+                    }
+                    if (!players.get(firstIdPlayer).getLife()) {
+                        // daca atacatorul a omorat victima, anunt magicianul
+                        players.get(secondIdPlayer).getEvent().
+                                anEventHappened(players.get(firstIdPlayer),
+                                        players.get(secondIdPlayer), "fightKilled");
+                    }
+                    // retin nivelul dinainte de lupta al jucatorilor
+                    players.get(firstIdPlayer).setBeforeFightLevel(players.
+                            get(firstIdPlayer).getLevel());
+                    players.get(secondIdPlayer).setBeforeFightLevel(players.
+                            get(secondIdPlayer).getLevel());
                     // daca a murit un jucator in lupta, ofer xp atacatorului
                     verifyVictimDeadAfterFight(players.get(firstIdPlayer),
                                 players.get(secondIdPlayer));
@@ -208,17 +225,16 @@ public final class Game {
 
     private void verifyVictimDeadAfterFight(final Player attacker, final Player victim) {
         if (!victim.getLife()) {
-            // daca atacatorul a omorat victima, anunt magicianul
-            attacker.getEvent().anEventHappened(victim, attacker, "fightKilled");
             int max;
             int a = 0;
-            int b = AuxiliaryConstants.BASE_HP - (attacker.getLevel() - victim.getLevel()) * 40;
+            int b = AuxiliaryConstants.BASE_HP
+                    - (attacker.getBeforeFightLevel()
+                        - victim.getBeforeFightLevel()) * 40;
             int xpWinner = attacker.getXp();
             int newXpWinner;
             max = Math.max(a, b);
             newXpWinner = xpWinner + max;
-            // ofer xp numai daca atacatorul este si el in viata
-            if (newXpWinner != xpWinner && attacker.getLife()) {
+            if (newXpWinner != xpWinner) {
                 attacker.gainXp(newXpWinner);
             }
         }
